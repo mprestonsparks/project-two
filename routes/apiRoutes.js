@@ -109,6 +109,12 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/user/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/:id", function(req, res) {
     db.Example.update({ where: { id: req.params.id } }).then(function(data) {
       res.json(data);
