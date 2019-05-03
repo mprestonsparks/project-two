@@ -56,9 +56,11 @@ CREATE TABLE tasks (
     actual_end DATETIME,
     task_status_id INTEGER,
     task_priority_id INTEGER,
+    project_id INTEGER,
     PRIMARY KEY(task_id),
     FOREIGN KEY(task_status_id) REFERENCES task_statuses(task_status_id),
-    FOREIGN KEY(task_priority_id) REFERENCES task_priorities(task_priority_id)
+    FOREIGN KEY(task_priority_id) REFERENCES task_priorities(task_priority_id),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
 );
 
 DROP TABLE IF EXISTS task_assignments;
