@@ -9,14 +9,14 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:id",function(req,res){
-    db.Example.findAll({where: {user_id: req.params.id} }).then(function(data){
+  app.get("/api/users/:user_id",function(req,res){
+    db.Example.findAll({where: {user_id: req.params.user_id} }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("/api/users/:project",function(req,res){
-    db.Example.findAll({where: {project_name: req.params.project} }).then(function(data){
+  app.get("/api/users/:project_name",function(req,res){
+    db.Example.findAll({where: {project_name: req.params.project_name} }).then(function(data){
       res.json(data);
     });
   });
@@ -27,8 +27,8 @@ module.exports = function(app) {
     });
   }); 
 
-  app.get("/api/projects/:id",function(req,res){
-    db.Example.findAll({where: {project_id: req.params.id} }).then(function(data){
+  app.get("/api/projects/:project_id",function(req,res){
+    db.Example.findAll({where: {project_id: req.params.project_id} }).then(function(data){
       res.json(data);
     });
   });
