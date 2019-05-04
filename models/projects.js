@@ -25,9 +25,8 @@
 //     return Project;
 // };
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
-        // Giving the Author model a name of type STRING
         project_name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -45,6 +44,7 @@ module.exports = function(sequelize, DataTypes) {
         };
     };
  
+
     return Project;
 
 }
