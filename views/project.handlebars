@@ -1,32 +1,44 @@
-{{> sidebar/sidebar }}
 
-<div>
-  <h2>Project Title</h2>
+{{#if loggedIn}}
+
+
+  {{> sidebar/sidebar }}
+
   <div>
-    <div>
-      <ul>
-        {{> project/project-list-item}}
-      </ul>
-    </div>
-
-    <div>
+    <h2>{{projectTitle}}</h2>
+    <div class="taskContainer">
       <div>
-        <article>
-          <h3>Task 1</h3>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-        </article>
-        <div>
-          <span>Due Date</span>
-          {{> status-select}}
+        <ul>
+          {{#each projectTasks}}
+            {{> project/project-list-item this}}
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="taskDetailsContainer">
+        <div class="task">
+          <article>
+            <h3>Task 1</h3>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          </article>
+          <div>
+            <span>Due Date</span>
+            {{> status-select}}
+          </div>
+          
         </div>
-        
-      </div>
-      <div>
-        <h3>Comments</h3>
-        {{> comment/comment}}
-      </div>
+        <div>
+          <h3>Comments</h3>
+          {{> comment/comment}}
+        </div>
 
+      </div>
     </div>
+
   </div>
 
-</div>
+{{else}}
+
+  Log in stuff...
+
+{{/if}}

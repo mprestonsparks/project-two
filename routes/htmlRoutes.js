@@ -62,8 +62,41 @@ module.exports = function(app) {
   });
 
   app.get('/project/:id?', (req, res) => {
-    
-    res.render("project")
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      },
+      projectId: 1,
+      projectTitle: "Test project",
+      projectOwner: { id: 3, name: "Bill" },
+      projectDescription: "Here is a description of the project",
+      projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+      projectComplete: false,
+      projectTasks: [
+        {
+          taskId: 8,
+          taskOrder: 1,
+          taskTitle: "The first task",
+          taskDescription: "Here is a description of the task",
+          taskStatus: "Not Started",
+          taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          taskComments: [
+            {
+              commentId: 4,
+              commentDate: "2019-05...",
+              commentContent: "This is a great comment",
+              commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+            }
+          ]
+        }
+      ]
+    }
+    res.render("project", obj)
   })
 
   // app.get('/project/:id/task')
