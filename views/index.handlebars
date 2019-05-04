@@ -2,12 +2,38 @@
 
   {{> sidebar/sidebar isAdmin=isAdmin user=user}}
 
-  <section>
-    <h2>My Tasks</h2>
-    <ul>
-      <li class="classLink"></li>
-    </ul>
-  </section>
+
+  <div>
+    
+    {{#if isAdmin}}
+      <div class="subnav">
+        <button>Create project</button>
+        <button>Add team member</button>
+      </div>
+      
+      <div>
+        <h2>My Tasks</h2>
+        <ul>
+          <li class="classLink"></li>
+        </ul>
+      </div>
+
+
+    {{else}}
+      <div class="subnav">
+        <button>Create project</button>
+        <button>Add team member</button>
+      </div>
+      <div>
+        <h2>My Tasks</h2>
+        <ul>
+          <li class="classLink"></li>
+        </ul>
+      </div>
+
+    {{/if}}
+
+  </div>
 
 {{else}}
 

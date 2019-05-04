@@ -136,6 +136,56 @@ module.exports = function(app) {
               ]
             }
           ]
+        },
+        {
+          projectId: 2,
+          projectTitle: "Test project 2",
+          projectOwner: { id: 3, name: "Bill" },
+          projectDescription: "Here is a description of the project",
+          projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          projectComplete: false,
+          projectTasks: [
+            {
+              taskId: 8,
+              taskTitle: "The first task",
+              taskDescription: "Here is a description of the task",
+              taskStatus: "Not Started",
+              taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+              taskComments: [
+                {
+                  commentId: 4,
+                  commentDate: "2019-05...",
+                  commentContent: "This is a great comment",
+                  commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          projectId: 3,
+          projectTitle: "Test project 3",
+          projectOwner: { id: 3, name: "Bill" },
+          projectDescription: "Here is a description of the project",
+          projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          projectComplete: false,
+          projectTasks: [
+            {
+              taskId: 8,
+              taskTitle: "The first task",
+              taskDescription: "Here is a description of the task",
+              taskStatus: "Not Started",
+              taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+              taskComments: [
+                {
+                  commentId: 4,
+                  commentDate: "2019-05...",
+                  commentContent: "This is a great comment",
+                  commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+                }
+              ]
+            }
+          ]
         }
       ],
     }
