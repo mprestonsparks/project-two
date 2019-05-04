@@ -8,35 +8,35 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         task_description: {
-            type: DataType.TEXT,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 is: /^[a-z]+$/i
             }
         },
         goal_start: {
-            type: DataType.DATETIME,
+            type: DataTypes.DATETIME,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         goal_end: {
-            type: DataType.DATETIME,
+            type: DataTypes.DATETIME,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         actual_start: {
-            type: DataType.DATETIME,
+            type: DataTypes.DATETIME,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         actual_end: {
-            type: DataType.DATETIME,
+            type: DataTypes.DATETIME,
             allowNull: false,
             validate: {
                 isDate: true,
