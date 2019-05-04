@@ -41,7 +41,7 @@ module.exports = function(app) {
   app.get("/api/projects/:project_id",function(req,res){
     db.Project.findAll({
       where: {project_id: req.params.project_id},
-      attributes: ["id","project_name","project_description","project_lead"]
+      attributes: ["project_id","project_name","project_description","project_lead"]
      }).then(function(data){
       res.json(data);
     });
