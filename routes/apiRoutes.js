@@ -25,6 +25,7 @@ module.exports = function(app) {
     db.Project.findAll({
       attributes: ["id","project_name"]
     }).then(function(data){
+
       res.json(data);
     });
   }); 
@@ -60,7 +61,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/project", function(req, res) {
-    db.Example.create(req.body).then(function(data) {
+    db.Project.create(req.body).then(function(data) {
       res.json(data);
     });
   });
@@ -84,13 +85,13 @@ module.exports = function(app) {
   });
 
   app.delete("/api/project/:project_id", function(req, res) {
-    db.Example.destroy({ where: { project_id: req.params.project_id } }).then(function(data) {
+    db.Project.destroy({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.delete("/api/user/:user_id", function(req, res) {
-    db.Example.destroy({ where: { user_id: req.params.user_id } }).then(function(data) {
+    db.User.destroy({ where: { user_id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
@@ -102,13 +103,13 @@ module.exports = function(app) {
   });
 
   app.put("/api/project/:project_id", function(req, res) {
-    db.Example.update({ where: { project_id: req.params.project_id } }).then(function(data) {
+    db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.put("/api/user/:user_id", function(req, res) {
-    db.Example.update({ where: { user_id: req.params.user_id } }).then(function(data) {
+    db.User.update({ where: { user_id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
