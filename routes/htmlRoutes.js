@@ -13,19 +13,30 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/dashboard/admin", function(req, res) {
-    // db.User.findAll({}).then(function(userData) {
-    //   console.log(userData);
-    //   res.render("example", {
-    //     example: userData
-    //   });
-    // });
-
-    db.Projects.findAll({}).then(function(projectData) {
-      console.log(projectData);
-      res.render("example", {
-        example: projectData
-      });
+    let dataRes = {};
+    db.User.findAll({
+      attributes: ["user_first_name","user_last_name","user_email"]
+    }).then(function(userData) {
+      var users = [];
+      for (var i = 0; i<userData.length; i++){
+          users.push(userData[i])
+      }
+      dataRes = {...dataRes, userInfo: users};
+      
+      console.log(dataRes)
+    })
+      db.Project.findAll({
+        attributes: ["project_name"]
+      }).then(function(projectData) {
+        // console.log(projectData);
+        dataRes = {...dataRes, projectInfo: projectData};;
+      }).then(function(){
+      res.render("example",dataRes);
     });
+
+    
+
+
 
   });
 
