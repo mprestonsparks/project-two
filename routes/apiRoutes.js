@@ -33,7 +33,6 @@ module.exports = function(app) {
     db.Project.findAll({
       attributes: ["id","project_name","project_description","project_lead"]
     }).then(function(data){
-
       res.json(data);
     });
   }); 
@@ -74,7 +73,9 @@ module.exports = function(app) {
   });
 
   app.get("/api/tasks/:user_id",function(req,res){
-    db.Task.findAll({where: {use_idr: req.params.user_id} }).then(function(data){
+    db.Task.findAll({
+      where: {use_idr: req.params.user_id},
+      attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    }).then(function(data){
       res.json(data);
     });
   });
