@@ -15,28 +15,28 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         goal_start: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         goal_end: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         actual_start: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true,
             }
         },
         actual_end: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true,
