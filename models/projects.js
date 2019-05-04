@@ -1,9 +1,8 @@
 
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
-        // Giving the Author model a name of type STRING
         project_name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         project_description: DataTypes.TEXT
