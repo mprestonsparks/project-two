@@ -1,0 +1,22 @@
+<div id="sidebarNav">
+  
+  <div>
+    <a href="/">Logo</a>
+  </div>
+  <ul>
+    <li>
+      <a href="/projects">Projects</a>
+    </li>
+    <li>
+      <a href="/tasks">My Tasks</a>
+    </li>
+    {{#if isAdmin}}
+      <li>
+        <a href="/team">Team</a>
+      </li>
+    {{/if}}
+  </ul>
+
+  {{> sidebar/user-panel user=user }}
+
+</div>

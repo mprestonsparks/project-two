@@ -1,3 +1,8 @@
-.list-group-item {
-  line-height: 2.5;
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+#sidebarNav {
+  width: 20vw;
 }
