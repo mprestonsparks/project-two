@@ -61,6 +61,20 @@ module.exports = function(app) {
     res.render("index", obj);
   });
 
+  app.get('/project/new', (req, res) => {
+    obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      }
+    }
+    res.render("create-project", obj)
+  })
+
   app.get('/project/:id?', (req, res) => {
     const obj = {
       loggedIn: true,
@@ -98,6 +112,8 @@ module.exports = function(app) {
     }
     res.render("project", obj)
   })
+
+  
 
   // app.get('/project/:id/task')
 
@@ -253,6 +269,20 @@ module.exports = function(app) {
       ]
     }
     res.render("team", obj);
+  })
+
+  app.get('/team/new', (req, res) => {
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      }
+    }
+    res.render("team-member-create", obj);
   })
 
 

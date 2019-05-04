@@ -5,6 +5,12 @@
   {{> sidebar/sidebar }}
 
   <div>
+    <div class="subnav">
+      {{#if isAdmin}}
+        <a href="/project/new">Create project</a>
+        <a href="/team/new">Add team member</a>
+      {{/if}}
+    </div>
     <h2>{{projectTitle}}</h2>
     <div class="taskContainer">
       <div>
