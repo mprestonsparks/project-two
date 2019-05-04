@@ -5,24 +5,20 @@ module.exports = function (sequelize, DataTypes) {
         user_role_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: 'user_roles', // References 'user_roles' table
-            referencesKey: 'user_role_id' // References 'user_role_id' column
         },
         permission_feature_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: 'permission_features', // References 'permission_features' table
-            referencesKey: 'permission_feature_id' // References 'permission_feature_id' column
         }
     });
 
     Role_permissions.associate = function (models) {
         // Associating Role_permissions with User_roles
-        Role_permissions.hasOne(models.User_roles, {
+        Role_permissions.belongsTo(models.User_roles, {
             // onDelete: "cascade"
         });
         // Associating Role_permissions with Permission_features
-        Role_permissions.hasOne(models.PermissionFeature, {
+        Role_permissions.belongsTo(models.PermissionFeature, {
             // onDelete: "cascade"
         });
     };

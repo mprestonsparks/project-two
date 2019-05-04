@@ -1,0 +1,30 @@
+{{#if loggedIn}}
+
+  {{> sidebar/sidebar isAdmin=isAdmin user=user}}
+
+  <div>
+    <div class="subnav">
+      {{#if isAdmin}}
+        <a href="/project/new">Create project</a>
+        <a href="/team/new">Add team member</a>
+      {{else}}
+        
+      {{/if}}
+      </div>
+    <div>
+      <h2>Projects</h2>
+      <button id="addProject">Create a New Project</button>
+      <ul class="projects">
+        {{#each projects}}
+          <li class="classLink">{{projectTitle}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  
+
+{{else}}
+
+  Log in stuff...
+
+{{/if}}
