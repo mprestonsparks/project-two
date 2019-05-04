@@ -3,9 +3,13 @@
   {{> sidebar/sidebar isAdmin=isAdmin user=user}}
 
   <section>
-    <h2>My Tasks</h2>
+    <h2>Team Members</h2>
     <ul>
-      <li class="classLink"></li>
+      {{#each members}}
+        <li>
+          {{firstName}} {{lastName}}
+        </li>
+      {{/each}}
     </ul>
   </section>
 
@@ -14,4 +18,3 @@
   Log in stuff...
 
 {{/if}}
-  

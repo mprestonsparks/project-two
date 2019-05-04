@@ -1,33 +1,32 @@
+{{> sidebar/sidebar }}
+
 <div>
-  {{> sidebar/sidebar }}
-
+  <h2>Project Title</h2>
   <div>
-    <h2>Project Title</h2>
     <div>
-      <div>
-        <ul>
-          {{> project/project-list-item}}
-        </ul>
-      </div>
-
-      <div>
-        <div>
-          <h3>Task 1</h3>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-
-          Due Date
-
-          {{> status-select}}
-        </div>
-        <div>
-          <h3>Comments</h3>
-          {{> comment/comment}}
-        </div>
-
-      </div>
+      <ul>
+        {{> project/project-list-item}}
+      </ul>
     </div>
 
+    <div>
+      <div>
+        <article>
+          <h3>Task 1</h3>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        </article>
+        <div>
+          <span>Due Date</span>
+          {{> status-select}}
+        </div>
+        
+      </div>
+      <div>
+        <h3>Comments</h3>
+        {{> comment/comment}}
+      </div>
+
+    </div>
   </div>
 
-  
 </div>

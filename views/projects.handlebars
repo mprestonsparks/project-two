@@ -1,5 +1,16 @@
-<div>
+{{#if loggedIn}}
 
-  Project
+  {{> sidebar/sidebar isAdmin=isAdmin user=user}}
 
-</div>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li class="classLink"></li>
+    </ul>
+  </section>
+
+{{else}}
+
+  Log in stuff...
+
+{{/if}}

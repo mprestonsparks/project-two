@@ -21,24 +21,158 @@ module.exports = function(app) {
   // });
 
   app.get('/', (req, res) => {
-    res.render("index");
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      },
+      projects: [
+        {
+          projectId: 1,
+          projectTitle: "Test project",
+          projectOwner: { id: 3, name: "Bill" },
+          projectDescription: "Here is a description of the project",
+          projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          projectComplete: false,
+          projectTasks: [
+            {
+              taskId: 8,
+              taskTitle: "The first task",
+              taskDescription: "Here is a description of the task",
+              taskStatus: "Not Started",
+              taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+              taskComments: [
+                {
+                  commentId: 4,
+                  commentDate: "2019-05...",
+                  commentContent: "This is a great comment",
+                  commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+                }
+              ]
+            }
+          ]
+        }
+      ],
+    }
+    res.render("index", obj);
   });
 
-  app.get('/dashboard', (req, res) => {
-    res.render("dashboard")
-  })
-
-  app.get('/project', (req, res) => {
+  app.get('/project/:id?', (req, res) => {
+    
     res.render("project")
   })
 
+  // app.get('/project/:id/task')
+
   app.get('/projects', (req, res) => {
-    res.render("projects");
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      },
+      projects: [
+        {
+          projectId: 1,
+          projectTitle: "Test project",
+          projectOwner: { id: 3, name: "Bill" },
+          projectDescription: "Here is a description of the project",
+          projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          projectComplete: false,
+          projectTasks: [
+            {
+              taskId: 8,
+              taskTitle: "The first task",
+              taskDescription: "Here is a description of the task",
+              taskStatus: "Not Started",
+              taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+              taskComments: [
+                {
+                  commentId: 4,
+                  commentDate: "2019-05...",
+                  commentContent: "This is a great comment",
+                  commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+                }
+              ]
+            }
+          ]
+        }
+      ],
+    }
+    res.render("projects", obj);
   })
 
-  app.get('/users', (req, res) => {
-    res.render("users")
+  app.get('/tasks', (req, res) => {
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      },
+      projects: [
+        {
+          projectId: 1,
+          projectTitle: "Test project",
+          projectOwner: { id: 3, name: "Bill" },
+          projectDescription: "Here is a description of the project",
+          projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          projectComplete: false,
+          projectTasks: [
+            {
+              taskId: 8,
+              taskTitle: "The first task",
+              taskDescription: "Here is a description of the task",
+              taskStatus: "Not Started",
+              taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+              taskComments: [
+                {
+                  commentId: 4,
+                  commentDate: "2019-05...",
+                  commentContent: "This is a great comment",
+                  commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+                }
+              ]
+            }
+          ]
+        }
+      ],
+    }
+    res.render("tasks", obj);
   })
+
+  app.get('/team', (req, res) => {
+    const obj = {
+      loggedIn: true,
+      isAdmin: true,
+      user: { 
+        id: 8,
+        firstName: "Happy",
+        lastName: "Gilmore",
+        email: "email@email.com"
+      },
+      members: [
+        {
+          userId: 1,
+          firstName: 'Josh',
+          lastName: 'Stevens',
+          tasks: []
+        }
+      ]
+    }
+    res.render("team", obj);
+  })
+
+
 
 
 
