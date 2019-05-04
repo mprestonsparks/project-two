@@ -46,7 +46,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/projects/:user_id",function(req,res){
+  app.get("/api/projects/user/:user_id",function(req,res){
     db.Project.findAll({
       where: {user_id: req.params.user_id},
       attributes: ["project_id","project_name","project_description","project_lead"]
@@ -63,7 +63,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/:project_id",function(req,res){
+  app.get("/api/tasks/project/:project_id",function(req,res){
     db.Task.findAll({
       where: {project_id: req.params.project_id},
       attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]
@@ -72,10 +72,37 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/:user_id",function(req,res){
+  app.get("/api/tasks/user/:user_id",function(req,res){
     db.Task.findAll({
-      where: {use_idr: req.params.user_id},
-      attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    }).then(function(data){
+      where: {use_id: req.params.user_id},
+      attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/comments",function(req,res){
+    db.Comment.findAll({
+      attributes: ["comment_id","comment","task_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/comments/:comment_id",function(req,res){
+    db.Comment.findAll({
+      where: {comment_id: req.params.comment_id},
+      attributes: ["comment_id","comment","task_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/comments/task/:task_id",function(req,res){
+    db.Comment.findAll({
+      where: {comment_id: req.params.comment_id},
+      attributes: ["comment_id","comment","task_id"]
+    }).then(function(data){
       res.json(data);
     });
   });
@@ -98,7 +125,7 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/task/:task_id", function(req, res) {
+  app.delete("/api/task/delete/:task_id", function(req, res) {
     db.Task.destroy({ where: { task_id: req.params.task_id } }).then(function(data) {
       res.json(data);
     });
@@ -110,32 +137,38 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/user/:user_id", function(req, res) {
+  app.delete("/api/user/delete/:user_id", function(req, res) {
     db.User.destroy({ where: { user_id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
 
-  app.delete("api/task/comment/:comment_id",function(req,res){
+  app.delete("api/task/comment/delete/:comment_id",function(req,res){
     db.Comment.destroy({where : { comment_id: req.params.comment_id} }).then(function(data){
       res.json(data);
     });
   });
 
-  app.put("/api/project/:project_id", function(req, res) {
+  app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
   });
 
-  app.put("/api/user/:user_id", function(req, res) {
+  app.put("/api/user/update/:user_id", function(req, res) {
     db.User.update({ where: { user_id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
 
-  app.put("/api/task/:task_id", function(req, res) {
+  app.put("/api/task/update/:task_id", function(req, res) {
     db.Task.update({ where: { task_id: req.params.task_id } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.put("/api/comment/update/:comment", function(req, res) {
+    db.Task.update({ where: { comment_id: req.params.comment_id } }).then(function(data) {
       res.json(data);
     });
   });
