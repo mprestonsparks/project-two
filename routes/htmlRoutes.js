@@ -26,7 +26,7 @@ module.exports = function(app) {
       console.log(dataRes)
     })
       db.Project.findAll({
-        attributes: ["project_name"]
+        attributes: ["project_name","project_lead","project_description"]
       }).then(function(projectData) {
         // console.log(projectData);
         dataRes = {...dataRes, projectInfo: projectData};;

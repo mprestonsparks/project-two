@@ -23,7 +23,7 @@ module.exports = function(app) {
 
   app.get("/api/projects", function(req,res) {
     db.Project.findAll({
-      attributes: ["id","project_name"]
+      attributes: ["id","project_name","project_description","project_lead"]
     }).then(function(data){
       res.json(data);
     });
