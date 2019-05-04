@@ -31,7 +31,7 @@ module.exports = function(app) {
 
   app.get("/api/projects", function(req,res) {
     db.Project.findAll({
-      attributes: ["id","project_name","project_description","project_lead"]
+      attributes: ["project_id","project_name","project_description","project_lead"]
     }).then(function(data){
       res.json(data);
     });
@@ -49,7 +49,7 @@ module.exports = function(app) {
   app.get("/api/projects/:user_id",function(req,res){
     db.Project.findAll({
       where: {user_id: req.params.user_id},
-      attributes: ["id","project_name","project_description","project_lead"]
+      attributes: ["project_id","project_name","project_description","project_lead"]
      }).then(function(data){
       res.json(data);
     });
@@ -104,7 +104,7 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/project/:project_id", function(req, res) {
+  app.delete("/api/project/delete/:project_id", function(req, res) {
     db.Project.destroy({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
