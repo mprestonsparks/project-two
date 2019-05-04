@@ -1,8 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var PermissionFeature = sequelize.define("PermissionFeature", {
-        permission_feature: {
-            type: DataTypes.STRING,
-            allowNull: false
+        permission_feature_id: {
+            type: DataTypes.INTEGER
         }
     });
 

@@ -1,6 +1,6 @@
 // module.exports = function(sequelize, DataTypes) {
 
-    
+
 //     var Project = sequelize.define("Project", {
 //         // Giving the Author model a name of type STRING
 //         project_name: {
@@ -14,14 +14,14 @@
 //         //     referencesKey: 'user_id'
 //         // }
 //     });
-    
+
 //     // Project.associate = function(models) {
 //     //     // Associating Projects with Users
 //     //     Project.hasMany(models.Users, {
 //     //     // onDelete: "cascade"
 //     //     });
 //     // };
-    
+
 //     return Project;
 // };
 
@@ -36,14 +36,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         }
     });
- 
-    Project.associate = function(models) {
+
+    Project.associate = function (models) {
         // Associating Projects with Users
         Project.associate = function (models) {
             Project.hasMany(models.Users);
         };
     };
- 
+
 
     return Project;
 
