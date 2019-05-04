@@ -18,11 +18,11 @@ module.exports = function (sequelize, DataTypes) {
 
     Role_permissions.associate = function (models) {
         // Associating Role_permissions with User_roles
-        Role_permissions.hasOne(models.user_roles, {
+        Role_permissions.hasOne(models.User_roles, {
             // onDelete: "cascade"
         });
         // Associating Role_permissions with Permission_features
-        Role_permissions.hasOne(models.permission_features, {
+        Role_permissions.hasOne(models.PermissionFeature, {
             // onDelete: "cascade"
         });
     };

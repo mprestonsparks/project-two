@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Project.associate = function (models) {
         // Associating Projects with Users
-        Project.belongsTo(models.Users);
+        Project.belongsTo(models.User);
     };
 
     return Project;
