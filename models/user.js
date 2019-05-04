@@ -22,9 +22,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  User.associate = function (models) {
-    User.hasMany(models.Task);
-  };
+  // User.associate = function (models) {
+  //   User.hasMany(models.Task);
+  // };
 
   return User;
 };
