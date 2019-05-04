@@ -5,13 +5,15 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "dev": "nodemon server.js & npm run scss",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit",
-    "scss": "node-sass --watch scss -o css"
+    "scss": "node-sass -w sass -o public/styles"
   },
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.5.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",

@@ -1,0 +1,66 @@
+
+#sidebarNav {
+  width: 20vw;
+  min-width: 220px;
+  align-self: stretch;
+  border-right: solid 1px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .logoContainer {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navLinks {
+    li {
+      padding: 20px;
+    }
+  }
+
+
+}
+
+.userInfo {
+  padding: 20px;
+  background: rgba(black, 0.1);
+  margin-top: auto;
+
+  .userName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .userIcon {
+      flex-grow: 0;
+      flex-shrink: 0;
+      display: flex;
+      background: black;
+      font-size: .7em;
+      text-align: center;
+      width: 3em;
+      height: 3em;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+
+    h3 {
+      padding: 10px;
+    }
+
+  }
+
+  .userControls {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+}
