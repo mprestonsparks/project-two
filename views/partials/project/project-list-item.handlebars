@@ -1,4 +1,5 @@
 
 <li class="taskLink" id={{this.taskId}}>
-  <span>{{this.taskTitle}}</span> || <span>{{this.taskStatus}}</span>
+  <span>{{this.taskTitle}}</span>
+  <span class={{getStatusClass this.taskStatus}}></span>
 </li>

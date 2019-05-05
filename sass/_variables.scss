@@ -7,13 +7,15 @@ $font-color: #181a1d;
 $color1: rgb(73, 119, 247);
 $color2: #222;
 
+$light-bg: rgb(238, 240, 245);
+
 // status colors
-$not-started: $color1;
+$not-started: darken($light-bg, 20);
 $in-progress: rgb(241, 204, 81);
 $in-trouble: rgb(219, 66, 43);
 $complete: rgb(53, 221, 137);
 
-$light-bg: rgb(238, 240, 245);
+
 
 $border: solid 1px darken($light-bg, 8);
 

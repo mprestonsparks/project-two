@@ -148,18 +148,33 @@ html, body {
   .project h1 {
     padding: 20px 20px 10px 20px;
     border-bottom: solid 1px #d4d9e6; }
-  .project .taskContainer {
-    flex: 1;
-    display: flex; }
 
-.taskList {
+.taskContainer {
   flex: 1;
-  max-width: 460px;
-  min-width: 260px;
-  border-right: solid 1px #d4d9e6;
-  background-color: #eef0f5; }
-  .taskList ul li {
-    padding: 14px; }
+  display: flex; }
+  .taskContainer .taskList {
+    flex: 1;
+    max-width: 460px;
+    min-width: 260px;
+    border-right: solid 1px #d4d9e6;
+    background-color: #eef0f5; }
+    .taskContainer .taskList .taskLink {
+      padding: 20px;
+      border-bottom: solid 1px #d4d9e6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .taskContainer .taskList .taskLink .notStarted, .taskContainer .taskList .taskLink .inProgress, .taskContainer .taskList .taskLink .complete {
+        display: block;
+        background: #aeb7cf;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        box-shadow: 0px 1px 1px #8e9bbc; }
+      .taskContainer .taskList .taskLink .inProgress {
+        background: #f1cc51; }
+      .taskContainer .taskList .taskLink .complete {
+        background: #35dd89; }
 
 .taskDetailsContainer {
   flex: 2;
@@ -185,10 +200,10 @@ html, body {
   .projectStatusSelect:focus {
     box-shadow: 0 0 0 -px -moz-mac-focusring;
     outline: none; }
-  .projectStatusSelect.notStarted {
-    color: #4977f7;
-    background: rgba(73, 119, 247, 0.1);
-    border: solid 1px #4977f7; }
+  .projectStatusSelect.notStarted, .taskContainer .taskList .taskLink .projectStatusSelect.inProgress, .taskContainer .taskList .taskLink .projectStatusSelect.complete {
+    color: #aeb7cf;
+    background: rgba(174, 183, 207, 0.1);
+    border: solid 1px #aeb7cf; }
   .projectStatusSelect.inProgress {
     color: #efc539;
     background: rgba(241, 204, 81, 0.1);

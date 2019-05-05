@@ -107,6 +107,22 @@ module.exports = function(app) {
               commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
             }
           ]
+        },
+        {
+          taskId: 8,
+          taskOrder: 2,
+          taskTitle: "The second task task",
+          taskDescription: "Here is a description of the task",
+          taskStatus: "In Progress",
+          taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          taskComments: [
+            {
+              commentId: 4,
+              commentDate: "2019-05...",
+              commentContent: "This is a great comment",
+              commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+            }
+          ]
         }
       ]
     }

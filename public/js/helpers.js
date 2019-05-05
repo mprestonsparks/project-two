@@ -1,8 +1,24 @@
 var register = function(Handlebars) {
   var helpers = {
-    // put all of your helpers inside this object
     getFirstLetter: function(val) {
         return val.charAt(0);
+    },
+
+    getStatusClass: function(val) {
+      var v = val.toLowerCase();
+      switch(v) {
+        case 'not started':
+          return 'notStarted';
+
+        case 'in progress':
+          return 'inProgress';
+
+        case 'complete':
+          return 'complete';
+
+        default:
+          return 'notStarted'
+      }
     }
   };
 
