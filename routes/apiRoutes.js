@@ -219,7 +219,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/taskstatus",function(req,res){
+  app.get("/api/taskstatus",function(req,res){
     db.TaskStatus.findAll({
       attributes: ["task_status_id","task_status"]
     }).then(function(data){
@@ -227,7 +227,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/taskstatus/:task_status_id",function(req,res){
+  app.get("/api/taskstatus/:task_status_id",function(req,res){
     db.TaskStatus.findAll({
       where: { task_status_id: req.params.task_status_id},
       attributes: ["task_status_id","task_status"]
@@ -236,10 +236,36 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/taskstatus/task/status/:task_status",function(req,res){
+  app.get("/api/taskstatus/task/status/:task_status",function(req,res){
     db.TaskStatus.findAll({
       where: { task_status: req.params.task_status},
       attributes: ["task_status_id","task_status"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/userroles",function(req,res){
+    db.Userroles.findAll({
+      attributes: ["user_role_id","user_role"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/userroles/:user_role_id",function(req,res){
+    db.Userroles.findAll({
+      where: {user_role_id: req.params.user_role_id},
+      attributes: ["user_role_id","user_role"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/userroles/user_role/:user_role",function(req,res){
+    db.Userroles.findAll({
+      where: {user_role: req.params.user_role},
+      attributes: ["user_role_id","user_role"]
     }).then(function(data){
       res.json(data);
     });
@@ -289,6 +315,12 @@ module.exports = function(app) {
 
   app.post("/api/taskstatus/",function(req,res){
     db.TaskStatus.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.post("/api/userroles/",function(req,res){
+    db.Userroles.create(req.body).then(function(data){
       res.json(data);
     });
   });
@@ -357,6 +389,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/userroles/delete/:user_role_id", function(req,res){
+    db.Userroles.destroy({
+      where: { user_role_id: req.params.user_role_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
@@ -416,6 +456,14 @@ module.exports = function(app) {
   app.put("/api/taskstatus/update/:task_status_id", function(req,res){
     db.TaskStatus.update({
       where: { task_status_id: req.params.task_status_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.put("/api/userroles/update/:user_role_id", function(req,res){
+    db.Userroles.update({
+      where: { user_role_id: req.params.user_role_id}
     }).then(function(data){
       res.json(data);
     });
