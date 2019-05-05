@@ -1,7 +1,6 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Need to update the database/models for this section
 
   app.get("/api/user", function(req,res) {
     db.User.findAll({
@@ -132,7 +131,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/rolepermissons/role_permission_id",function(req,res){
+  app.get("api/rolepermissons/:role_permission_id",function(req,res){
     db.RolePermissions.findAll({
       where: {role_permission_id: req.params.role_permission_id},
       attributes: ["role_permission_id","user_role_id","permission_feature_id"]
@@ -141,19 +140,80 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/rolepermissons/permissionfeature_id",function(req,res){
+  app.get("api/rolepermissons/permissionfeature_id/:permissionfeature_id",function(req,res){
     db.RolePermissions.findAll({
       where: {permissionfeature_id: req.params.permissionfeature_id},
-      attributes: ["permissionfeature_id","user_role_id","permission_feature_id"]
+      attributes: ["role_permission_id","user_role_id","permission_feature_id"]
     }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("api/rolepermissons/user_role_id",function(req,res){
+  app.get("api/rolepermissons/user_role_id/:user_role_id",function(req,res){
     db.RolePermissions.findAll({
       where: {user_role_id: req.params.user_role_id},
       attributes: ["role_permission_id","user_role_id","permission_feature_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskassignments",function(req,res){
+    db.TaskAssignments.findAll({
+      attributes: ["task_assignment_id","task_id","user_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskassignments/:task_assignment_id",function(req,res){
+    db.TaskAssignments.findAll({
+      where: {task_assignment_id: req.params.task_assignment_id},
+      attributes: ["task_assignment_id","task_id","user_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskassignments/user_role_id/:user_role_id",function(req,res){
+    db.TaskAssignments.findAll({
+      where: {user_role_id: req.params.user_role_id},
+      attributes: ["task_assignment_id","task_id","user_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskassignments/user_id/:user_id",function(req,res){
+    db.TaskAssignments.findAll({
+      where: {user_id: req.params.user_id},
+      attributes: ["task_assignment_id","task_id","user_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskpriorties",function(req,res){
+    db.TaskPriorities.findAll({
+      attributes: ["task_priority_id","task_priority"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskpriorties/:task_priority_id",function(req,res){
+    db.TaskPriorities.findAll({
+      where: {task_priority_id: req.params/task_priority_id},
+      attributes: ["task_priority_id","task_priority"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/taskpriorties/task_priority/:task_priority",function(req,res){
+    db.TaskPriorities.findAll({
+      where: {task_priority: req.params/task_priority},
+      attributes: ["task_priority_id","task_priority"]
     }).then(function(data){
       res.json(data);
     });
@@ -185,6 +245,18 @@ module.exports = function(app) {
 
   app.post("/api/rolepermissions/",function(req,res){
     db.RolePermissions.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.post("/api/taskassignments/",function(req,res){
+    db.TaskAssignments.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.post("/api/taskpriorities/",function(req,res){
+    db.TaskPriorities.create(req.body).then(function(data){
       res.json(data);
     });
   });
@@ -229,6 +301,22 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/taskassignments/delete/:task_assignment_id", function(req,res){
+    db.TaskAssignments.destroy({
+      where: { task_assignment_id: req.params.task_assignment_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.delete("/api/taskapriorities/delete/:task_priority_id", function(req,res){
+    db.TaskPriorities.destroy({
+      where: { task_priority_id: req.params.task_priority_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
@@ -264,6 +352,22 @@ module.exports = function(app) {
   app.put("/api/rolepermissions/update/:role_permission_id", function(req,res){
     db.RolePermissions.update({
       where: { role_permission_id: req.params.role_permission_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.put("/api/taskassignments/update/:task_assignment_id", function(req,res){
+    db.TaskAssignments.update({
+      where: { task_assignment_id: req.params.task_assignment_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.put("/api/taskapriorities/update/:task_priority_id", function(req,res){
+    db.TaskPriorities.update({
+      where: { task_priority_id: req.params.task_priority_id}
     }).then(function(data){
       res.json(data);
     });
