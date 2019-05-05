@@ -11,10 +11,11 @@ html, body {
 }
 
 .pageContentContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 @import './subnav';
-
-@import './project'
+@import './projects';
+@import './project';

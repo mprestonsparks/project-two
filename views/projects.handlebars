@@ -2,7 +2,7 @@
 
   {{> sidebar/sidebar isAdmin=isAdmin user=user}}
 
-  <div>
+  <div class="pageContentContainer">
     <div class="subnav">
       {{#if isAdmin}}
         <a href="/project/new">Create project</a>
@@ -11,12 +11,13 @@
         
       {{/if}}
       </div>
-    <div>
+    <div class="projectsContainer">
       <h2>Projects</h2>
-      <button id="addProject">Create a New Project</button>
       <ul class="projects">
         {{#each projects}}
-          <li class="classLink">{{projectTitle}}</li>
+          <li class="projectCardContainer">
+            {{> project/project-card this}}
+          </li>
         {{/each}}
       </ul>
     </div>
