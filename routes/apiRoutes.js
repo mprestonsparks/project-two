@@ -124,6 +124,41 @@ module.exports = function(app) {
     });
   });
 
+  app.get("api/rolepermissons",function(req,res){
+    db.RolePermissions.findAll({
+      attributes: ["role_permission_id","user_role_id","permission_feature_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("api/rolepermissons/role_permission_id",function(req,res){
+    db.RolePermissions.findAll({
+      where: {role_permission_id: req.params.role_permission_id},
+      attributes: ["role_permission_id","user_role_id","permission_feature_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("api/rolepermissons/permissionfeature_id",function(req,res){
+    db.RolePermissions.findAll({
+      where: {permissionfeature_id: req.params.permissionfeature_id},
+      attributes: ["permissionfeature_id","user_role_id","permission_feature_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("api/rolepermissons/user_role_id",function(req,res){
+    db.RolePermissions.findAll({
+      where: {user_role_id: req.params.user_role_id},
+      attributes: ["role_permission_id","user_role_id","permission_feature_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.post("/api/project", function(req, res) {
     db.Project.create(req.body).then(function(data) {
       res.json(data);
@@ -144,6 +179,12 @@ module.exports = function(app) {
 
   app.post("/api/permissionfeature/",function(req,res){
     db.PermissionFeature.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.post("/api/rolepermissions/",function(req,res){
+    db.RolePermissions.create(req.body).then(function(data){
       res.json(data);
     });
   });
@@ -180,6 +221,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/rolepermissions/delete/:role_permission_id", function(req,res){
+    db.RolePermissions.destroy({
+      where: { role_permission_id: req.params.role_permission_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
@@ -207,6 +256,14 @@ module.exports = function(app) {
   app.put("/api/permissionfeature/update/:permission_feature_id",function(req,res){
     db.PermissionFeature.update({
       where: { permission_feature_id: req.params.permission_feature_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.put("/api/rolepermissions/update/:role_permission_id", function(req,res){
+    db.RolePermissions.update({
+      where: { role_permission_id: req.params.role_permission_id}
     }).then(function(data){
       res.json(data);
     });
