@@ -4,6 +4,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
+    },
+    {
+        tableName: "task_statuses"
     });
 
 

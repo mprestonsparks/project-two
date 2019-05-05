@@ -219,6 +219,32 @@ module.exports = function(app) {
     });
   });
 
+  app.get("api/taskstatus",function(req,res){
+    db.TaskStatus.findAll({
+      attributes: ["task_status_id","task_status"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("api/taskstatus/:task_status_id",function(req,res){
+    db.TaskStatus.findAll({
+      where: { task_status_id: req.params.task_status_id},
+      attributes: ["task_status_id","task_status"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("api/taskstatus/task/status/:task_status",function(req,res){
+    db.TaskStatus.findAll({
+      where: { task_status: req.params.task_status},
+      attributes: ["task_status_id","task_status"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.post("/api/project", function(req, res) {
     db.Project.create(req.body).then(function(data) {
       res.json(data);
@@ -257,6 +283,12 @@ module.exports = function(app) {
 
   app.post("/api/taskpriorities/",function(req,res){
     db.TaskPriorities.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.post("/api/taskstatus/",function(req,res){
+    db.TaskStatus.create(req.body).then(function(data){
       res.json(data);
     });
   });
@@ -317,6 +349,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/taskstatus/delete/:task_status_id", function(req,res){
+    db.TaskStatus.destroy({
+      where: { task_status_id: req.params.task_status_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
@@ -368,6 +408,14 @@ module.exports = function(app) {
   app.put("/api/taskapriorities/update/:task_priority_id", function(req,res){
     db.TaskPriorities.update({
       where: { task_priority_id: req.params.task_priority_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.put("/api/taskstatus/update/:task_status_id", function(req,res){
+    db.TaskStatus.update({
+      where: { task_status_id: req.params.task_status_id}
     }).then(function(data){
       res.json(data);
     });
