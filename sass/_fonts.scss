@@ -1,27 +1,25 @@
 @import 'modularscale';
 
+
 $modularscale: (
   base: 1em,
-  ratio: 1.333
+  ratio: 1.25
 );
   
 // fonts 
 h1 {
   font-family: $header-font;
-  font-size: ms(4);
+  font-size: ms(3);
+  line-height: 1.5em;
 }
 
 h2 {
   font-family: $header-font;
-  font-size: ms(3);
+  font-size: ms(2);
+  line-height: 1.2em;
 }
 
 h3 {
-  font-family: $header-font;
-  font-size: ms(2);
-}
-
-h4 {
   font-family: $header-font;
   font-size: ms(1);
 }
@@ -30,7 +28,14 @@ body {
   font-family: $main-font;
   font-size: ms(0);
   line-height: 1.6em;
+  color: $font-color;
 }
+
+.smallFont {
+  font-size: ms(-1);
+  color: lighten($font-color, 25);
+}
+
 
 // links
 a {
@@ -42,10 +47,10 @@ a:hover {
 }
 
 a:focus {
-  color: black;
+  color: $font-color;
 }
 
 a:visited {
-  color: black;
+  color: $font-color;
 }
 

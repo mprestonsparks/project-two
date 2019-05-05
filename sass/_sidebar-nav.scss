@@ -3,7 +3,7 @@
   width: 20vw;
   min-width: 240px;
   align-self: stretch;
-  border-right: solid 1px gray;
+  border-right: $border;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,9 +16,17 @@
   }
 
   .navLinks {
+
     li {
       padding: 20px;
+
+      &.active {
+        background-color: $color1;
+        color: white;
+      }
     }
+
+
   }
 
 
@@ -26,8 +34,8 @@
 
 .userInfo {
   padding: 20px;
-  background: rgba(black, 0.1);
   margin-top: auto;
+  border-top: $border;
 
   .userName {
     display: flex;

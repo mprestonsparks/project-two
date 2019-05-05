@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,500,600,700');
 
+$header-font: 'Cabin', Arial, sans-serif;
+$main-font: 'Cabin', Arial, sans-serif;
+$font-color: #181a1d;
 
-$header-font: Helvetica, sans-serif;
-$main-font: Helvetica, sans-serif;
-
-$color1: #333;
+$color1: rgb(73, 119, 247);
 $color2: #222;
-$color3: #222;
-$color4: #333;
-$color5: #444;
+
+// status colors
+$not-started: $color1;
+$in-progress: rgb(241, 204, 81);
+$in-trouble: rgb(219, 66, 43);
+$complete: rgb(53, 221, 137);
+
+$light-bg: rgb(238, 240, 245);
+
+$border: solid 1px darken($light-bg, 8);
 
 
-
-// measurements
 $top-bar-height: 80px;
