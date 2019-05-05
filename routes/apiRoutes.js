@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Need to update the database/models for this section
 
-  app.get("/api/users", function(req,res) {
+  app.get("/api/user", function(req,res) {
     db.User.findAll({
       attributes: ["user_id","user_first_name","user_last_name","user_email"]
     }).then(function(data){
@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:user_id",function(req,res){
+  app.get("/api/user/:user_id",function(req,res){
     db.User.findAll({
       where: {user_id: req.params.user_id},
       attributes: ["user_id","user_first_name","user_last_name","user_email"], 
@@ -20,7 +20,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:project_name",function(req,res){
+  app.get("/api/user/:project_name",function(req,res){
     db.User.findAll({
       where: {project_name: req.params.project_name},
       attributes: ["user_id","user_first_name","user_last_name","user_email"]
@@ -29,7 +29,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/projects", function(req,res) {
+  app.get("/api/project", function(req,res) {
     db.Project.findAll({
       attributes: ["project_id","project_name","project_description","project_lead"]
     }).then(function(data){
@@ -37,7 +37,7 @@ module.exports = function(app) {
     });
   }); 
 
-  app.get("/api/projects/:project_id",function(req,res){
+  app.get("/api/project/:project_id",function(req,res){
     db.Project.findAll({
       where: {project_id: req.params.project_id},
       attributes: ["project_id","project_name","project_description","project_lead"]
@@ -46,7 +46,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/projects/user/:user_id",function(req,res){
+  app.get("/api/project/user/:user_id",function(req,res){
     db.Project.findAll({
       where: {user_id: req.params.user_id},
       attributes: ["project_id","project_name","project_description","project_lead"]
@@ -55,7 +55,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/",function(req,res){
+  app.get("/api/task/",function(req,res){
     db.Task.findAll({
       attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]
     }).then(function(data){
@@ -63,7 +63,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/project/:project_id",function(req,res){
+  app.get("/api/task/project/:project_id",function(req,res){
     db.Task.findAll({
       where: {project_id: req.params.project_id},
       attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]
@@ -72,7 +72,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/tasks/user/:user_id",function(req,res){
+  app.get("/api/task/user/:user_id",function(req,res){
     db.Task.findAll({
       where: {use_id: req.params.user_id},
       attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    
@@ -81,7 +81,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/comments",function(req,res){
+  app.get("/api/comment",function(req,res){
     db.Comment.findAll({
       attributes: ["comment_id","comment","task_id"]
     }).then(function(data){
@@ -89,7 +89,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/comments/:comment_id",function(req,res){
+  app.get("/api/comment/:comment_id",function(req,res){
     db.Comment.findAll({
       where: {comment_id: req.params.comment_id},
       attributes: ["comment_id","comment","task_id"]
@@ -98,10 +98,27 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/comments/task/:task_id",function(req,res){
+  app.get("/api/comment/task/:task_id",function(req,res){
     db.Comment.findAll({
       where: {comment_id: req.params.comment_id},
       attributes: ["comment_id","comment","task_id"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/permissionfeature",function(req,res){
+    db.PermissionFeature.findAll({
+      attributes: ["permission_feature_id","permission_feature"]
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
+  app.get("/api/permissionfeature/:permission_feature_id",function(req,res){
+    db.PermissionFeature.findAll({
+      where: { permission_feature_id: req.params.permission_feature_id},
+      attributes: ["permission_feature_id","permission_feature"]
     }).then(function(data){
       res.json(data);
     });
@@ -121,6 +138,12 @@ module.exports = function(app) {
 
   app.post("/api/user", function(req, res) {
     db.User.create(req.body).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.post("/api/permissionfeature/",function(req,res){
+    db.PermissionFeature.create(req.body).then(function(data){
       res.json(data);
     });
   });
@@ -149,6 +172,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/permissionfeature/delete/:permission_feature_id", function(req,res){
+    db.PermissionFeature.destroy({
+      where: { permission_feature_id: req.params.permission_feature_id}
+    }).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.put("/api/project/update/:project_id", function(req, res) {
     db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
       res.json(data);
@@ -167,8 +198,16 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/comment/update/:comment", function(req, res) {
+  app.put("/api/comment/update/:comment_id", function(req, res) {
     db.Task.update({ where: { comment_id: req.params.comment_id } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.put("/api/permissionfeature/update/:permission_feature_id",function(req,res){
+    db.PermissionFeature.update({
+      where: { permission_feature_id: req.params.permission_feature_id}
+    }).then(function(data){
       res.json(data);
     });
   });
