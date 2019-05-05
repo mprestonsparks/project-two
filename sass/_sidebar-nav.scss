@@ -1,7 +1,7 @@
 
 #sidebarNav {
   width: 20vw;
-  min-width: 220px;
+  min-width: 240px;
   align-self: stretch;
   border-right: solid 1px gray;
   display: flex;
@@ -9,7 +9,7 @@
   justify-content: flex-start;
 
   .logoContainer {
-    height: 90px;
+    height: $top-bar-height;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,0 +1,51 @@
+@import 'modularscale';
+
+$modularscale: (
+  base: 1em,
+  ratio: 1.333
+);
+  
+// fonts 
+h1 {
+  font-family: $header-font;
+  font-size: ms(4);
+}
+
+h2 {
+  font-family: $header-font;
+  font-size: ms(3);
+}
+
+h3 {
+  font-family: $header-font;
+  font-size: ms(2);
+}
+
+h4 {
+  font-family: $header-font;
+  font-size: ms(1);
+}
+
+body {
+  font-family: $main-font;
+  font-size: ms(0);
+  line-height: 1.6em;
+}
+
+// links
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+

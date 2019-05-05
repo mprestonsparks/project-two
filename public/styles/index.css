@@ -48,8 +48,38 @@ table {
 * {
   box-sizing: border-box; }
 
+h1 {
+  font-family: Helvetica, sans-serif;
+  font-size: 3.15733em; }
+
+h2 {
+  font-family: Helvetica, sans-serif;
+  font-size: 2.36859em; }
+
+h3 {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.77689em; }
+
+h4 {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.333em; }
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.6em; }
+
 a {
   text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+a:focus {
+  color: black; }
+
+a:visited {
+  color: black; }
 
 html, body {
   width: 100%;
@@ -61,16 +91,50 @@ html, body {
   display: flex;
   flex-direction: row; }
 
+.pageContentContainer {
+  display: flex;
+  flex-direction: column; }
+
+.subnav {
+  height: 80px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  border-bottom: solid 1px gray; }
+
+.project {
+  flex: 1;
+  display: flex;
+  flex-direction: column; }
+  .project h2 {
+    padding: 20px;
+    border-bottom: gray solid 1px; }
+  .project .taskContainer {
+    flex: 1;
+    display: flex; }
+    .project .taskContainer .taskList {
+      flex: 1;
+      border-right: solid 1px gray; }
+      .project .taskContainer .taskList ul li {
+        padding: 14px; }
+
+.taskDetailsContainer {
+  flex: 3; }
+  .taskDetailsContainer .task article, .taskDetailsContainer .task .taskDetails {
+    padding: 20px; }
+  .taskDetailsContainer .comments {
+    padding: 20px; }
+
 #sidebarNav {
   width: 20vw;
-  min-width: 220px;
+  min-width: 240px;
   align-self: stretch;
   border-right: solid 1px gray;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; }
   #sidebarNav .logoContainer {
-    height: 90px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center; }

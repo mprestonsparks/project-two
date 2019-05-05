@@ -1,17 +1,12 @@
-@import './_variables';
-@import './_reset';
+@import './reset';
 
 * {
   box-sizing: border-box;
 }
 
-// add to general file...
-a {
-  text-decoration: none;
-}
-
-
-@import './_layout';
-@import './_sidebar-nav';
+@import './variables';
+@import './fonts';
+@import './layout';
+@import './sidebar-nav';
 
 

@@ -1,0 +1,46 @@
+.project {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    padding: 20px;
+    border-bottom: gray solid 1px;
+  }
+
+  .taskContainer {
+    flex: 1;
+    display: flex;
+
+    .taskList {
+      flex: 1;
+      border-right: solid 1px gray;
+
+      ul li {
+        padding: 14px;
+      }
+
+    }
+
+  }
+
+}
+
+
+.taskDetailsContainer {
+  flex: 3;
+
+  .task {
+
+    article, .taskDetails {
+      padding: 20px;
+    }
+  }
+
+  .comments {
+    padding: 20px;
+  }
+
+ 
+  
+}
