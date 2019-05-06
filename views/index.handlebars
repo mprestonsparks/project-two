@@ -1,16 +1,12 @@
 {{#if loggedIn}}
 
-  {{> sidebar/sidebar isAdmin=isAdmin user=user}}
+  {{> sidebar/sidebar isAdmin=isAdmin user=user }}
 
 
   <div class="pageContentContainer">
-    
-    {{#if isAdmin}}
-      <div class="subnav">
-        <a href="/project/new">Create project</a>
-        <a href="/team/new">Add team member</a>
-      </div>
-      
+
+    {{> subnav this}}   
+     
       <div class="content">
         <h2>My Tasks</h2>
         <ul>
@@ -18,20 +14,6 @@
         </ul>
       </div>
 
-
-    {{else}}
-      <div class="subnav">
-        <button>Create project</button>
-        <button>Add team member</button>
-      </div>
-      <div class="content">
-        <h2>My Tasks</h2>
-        <ul>
-          <li class="classLink"></li>
-        </ul>
-      </div>
-
-    {{/if}}
 
   </div>
 

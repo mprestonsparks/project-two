@@ -3,14 +3,8 @@
   {{> sidebar/sidebar isAdmin=isAdmin user=user}}
 
   <div class="pageContentContainer">
-    <div class="subnav">
-      {{#if isAdmin}}
-        <a href="/project/new">Create project</a>
-        <a href="/team/new">Add team member</a>
-      {{else}}
-        
-      {{/if}}
-      </div>
+    {{> subnav this}}
+    
     <div class="projectsContainer">
       <h2>Projects</h2>
       <ul class="projects">

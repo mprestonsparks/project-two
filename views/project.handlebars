@@ -5,12 +5,9 @@
   {{> sidebar/sidebar active=projects }}
 
   <div class="pageContentContainer">
-    <div class="subnav">
-      {{#if isAdmin}}
-        <a href="/project/new">Create project</a>
-        <a href="/team/new">Add team member</a>
-      {{/if}}
-    </div>
+    
+    {{> subnav this}}   
+    
     <div class="project">
       <h1>{{projectTitle}}</h1>
       <div class="taskContainer">
@@ -35,10 +32,9 @@
             </article>
            
           </div>
-          <div class="comments">
-            {{> comment/comment}}
-          </div>
 
+          {{> comment/comments }}
+       
         </div>
       </div>
     </div>
