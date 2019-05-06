@@ -11,13 +11,18 @@
 // No assocations needed because task_assignemnts table doesn't pull in references from other tables???
 
 module.exports = function (sequelize, DataTypes) {
-    var Task_Assignments = sequelize.define("Task_Assignments", {});
-    Task_Assignments.associate = function (models) {
-        Task_Assignments.belongsTo(models.User);
+    var TaskAssignments = sequelize.define("Task_Assignments", {
+
+    },
+    {
+        tableName: "task_assignments"
+    });
+    TaskAssignments.associate = function (models) {
+        TaskAssignments.belongsTo(models.User);
     };
-    Task_Assignments.associate = function (models) {
-        Task_Assignments.belongsTo(models.Task);
+    TaskAssignments.associate = function (models) {
+        TaskAssignments.belongsTo(models.Task);
     };
 
-    return Task_Assignments;
+    return TaskAssignments;
 };

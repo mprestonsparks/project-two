@@ -49,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
     };
 
     Task.associate = function (models) {
-        Task.hasMany(models.Task_Assignments);
+        Task.hasMany(models.TaskAssignments);
     };
 
     return Task;

@@ -1,10 +1,13 @@
 
 module.exports = function (sequelize, DataTypes) {
-    var Task_Priorities = sequelize.define("Task_Priorities", {
+    var TaskPriorities = sequelize.define("Task_Priorities", {
         task_priority: {
             type: DataTypes.STRING,
             allowNull: false
         }
+    },
+    {
+        tableName: "task_priorities"
     });
-    return Task_Priorities;
+    return TaskPriorities;
 }
