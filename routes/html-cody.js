@@ -42,11 +42,16 @@ module.exports = function(app) {
       }).then(function(){
       res.render("example",dataRes);
     });
+  });
+ 
+  app.get('/project/:id?', (req, res) => {
 
-    
-
-
-
+      db.Project.findAll({
+        where: {project_id: req.params.project_id},
+        attributes: ["id","project_name","project_description","project_lead"]
+       }).then(function(data){
+        res.render("project",data);
+      });
   });
 
 

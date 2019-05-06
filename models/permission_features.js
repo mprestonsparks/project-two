@@ -3,6 +3,8 @@ module.exports = function (sequelize, DataTypes) {
         permission_feature_id: {
             type: DataTypes.INTEGER
         }
+    },{
+        tableName:"permission_features"
     });
 
 

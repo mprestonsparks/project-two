@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Project.associate = function (models) {
+    Project.associate = function(models) {
         // Associating Projects with Users
         Project.associate = function (models) {
             Project.hasMany(models.Users);
