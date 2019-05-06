@@ -3,32 +3,44 @@
   width: 20vw;
   min-width: 240px;
   align-self: stretch;
-  border-right: $border;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: $color2;
-  color: white;
+  background-color: $sidebar-bg;
+  color: $sidebar-text;
 
   .logoContainer {
     height: $top-bar-height;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $sidebar-text;
+
+    a {
+      color: white;
+    }
   }
 
   .navLinks {
 
     li {
-      padding: 20px;
+      display: flex;
+      justify-content: stretch;
 
       a {
-        color: white;
+        flex: 1;
+        display: block;
+        padding: 20px;
+        color: $sidebar-text;
       }
 
       &.active {
-        background-color: $color1;
-        color: white;
+        background-color: $sidebar-active;
+        color: $sidebar-text-active;
+      }
+
+      &:hover {
+        background-color: rgba($color1, 0.4);
       }
     }
 
@@ -39,7 +51,8 @@
 .userInfo {
   padding: 20px;
   margin-top: auto;
-  border-top: $border;
+  //border-top: solid 1px darken($sidebar-bg, 20);
+  background-color: darken($sidebar-bg, 5);
 
   .userName {
     display: flex;
@@ -50,7 +63,7 @@
       flex-grow: 0;
       flex-shrink: 0;
       display: flex;
-      background: black;
+      background: $in-trouble;
       font-size: .5em;
       letter-spacing: 1px;
       text-align: center;
@@ -60,11 +73,9 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
+      margin-right: 1em;
     }
-
-    h3 {
-      padding: 10px;
-    }
+  
 
   }
 
@@ -73,6 +84,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    #logOut {
+      background: none;
+      border: none;
+      color: lighten($sidebar-bg, 20);
+    }
+
   }
 
   
