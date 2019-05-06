@@ -204,6 +204,7 @@ html, body {
     align-items: center; }
 
 .projectStatusSelect {
+  text-align: center;
   border: none;
   font-size: 1.25em;
   padding: .5em .75em;
