@@ -19,7 +19,22 @@ var register = function(Handlebars) {
         default:
           return 'notStarted'
       }
+    },
+
+    isActive: function(val1, val2) {
+      if (val1 !== undefined) {
+        if (val1 === val2) {
+          console.log(val1, val2)
+          return 'active'
+        } else {
+          return ''
+        }
+      } else {
+        return ''
+      }
+      
     }
+
   };
 
   if (Handlebars && typeof Handlebars.registerHelper === "function") {

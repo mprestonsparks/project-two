@@ -681,22 +681,40 @@ html, body {
       letter-spacing: 4px; }
   #sidebarNav .navLinks li {
     display: flex;
-    justify-content: stretch; }
+    justify-content: stretch;
+    position: relative; }
     #sidebarNav .navLinks li a {
       flex: 1;
       display: block;
       padding: 20px;
-      color: white; }
+      color: white;
+      border-top: solid 1px #191e30;
+      border-bottom: solid 1px #191e30; }
       #sidebarNav .navLinks li a i {
         font-size: 1.5em;
         width: 3em;
         text-align: left;
         padding-left: .75em; }
-    #sidebarNav .navLinks li.active {
+    #sidebarNav .navLinks li:active {
       background-color: #4977f7;
       color: white; }
     #sidebarNav .navLinks li:hover {
       background-color: rgba(73, 119, 247, 0.4); }
+    #sidebarNav .navLinks li.active a {
+      background-color: #161a29;
+      border-top: solid 1px #10141f;
+      border-bottom: solid 1px #10141f; }
+      #sidebarNav .navLinks li.active a i {
+        color: #4977f7; }
+    #sidebarNav .navLinks li.active::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #4977f7; }
 
 .userInfo {
   padding: 20px;

@@ -44,12 +44,15 @@
     li {
       display: flex;
       justify-content: stretch;
+      position: relative;
 
       a {
         flex: 1;
         display: block;
         padding: 20px;
         color: $sidebar-text;
+        border-top: solid 1px $sidebar-bg;
+        border-bottom: solid 1px $sidebar-bg;
 
         i {
           font-size: 1.5em;
@@ -60,13 +63,38 @@
 
       }
 
-      &.active {
+      &:active {
         background-color: $sidebar-active;
         color: $sidebar-text-active;
       }
 
       &:hover {
         background-color: rgba($color1, 0.4);
+      }
+
+      &.active {
+        
+        a {
+          background-color: darken($sidebar-bg, 2);
+          border-top: solid 1px darken($sidebar-bg, 5);
+          border-bottom: solid 1px darken($sidebar-bg, 5);
+
+          i {
+            color: $color1;
+          }
+          
+        }
+
+        &::before {
+          content: '';
+          display: block;
+          width: 8px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: $color1;
+        }
       }
     }
 

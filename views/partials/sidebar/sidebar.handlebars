@@ -3,14 +3,14 @@
     <a href="/">MNGR</a>
   </div>
   <ul class="navLinks">
-    <li>
+    <li class="{{#if projNav}}active{{/if}}">
       <a href="/projects"><i class="fas fa-clipboard"></i>Projects</a>
     </li>
-    <li>
+    <li class="{{#if taskNav}}active{{/if}}">
       <a href="/tasks"><i class="fas fa-thumbtack"></i>My Tasks</a>
     </li>
     {{#if isAdmin}}
-      <li>
+      <li class="{{#if teamNav}}active{{/if}}">
         <a href="/team"><i class="fas fa-user"></i>Team</a>
       </li>
     {{/if}}
