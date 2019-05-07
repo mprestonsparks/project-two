@@ -34,15 +34,14 @@ module.exports = function (sequelize, DataTypes) {
         project_description: DataTypes.TEXT,
         project_lead: {
             type: DataTypes.STRING,
-        }
+        },
+        
     });
 
-    Project.associate = function(models) {
-        // Associating Projects with Users
         Project.associate = function (models) {
-            Project.hasMany(models.Users);
+            Project.hasMany(models.User);
         };
-    };
+
 
 
     return Project;

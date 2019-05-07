@@ -4,7 +4,10 @@ module.exports = function(app) {
 
   app.get("/api/user", function(req,res) {
     db.User.findAll({
-      attributes: ["user_id","user_first_name","user_last_name","user_email"]
+      attributes:  { 
+        exclude: ["id","createdAt","updatedAt","ProjectId"],
+        include:["user_id","user_first_name","user_last_name","user_email"]
+    },
     }).then(function(data){
       res.json(data);
     });
@@ -13,24 +16,29 @@ module.exports = function(app) {
   app.get("/api/user/:user_id",function(req,res){
     db.User.findAll({
       where: {user_id: req.params.user_id},
-      attributes: ["user_id","user_first_name","user_last_name","user_email"], 
+      attributes: {
+        exclude: ["id","createdAt","updatedAt","ProjectId"],
+        include: ["user_id","user_first_name","user_last_name","user_email"]}, 
     }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("/api/user/:project_name",function(req,res){
-    db.User.findAll({
-      where: {project_name: req.params.project_name},
-      attributes: ["user_id","user_first_name","user_last_name","user_email"]
-     }).then(function(data){
-      res.json(data);
-    });
-  });
+  //May not be able to use.
+  // app.get("/api/user/:project_name",function(req,res){
+  //   db.User.findAll({
+  //     where: {project_name: req.params.project_name},
+  //     attributes: ["user_id","user_first_name","user_last_name","user_email"]
+  //    }).then(function(data){
+  //     res.json(data);
+  //   });
+  // });
 
   app.get("/api/project", function(req,res) {
     db.Project.findAll({
-      attributes: ["project_id","project_name","project_description","project_lead"]
+      attributes: {exclude: ["id","createdAt","updatedAt","UserId"],
+    include: ["project_id","project_name","project_description","project_lead"]},
+      // include: [db.User]
     }).then(function(data){
       res.json(data);
     });
@@ -45,14 +53,15 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/project/user/:user_id",function(req,res){
-    db.Project.findAll({
-      where: {user_id: req.params.user_id},
-      attributes: ["project_id","project_name","project_description","project_lead"]
-     }).then(function(data){
-      res.json(data);
-    });
-  });
+  //Broken Currently
+  // app.get("/api/project/user/:user_id",function(req,res){
+  //   db.Project.findAll({
+  //     where: {user_id: req.params.user_id},
+  //     attributes: ["project_id","project_name","project_description","project_lead"],
+  //    }).then(function(data){
+  //     res.json(data);
+  //   });
+  // });
 
   app.get("/api/task/",function(req,res){
     db.Task.findAll({
@@ -62,23 +71,25 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/task/project/:project_id",function(req,res){
-    db.Task.findAll({
-      where: {project_id: req.params.project_id},
-      attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]
-    }).then(function(data){
-      res.json(data);
-    });
-  });
+    //Potential issues
+  // app.get("/api/task/project/:project_id",function(req,res){
+  //   db.Task.findAll({
+  //     where: {project_id: req.params.project_id},
+  //     attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]
+  //   }).then(function(data){
+  //     res.json(data);
+  //   });
+  // });
 
-  app.get("/api/task/user/:user_id",function(req,res){
-    db.Task.findAll({
-      where: {use_id: req.params.user_id},
-      attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    
-    }).then(function(data){
-      res.json(data);
-    });
-  });
+  //Potential issues
+  // app.get("/api/task/user/:user_id",function(req,res){
+  //   db.Task.findAll({
+  //     where: {use_id: req.params.user_id},
+  //     attributes: ["task_id", "task_name", "task_description", "goal_start", "goal_end", "actual_start", "actual_end"]    
+  //   }).then(function(data){
+  //     res.json(data);
+  //   });
+  // });
 
   app.get("/api/comment",function(req,res){
     db.Comment.findAll({
@@ -174,15 +185,15 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-
-  app.get("/api/taskassignments/user_role_id/:user_role_id",function(req,res){
-    db.TaskAssignments.findAll({
-      where: {user_role_id: req.params.user_role_id},
-      attributes: ["task_assignment_id","task_id","user_id"]
-    }).then(function(data){
-      res.json(data);
-    });
-  });
+  //Potential issues
+  // app.get("/api/taskassignments/user_role_id/:user_role_id",function(req,res){
+  //   db.TaskAssignments.findAll({
+  //     where: {user_role_id: req.params.user_role_id},
+  //     attributes: ["task_assignment_id","task_id","user_id"]
+  //   }).then(function(data){
+  //     res.json(data);
+  //   });
+  // });
 
   app.get("/api/taskassignments/user_id/:user_id",function(req,res){
     db.TaskAssignments.findAll({
