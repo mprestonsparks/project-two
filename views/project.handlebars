@@ -17,6 +17,7 @@
               {{> project/project-list-item this}}
             {{/each}}
           </ul>
+          <a href="#" class="createTask">Add a Task</a>
         </div>
 
         <div class="taskDetailsContainer">
@@ -39,9 +40,9 @@
       </div>
     </div>
     
-    
-
   </div>
+
+  {{> project/create-task }}
 
 {{else}}
 
