@@ -700,21 +700,26 @@ html, body {
       color: white; }
     #sidebarNav .navLinks li:hover {
       background-color: rgba(73, 119, 247, 0.4); }
-    #sidebarNav .navLinks li.active a {
-      background-color: #161a29;
-      border-top: solid 1px #10141f;
-      border-bottom: solid 1px #10141f; }
-      #sidebarNav .navLinks li.active a i {
-        color: #4977f7; }
-    #sidebarNav .navLinks li.active::before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: #4977f7; }
+    #sidebarNav .navLinks li.active {
+      background-color: #161a29; }
+      #sidebarNav .navLinks li.active a {
+        border-top: solid 1px #10141f;
+        border-bottom: solid 1px #10141f; }
+        #sidebarNav .navLinks li.active a i {
+          color: #4977f7; }
+      #sidebarNav .navLinks li.active::before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #4977f7; }
+      #sidebarNav .navLinks li.active:hover {
+        background-color: rgba(73, 119, 247, 0.4); }
+    #sidebarNav .navLinks li:first-of-type a {
+      border-top: none; }
 
 .userInfo {
   padding: 20px;
