@@ -85,6 +85,9 @@ a:focus {
 a:visited {
   color: #181a1d; }
 
+.button {
+  border-radius: 4px; }
+
 html, body {
   width: 100%;
   height: 100%; }
@@ -115,9 +118,8 @@ html, body {
     padding: 0 .75em;
     line-height: 2.5em;
     background-color: #eef0f5;
-    border-radius: 8px; }
-    .subnav a i {
-      margin-right: .75em; }
+    border-radius: 4px i;
+      border-radius-margin-right: .75em; }
     .subnav a:hover {
       background-color: #4977f7;
       color: white; }
@@ -149,7 +151,7 @@ html, body {
 .cardContent {
   display: block;
   background: white;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 20px;
   width: 100%;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
@@ -251,7 +253,7 @@ html, body {
       display: inline-block;
       background: rgba(73, 119, 247, 0.2);
       padding: 12px;
-      border-radius: 0px 8px 8px 8px; }
+      border-radius: 4px; }
       .commentContainer .comment article .author {
         display: block;
         font-weight: bold;
@@ -263,7 +265,7 @@ html, body {
       .commentContainer .comment:nth-of-type(2n) article {
         text-align: right;
         background: #eef0f5;
-        border-radius: 8px 0px 8px 8px; }
+        border-radius: 4px; }
 
 .addComment #addComment {
   margin-top: 40px;
@@ -275,7 +277,7 @@ html, body {
     .addComment #addComment .textAreaContainer #comment {
       display: block;
       flex: 5;
-      border-radius: 8px;
+      border-radius: 4px;
       margin-bottom: 10px;
       border: solid 1px #d4d9e6;
       padding: 18px; }
@@ -288,7 +290,7 @@ html, body {
     border: none;
     padding: .5em .75em;
     font-size: 1em;
-    border-radius: 6px; }
+    border-radius: 4px; }
 
 #sidebarNav {
   width: 20vw;

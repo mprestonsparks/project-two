@@ -21,7 +21,7 @@
       display: inline-block;
       background: rgba($color1, 0.2);
       padding: 12px;
-      border-radius: 0px 8px 8px 8px;
+      border-radius: $border-radius;
 
       .author {
         display: block;
@@ -38,7 +38,7 @@
       article {
         text-align: right;
         background: $light-bg;
-        border-radius: 8px 0px 8px 8px;
+        border-radius: $border-radius;
       }
     }
 
@@ -59,7 +59,7 @@
       #comment {
         display: block;
         flex: 5;
-        border-radius: 8px;
+        border-radius: $border-radius;
         margin-bottom: 10px;
         border: $border;
         padding: 18px;
@@ -78,7 +78,7 @@
       border: none;
       padding: .5em .75em;
       font-size: ms(0);
-      border-radius: 6px;
+      border-radius: $border-radius;
     }
 
   }
