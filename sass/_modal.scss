@@ -60,44 +60,14 @@
     }
 
     .buttons {
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
     }
 
     button {
-      margin-top: 20px;
-      font-size: ms(1);
-      background-color: rgba($color1, 0.2);
-      color: $color1;
       max-width: 300px;
-      padding: .5em .75em;
-      align-self: center;
-      border-radius: $border-radius;
-      border: none;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $color1;
-        color: white;
-      }
-
-      &:focus {
-        outline: none;
-      }
     }
-
-
-
-    .cancel {
-      background-color: $light-bg;
-      color: darken($light-bg, 40);
-
-      &:hover {
-        background-color: darken($light-bg, 40);
-        color: $light-bg;
-      }
-    }
-
   }
  
 }
