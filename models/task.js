@@ -48,8 +48,9 @@ module.exports = function (sequelize, DataTypes) {
         Task.hasMany(models.Comment);
     };
 
+    //This one below for some reason is not working. 
     Task.associate = function (models) {
-        Task.hasMany(models.TaskAssignments);
+        Task.hasMany(models.Task_Assignments);
     };
 
     return Task;

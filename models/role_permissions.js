@@ -14,11 +14,11 @@ module.exports = function (sequelize, DataTypes) {
 
     RolePermissions.associate = function (models) {
         // Associating Role_permissions with User_roles
-        Rolepermissions.belongsTo(models.User_roles, {
+        RolePermissions.belongsTo(models.User_roles, {
             // onDelete: "cascade"
         });
         // Associating Role_permissions with Permission_features
-        Rolepermissions.belongsTo(models.PermissionFeature, {
+        RolePermissions.belongsTo(models.PermissionFeature, {
             // onDelete: "cascade"
         });
     };
