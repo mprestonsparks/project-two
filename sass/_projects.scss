@@ -75,5 +75,10 @@
   &:hover {
     transform: scale(1.02);
     box-shadow: 0px 4px 8px rgba(black, 0.3);
+
+    h3 {
+      background: rgba($color1, 0.1);
+      color: $color2;
+    }
   }
 }

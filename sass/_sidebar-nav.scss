@@ -113,7 +113,7 @@
 }
 
 .userInfo {
-  padding: 20px;
+  padding: 40px 20px;
   margin-top: auto;
   //border-top: solid 1px darken($sidebar-bg, 20);
   background-color: darken($sidebar-bg, 5);
@@ -122,6 +122,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: ms(1);
 
     .userIcon {
       flex-grow: 0;
