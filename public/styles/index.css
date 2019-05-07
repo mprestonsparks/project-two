@@ -98,7 +98,9 @@ html, body {
 .pageContentContainer {
   flex: 1;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: auto; }
 
 .subnav {
   height: 80px;
@@ -290,6 +292,7 @@ html, body {
 
 #sidebarNav {
   width: 20vw;
+  height: 100vh;
   min-width: 240px;
   align-self: stretch;
   display: flex;

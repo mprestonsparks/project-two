@@ -9,7 +9,12 @@ $('.createTask').on('click', function(e) {
   $('#taskModal').addClass('active');
 })
 
-$('.cancel').on('click', function(e) {
+$('.cancel, .modalContainer').on('click', function(e) {
   e.preventDefault();
   $('.modalContainer').removeClass('active');
+})
+
+
+$('.modalWindow').on('click', function(e) {
+  e.stopPropagation();
 })
