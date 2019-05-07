@@ -47,6 +47,11 @@
         background: $complete;
       }
 
+      &:hover {
+        background-color: lighten($light-bg, 3);
+        color: $color2;
+      }
+
     }
 
     button {
