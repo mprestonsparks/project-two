@@ -31,10 +31,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        project_description: DataTypes.TEXT,
-        project_lead: {
-            type: DataTypes.STRING,
-        },
+        project_description: DataTypes.TEXT
 
     });
 
