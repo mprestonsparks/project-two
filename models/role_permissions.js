@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
 
     RolePermissions.associate = function (models) {
         // Associating Role_permissions with User_roles
-        RolePermissions.hasOne(models.User_roles, {
+        RolePermissions.hasMany(models.User_roles, {
             foreignkey: {
                 allowNull: false
             }
@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
 
     RolePermissions.associate = function (models) {
         // Associating Role_permissions with Permission_features
-        RolePermissions.hasOne(models.PermissionFeature, {
+        RolePermissions.hasMany(models.PermissionFeature, {
             foreignkey: {
                 allowNull: false
             }
