@@ -42,6 +42,11 @@ module.exports = function (sequelize, DataTypes) {
             Project.hasMany(models.User);
         };
 
+        Project.associate = function (models) {
+            Project.hasMany(models.Task);
+        };
+
+
 
 
     return Project;
