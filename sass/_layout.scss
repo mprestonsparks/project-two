@@ -18,6 +18,31 @@ html, body {
   overflow-x: auto;
 }
 
+.cardsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: $light-bg;
+
+  h2 {
+    padding: 20px;
+  }
+}
+
+.listContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: $light-bg;
+
+  h2 {
+    padding: 20px;
+  }
+}
+
+
 @import './subnav';
 @import './projects';
 @import './project';

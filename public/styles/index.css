@@ -462,6 +462,24 @@ html, body {
   height: 100vh;
   overflow-x: auto; }
 
+.cardsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #eef0f5; }
+  .cardsContainer h2 {
+    padding: 20px; }
+
+.listContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #eef0f5; }
+  .listContainer h2 {
+    padding: 20px; }
+
 .subnav {
   height: 80px;
   display: flex;
@@ -484,15 +502,6 @@ html, body {
     .subnav a:active {
       background-color: #1e2e5e;
       color: white; }
-
-.projectsContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: #eef0f5; }
-  .projectsContainer h2 {
-    padding: 20px; }
 
 .projects {
   display: flex;
