@@ -10,15 +10,13 @@ module.exports = function (sequelize, DataTypes) {
             tableName: "user_roles"
         });
 
-    Userroles.associate = function (models) {
+    UserRole.associate = function (models) {
         // Associating Role_permissions with User_roles
-        Userroles.hasMany(models.RolePermissions, {
+        UserRole.hasMany(models.RolePermissions, {
             foreignkey: {
                 allowNull: false
             }
         });
-
-
     };
     return UserRole;
 }
