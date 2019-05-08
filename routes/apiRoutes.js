@@ -31,7 +31,7 @@ module.exports = function(app) {
 
   app.get("/api/project", function(req,res) {
     db.Project.findAll({
-      include: [db.User]
+      include: [db.User,db.Task]
     }).then(function(data){
       console.log(data);
       res.json(data);
@@ -41,6 +41,7 @@ module.exports = function(app) {
   app.get("/api/project/:id",function(req,res){
     db.Project.findAll({
       where: {id: req.params.id},
+      include: [db.User,db.Task]
      }).then(function(data){
       res.json(data);
     });
