@@ -3,7 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/user", function(req,res) {
-    db.User.findAll({}).then(function(data){
+    db.User.findAll({
+      include: db.TaskAssignments
+    }).then(function(data){
       res.json(data);
     });
   });
@@ -11,6 +13,7 @@ module.exports = function(app) {
   app.get("/api/user/:id",function(req,res){
     db.User.findAll({
       where: {id: req.params.id},
+      include: db.TaskAssignments
     }).then(function(data){
       res.json(data);
     });
@@ -55,6 +58,7 @@ module.exports = function(app) {
 
   app.get("/api/task/",function(req,res){
     db.Task.findAll({
+      include: [db.TaskAssignments,db.Comment]
     }).then(function(data){
       res.json(data);
     });
@@ -105,6 +109,7 @@ module.exports = function(app) {
 
   app.get("/api/permissionfeature",function(req,res){
     db.PermissionFeature.findAll({
+      include: db.RolePermissions
     }).then(function(data){
       res.json(data);
     });
@@ -113,14 +118,14 @@ module.exports = function(app) {
   app.get("/api/permissionfeature/:id",function(req,res){
     db.PermissionFeature.findAll({
       where: { id: req.params.id},
+      include: db.RolePermissions
     }).then(function(data){
       res.json(data);
     });
   });
 
   app.get("api/rolepermissons",function(req,res){
-    db.RolePermissions.findAll({
-    }).then(function(data){
+    db.RolePermissions.findAll({}).then(function(data){
       res.json(data);
     });
   });
@@ -227,6 +232,7 @@ module.exports = function(app) {
 
   app.get("/api/userroles",function(req,res){
     db.Userroles.findAll({
+      include: db.RolePermissions
     }).then(function(data){
       res.json(data);
     });
@@ -234,7 +240,8 @@ module.exports = function(app) {
 
   app.get("/api/userroles/:id",function(req,res){
     db.Userroles.findAll({
-      where: {id: req.params.id}
+      where: {id: req.params.id},
+      include: db.RolePermissions
     }).then(function(data){
       res.json(data);
     });
@@ -242,7 +249,8 @@ module.exports = function(app) {
 
   app.get("/api/userroles/user_role/:user_role",function(req,res){
     db.Userroles.findAll({
-      where: {user_role: req.params.user_role}
+      where: {user_role: req.params.user_role},
+      include: db.RolePermissions
     }).then(function(data){
       res.json(data);
     });
