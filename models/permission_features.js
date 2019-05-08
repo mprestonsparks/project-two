@@ -1,3 +1,4 @@
+console.log("working permission")
 module.exports = function (sequelize, DataTypes) {
     var PermissionFeature = sequelize.define("PermissionFeature", {
         permission_feature_id: {
@@ -16,4 +17,5 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         return PermissionFeature;
-    };
+    }}
+

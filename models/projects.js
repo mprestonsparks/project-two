@@ -24,7 +24,7 @@
 
 //     return Project;
 // };
-
+console.log("working project")
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
         project_name: {
