@@ -35,16 +35,24 @@ module.exports = function (sequelize, DataTypes) {
         project_lead: {
             type: DataTypes.STRING,
         },
-        
+
     });
 
-        Project.associate = function (models) {
-            Project.hasMany(models.User);
-        };
+    Project.associate = function (models) {
+        Project.hasMany(models.User, {
+            foreignkey: {
+                allowNull: false
+            }
+        });
+    };
 
-        Project.associate = function (models) {
-            Project.hasMany(models.Task);
-        };
+    Project.associate = function (models) {
+        Project.hasMany(models.Task, {
+            foreignkey: {
+                allowNull: false
+            }
+        });
+    };
 
 
 
