@@ -24,17 +24,13 @@
 
 //     return Project;
 // };
-
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
         project_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        project_description: DataTypes.TEXT,
-        project_lead: {
-            type: DataTypes.STRING,
-        },
+        project_description: DataTypes.TEXT
 
     });
 
