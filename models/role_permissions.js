@@ -1,4 +1,3 @@
-console.log("working")
 module.exports = function (sequelize, DataTypes) {
     var RolePermissions = sequelize.define("RolePermissions", {
         user_role_id: {

@@ -18,12 +18,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-<<<<<<< HEAD
-        return UserRole;
-    }};
-=======
 
     };
     return UserRole;
 }
->>>>>>> eb5da23274d1b99d7dee4f05cd31a7f6d4c52617
