@@ -7,8 +7,8 @@ VALUES ("this is also working well",1,1);
 INSERT INTO permission_features(permission_feature_id,RolePermissionID)
 VALUES (1,1);
 
-INSERT INTO projects(project_name,project_description,project_lead,UserID)
-VALUES ("project 1","this is our first project",1 , 1);
+INSERT INTO projects(project_name,project_description,UserID)
+VALUES ("project 1","this is our first project" , 1);
 
 INSERT INTO role_permissions(user_role_id,permission_feature_id)
 VALUES (1,1);
