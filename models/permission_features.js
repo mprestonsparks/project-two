@@ -15,5 +15,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        return PermissionFeature;
+
     };
+    return PermissionFeature;
+}

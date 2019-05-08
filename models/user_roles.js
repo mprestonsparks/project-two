@@ -1,6 +1,6 @@
 
 module.exports = function (sequelize, DataTypes) {
-    var Userroles = sequelize.define("UserRole", {
+    var UserRole = sequelize.define("UserRole", {
         user_role: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,5 +18,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        return UserRole;
+
     };
+    return UserRole;
+}
