@@ -23,6 +23,13 @@ module.exports = function (sequelize, DataTypes) {
     user_password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    last_login: {
+      type: DataTypes.DATE
+    },
+    status: {
+      type: DataTypes.ENUM('active', 'inactive'),
+      defaultValue: 'active'
     }
   });
 

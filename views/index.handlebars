@@ -1,7 +1,5 @@
-{{#if loggedIn}}
 
   {{> sidebar/sidebar isAdmin=isAdmin user=user }}
-
 
   <div class="pageContentContainer">
     {{> subnav this}}
@@ -17,10 +15,3 @@
       </ul>
     </div>
   </div>
-
-{{else}}
-
-  {{> login/login-form}}
-
-{{/if}}
-  

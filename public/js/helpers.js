@@ -1,7 +1,9 @@
 var register = function(Handlebars) {
   var helpers = {
     getFirstLetter: function(val) {
-        return val.charAt(0);
+        if (val !== undefined) {
+          return val.charAt(0);
+        }
     },
 
     getStatusClass: function(val) {
@@ -33,6 +35,14 @@ var register = function(Handlebars) {
         return ''
       }
       
+    },
+
+    isLoggedIn: function(){
+      console.log('is logged in')
+      if (localStorage.getItem("userId") === null ) {
+        return true;
+      }
+      return true;
     }
 
   };
