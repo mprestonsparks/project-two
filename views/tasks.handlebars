@@ -1,23 +1,13 @@
-{{#if loggedIn}}
+{{> sidebar/sidebar taskNav=true}}
 
-  {{> sidebar/sidebar taskNav=true}}
+<div class="pageContentContainer">
 
-  <div class="pageContentContainer">
-    
-    {{> subnav this}} 
+  {{> subnav this}}
 
-    <div class="listContainer">
-      <h2>My Tasks</h2>
-      <ul>
-        <li class="classLink"></li>
-      </ul>
-    </div>
+  <div class="listContainer">
+    <h2>My Tasks</h2>
+    <ul>
+      <li class="classLink"></li>
+    </ul>
   </div>
-  
-
-{{else}}
-
-  Log in stuff...
-
-{{/if}}
-  
+</div>

@@ -3,23 +3,29 @@ var db = require("../models");
 
 module.exports = function(app, passport) {
 
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/signin');
+  }
+
   // auth routes...
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/',
     failureRedirect: '/signup/fail'
   }))
 
-  
-
-  app.post('/signin', passport.authenticate('local-signup', {
+  app.post('/signin', passport.authenticate('local-signin', {
     successRedirect: '/',
     failureRedirect: '/signin'
   }))
 
-  app.get('/', isLoggedIn, (req, res) => {
-    res.render("index")
+  app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      res.redirect('/');
+    })
   })
-
 
   app.get('/signin/:fail?', (req, res) => {
     res.render('sign-in');
@@ -29,19 +35,53 @@ module.exports = function(app, passport) {
     res.render('sign-up');
   })
 
+  // page routes
+  app.get('/', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.user = req.user;
 
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
+    db.Project.findAll({}).then((result) => {
+      obj.projects = result.data
+      res.render("index", obj);
+    })
 
-    res.redirect('/signin');
-  }
+   // res.render("index")
+  })
 
-  app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-      res.redirect('/');
+
+  app.get('/projects', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.user = req.user;
+
+    db.Project.findAll({}).then((result) => {
+      obj.projects = result.data
+      res.render("projects", obj);
     })
   })
+
+  app.get('/project/:id?/:?task', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.user = req.user;
+
+    res.render("project", obj);
+
+    // db.Project.findOne({}).then((result) => {
+    //   obj.projects = result.data
+    //   res.render("projects", obj);
+    // })
+
+  })
+
+  app.get('/team', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.user = req.user;
+    res.render("team", obj)
+  })
+
+
+
+  
+
 
 
 

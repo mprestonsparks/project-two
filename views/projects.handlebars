@@ -1,23 +1,14 @@
-{{#if loggedIn}}
+{{> sidebar/sidebar isAdmin=isAdmin projNav=true}}
 
-  {{> sidebar/sidebar isAdmin=isAdmin projNav=true}}
+<div class="pageContentContainer">
+  {{> subnav this}}
 
-  <div class="pageContentContainer">
-    {{> subnav this}}
-    
-    <div class="cardsContainer">
-      <h2>Projects</h2>
-      <ul class="projects">
-        {{#each projects}}
-          {{> project/project-card this}}
-        {{/each}}
-      </ul>
-    </div>
+  <div class="cardsContainer">
+    <h2>Projects</h2>
+    <ul class="projects">
+      {{#each projects}}
+      {{> project/project-card this}}
+      {{/each}}
+    </ul>
   </div>
-  
-
-{{else}}
-
-  Log in stuff...
-
-{{/if}}
+</div>

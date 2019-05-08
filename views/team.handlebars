@@ -1,26 +1,17 @@
-{{#if loggedIn}}
+{{> sidebar/sidebar teamNav=true }}
 
-  {{> sidebar/sidebar teamNav=true }}
+<div class="pageContentContainer">
+  {{> subnav this}}
 
-  <div class="pageContentContainer">
-    {{> subnav this}}   
-
-    <div class="listContainer">
-      <h2>Team Members</h2>
-      <ul>
-        {{#each members}}
-          <li>
-            {{firstName}} {{lastName}}
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-
+  <div class="listContainer">
+    <h2>Team Members</h2>
+    <ul>
+      {{#each members}}
+      <li>
+        {{firstName}} {{lastName}}
+      </li>
+      {{/each}}
+    </ul>
   </div>
-  
 
-{{else}}
-
-  Log in stuff...
-
-{{/if}}
+</div>
