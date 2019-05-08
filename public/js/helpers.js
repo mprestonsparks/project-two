@@ -1,9 +1,40 @@
 var register = function(Handlebars) {
   var helpers = {
-    // put all of your helpers inside this object
     getFirstLetter: function(val) {
         return val.charAt(0);
+    },
+
+    getStatusClass: function(val) {
+      var v = val.toLowerCase();
+      switch(v) {
+        case 'not started':
+          return 'notStarted';
+
+        case 'in progress':
+          return 'inProgress';
+
+        case 'complete':
+          return 'complete';
+
+        default:
+          return 'notStarted'
+      }
+    },
+
+    isActive: function(val1, val2) {
+      if (val1 !== undefined) {
+        if (val1 === val2) {
+          console.log(val1, val2)
+          return 'active'
+        } else {
+          return ''
+        }
+      } else {
+        return ''
+      }
+      
     }
+
   };
 
   if (Handlebars && typeof Handlebars.registerHelper === "function") {

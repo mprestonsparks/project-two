@@ -1,7 +1,11 @@
 
 
 <div class="userInfo">
-  <span>{{getFirstLetter user.firstName}}{{getFirstLetter user.lastName}}</span>
-  <h3>{{user.firstName}} {{user.lastName}}</h3>
-  <button id="logOut">Log out</button>
+  <div class="userName">
+    <span class="userIcon">{{getFirstLetter user.firstName}}{{getFirstLetter user.lastName}}</span>
+    <span>{{user.firstName}} {{user.lastName}}</span>
+  </div>
+  <div class="userControls">
+    <button id="logOut">Log out</button>
+  </div>
 </div>

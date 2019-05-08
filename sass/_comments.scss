@@ -1,0 +1,80 @@
+.comments {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: $border;
+}
+
+
+.commentContainer {
+  width: 100%;
+
+  .comment {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    text-align: left;
+    min-width: 40%;
+    justify-content: flex-start;
+
+    article {
+      min-width: 80%;
+      display: inline-block;
+      background: rgba($color1, 0.2);
+      padding: 12px;
+      border-radius: 0 $border-radius $border-radius $border-radius;
+      box-shadow: 0px 2px 5px rgba(darken($light-bg, 20), 0.8);
+
+      .author {
+        display: block;
+        font-weight: bold;
+        font-size: ms(-1);
+        margin-top: 10px;
+      }
+
+    }
+
+    &:nth-of-type(2n) {
+      text-align: right;
+      justify-content: flex-end;
+      article {
+        text-align: right;
+        background: $light-bg;
+        border-radius: $border-radius 0 $border-radius $border-radius;
+      }
+    }
+
+  }
+
+}
+
+.addComment {
+  #addComment {
+    margin-top: 40px;
+    text-align: right;
+   
+    .textAreaContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      #comment {
+        display: block;
+        flex: 5;
+        border-radius: $border-radius;
+        margin-bottom: 10px;
+        border: $border;
+        padding: 18px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+    }
+
+    #commentSubmit {
+      margin-top: 10px;
+    }
+
+  }
+}

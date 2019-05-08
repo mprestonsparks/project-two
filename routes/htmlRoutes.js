@@ -61,19 +61,6 @@ module.exports = function(app) {
     res.render("index", obj);
   });
 
-  app.get('/project/new', (req, res) => {
-    obj = {
-      loggedIn: true,
-      isAdmin: true,
-      user: { 
-        id: 8,
-        firstName: "Happy",
-        lastName: "Gilmore",
-        email: "email@email.com"
-      }
-    }
-    res.render("create-project", obj)
-  })
 
   app.get('/project/:id?', (req, res) => {
     const obj = {
@@ -98,6 +85,22 @@ module.exports = function(app) {
           taskTitle: "The first task",
           taskDescription: "Here is a description of the task",
           taskStatus: "Not Started",
+          taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+          taskComments: [
+            {
+              commentId: 4,
+              commentDate: "2019-05...",
+              commentContent: "This is a great comment",
+              commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+            }
+          ]
+        },
+        {
+          taskId: 8,
+          taskOrder: 2,
+          taskTitle: "The second task task",
+          taskDescription: "Here is a description of the task",
+          taskStatus: "In Progress",
           taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
           taskComments: [
             {
@@ -271,26 +274,11 @@ module.exports = function(app) {
     res.render("team", obj);
   })
 
-  app.get('/team/new', (req, res) => {
-    const obj = {
-      loggedIn: true,
-      isAdmin: true,
-      user: { 
-        id: 8,
-        firstName: "Happy",
-        lastName: "Gilmore",
-        email: "email@email.com"
-      }
-    }
-    res.render("team-member-create", obj);
-  })
-
-
 
 
 
   // Render 404 page for any unmatched routes
-  app.get("*", (req, res) => {
-    res.render("404");
-  });
+  // app.get("*", (req, res) => {
+  //   res.render("404");
+  // });
 };

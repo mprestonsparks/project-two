@@ -1,0 +1,73 @@
+$colors: (
+  blue: $color1,
+  gray: darken($light-bg, 50),
+  dark: $color2
+);
+
+@mixin button-styles($bg, $txt, $fs, $light) {
+  background-color: $bg;
+  color: $txt;
+  font-size: ms($fs);
+  border-radius: $border-radius;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease;
+
+  i {
+    margin-right: .75em;
+  }
+
+  &:hover {
+    @if $light == 'true' {
+      background-color: rgba($bg, 0.5);
+      color: darken($txt, 10);
+    } @else {
+      background-color: darken($bg, 5);
+      color: $txt;      
+    }
+  }
+
+  &:active {
+    @if $light == 'true' {
+      background-color: rgba($bg, 0.8);
+      color: darken($txt, 10);
+    } @else {
+      background-color: darken($bg, 10);
+      color: $txt;      
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+
+}
+
+@mixin buttons {
+  @each $name, $rgb in $colors {
+    &-#{$name} {
+      @include button-styles($rgb, white, 0, 'false');
+    }
+    &-#{$name}-light {
+      @include button-styles(rgba($rgb, 0.2), $rgb, 0, 'true');
+    }
+    &-#{$name}-large {
+      @include button-styles($rgb, white, 1, 'false');
+    }
+    &-#{$name}-large-light {
+      @include button-styles(rgba($rgb, 0.2), $rgb, 1, 'true');
+    }
+    &-#{$name}-small {
+      @include button-styles($rgb, white, -1, 'false');
+    }
+    &-#{$name}-small-light {
+      @include button-styles(rgba($rgb, 0.2), $rgb, -1, 'true');
+    }
+  }
+}
+
+.button {
+  @include buttons;
+}

@@ -1,0 +1,48 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.pageContentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: auto;
+}
+
+.cardsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: $light-bg;
+
+  h2 {
+    padding: 20px;
+  }
+}
+
+.listContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: $light-bg;
+
+  h2 {
+    padding: 20px;
+  }
+}
+
+
+@import './subnav';
+@import './projects';
+@import './project';

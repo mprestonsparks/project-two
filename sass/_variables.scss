@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,500,600,700');
+
+$header-font: 'Cabin', Arial, sans-serif;
+$main-font: 'Cabin', Arial, sans-serif;
+$font-color: #181a1d;
+
+$color1: rgb(73, 119, 247);
+$color2: rgb(30, 46, 94);
+
+// background colors
+$sidebar-bg: rgb(25, 30, 48);
+$sidebar-text: white;
+$sidebar-active: $color1;
+$sidebar-text-active: white;
+
+$gray: rgb(86, 87, 88);
+$light-bg: rgb(238, 240, 245);
+
+// status colors
+$not-started: darken($light-bg, 20);
+$in-progress: rgb(241, 204, 81);
+$in-trouble: rgb(219, 66, 43);
+$complete: rgb(53, 221, 137);
+
+
+$border: solid 1px darken($light-bg, 8);
+$border-radius: 4px;
+
+
+$top-bar-height: 80px;

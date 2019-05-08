@@ -1,22 +1,15 @@
 {{#if loggedIn}}
 
-  {{> sidebar/sidebar isAdmin=isAdmin user=user}}
+  {{> sidebar/sidebar isAdmin=isAdmin projNav=true}}
 
-  <div>
-    <div class="subnav">
-      {{#if isAdmin}}
-        <a href="/project/new">Create project</a>
-        <a href="/team/new">Add team member</a>
-      {{else}}
-        
-      {{/if}}
-      </div>
-    <div>
+  <div class="pageContentContainer">
+    {{> subnav this}}
+    
+    <div class="cardsContainer">
       <h2>Projects</h2>
-      <button id="addProject">Create a New Project</button>
       <ul class="projects">
         {{#each projects}}
-          <li class="classLink">{{projectTitle}}</li>
+          {{> project/project-card this}}
         {{/each}}
       </ul>
     </div>

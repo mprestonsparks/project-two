@@ -1,0 +1,35 @@
+.projectStatusSelect {
+  text-align: center;
+  border: none;
+  font-size: ms(1);
+  padding: .5em .75em;
+  box-sizing: border-box;
+  -moz-appearance: none;
+	-webkit-appearance: none;
+  appearance: none;
+  color: white;
+  font-weight: bold;
+
+  &:focus {
+    box-shadow: 0 0 0 -px -moz-mac-focusring;
+    outline: none;
+  }
+
+  &.notStarted {
+    color: $not-started;
+    background: rgba($not-started, 0.1);
+    border: solid 1px $not-started;
+  }
+
+  &.inProgress {
+    color: darken($in-progress, 5);
+    background: rgba($in-progress, 0.1);
+    border: solid 1px $in-progress;
+  }
+
+  &.complete {
+    color: $complete;
+    background: rgba($complete, 0.1);
+    border: solid 1px $complete;
+  }
+}

@@ -1,0 +1,86 @@
+.project {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    padding: 20px 20px 10px 20px;
+    border-bottom: $border;
+  }
+
+}
+
+.taskContainer {
+  flex: 1;
+  display: flex;
+
+  .taskList {
+    flex: 1;
+    max-width: 460px;
+    min-width: 260px;
+    border-right: $border;
+    background-color: $light-bg;
+  
+    .taskLink {
+      padding: 20px;
+      border-bottom: $border;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .notStarted {
+        display: block;
+        background: $not-started;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        box-shadow: 0px 1px 1px darken($light-bg, 30);
+      }
+
+      .inProgress {
+        @extend .notStarted;
+        background: $in-progress;
+      }
+
+      .complete {
+        @extend .notStarted;
+        background: $complete;
+      }
+
+      &:hover {
+        background-color: lighten($light-bg, 3);
+        color: $color2;
+      }
+
+    }
+
+    button {
+      margin: 20px;
+    }
+  
+  }
+
+}
+
+
+
+.taskDetailsContainer {
+  flex: 2;
+  padding: 40px;
+  
+  article {
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .taskDetails {
+      @extend .smallFont;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+  }
+  
+}
