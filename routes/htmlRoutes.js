@@ -5,9 +5,18 @@ module.exports = function(app) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
  
   app.get('/', (req, res) => {
-    db.Project.findAll({}).then((result) => {
+    const obj = {
+      loggedIn: false,
+      isAdmin: false
+    }
+
+    db.Project.findAll({
+      where: {
+        
+      }
+    }).then((result) => {
       console.log(result)
-      res.send('hey')
+      res.render("index", obj);
     })
     
     // const obj = {
@@ -51,6 +60,22 @@ module.exports = function(app) {
     //res.send('hey')
   });
 
+  app.get('/signup', (req, res) => {
+    const obj = {
+      loggedIn: false,
+      isAdmin: false
+    }
+
+    db.Project.findAll({
+      where: {
+        
+      }
+    }).then((result) => {
+      console.log(result)
+      res.render("index", obj);
+    })
+
+  })
 
   app.get('/project/:id?', (req, res) => {
     const obj = {
