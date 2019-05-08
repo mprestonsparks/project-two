@@ -3,15 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/user", function(req,res) {
-    db.User.findAll({
-    }).then(function(data){
+    db.User.findAll({}).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("/api/user/:user_id",function(req,res){
+  app.get("/api/user/:id",function(req,res){
     db.User.findAll({
-      where: {user_id: req.params.user_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -31,13 +30,14 @@ module.exports = function(app) {
     db.Project.findAll({
       include: [db.User]
     }).then(function(data){
+      console.log(data);
       res.json(data);
     });
   }); 
 
-  app.get("/api/project/:project_id",function(req,res){
+  app.get("/api/project/:id",function(req,res){
     db.Project.findAll({
-      where: {project_id: req.params.project_id},
+      where: {id: req.params.id},
      }).then(function(data){
       res.json(data);
     });
@@ -87,17 +87,17 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/comment/:comment_id",function(req,res){
+  app.get("/api/comment/:id",function(req,res){
     db.Comment.findAll({
-      where: {comment_id: req.params.comment_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("/api/comment/task/:task_id",function(req,res){
+  app.get("/api/comment/task/:id",function(req,res){
     db.Comment.findAll({
-      where: {comment_id: req.params.comment_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -110,9 +110,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/permissionfeature/:permission_feature_id",function(req,res){
+  app.get("/api/permissionfeature/:id",function(req,res){
     db.PermissionFeature.findAll({
-      where: { permission_feature_id: req.params.permission_feature_id},
+      where: { id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -125,25 +125,25 @@ module.exports = function(app) {
     });
   });
 
-  app.get("api/rolepermissons/:role_permission_id",function(req,res){
+  app.get("api/rolepermissons/:id",function(req,res){
     db.RolePermissions.findAll({
-      where: {role_permission_id: req.params.role_permission_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("api/rolepermissons/permissionfeature_id/:permissionfeature_id",function(req,res){
+  app.get("api/rolepermissons/permissionfeature_id/:id",function(req,res){
     db.RolePermissions.findAll({
-      where: {permissionfeature_id: req.params.permissionfeature_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
   });
 
-  app.get("api/rolepermissons/user_role_id/:user_role_id",function(req,res){
+  app.get("api/rolepermissons/user_role_id/:id",function(req,res){
     db.RolePermissions.findAll({
-      where: {user_role_id: req.params.user_role_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -156,9 +156,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/taskassignments/:task_assignment_id",function(req,res){
+  app.get("/api/taskassignments/:id",function(req,res){
     db.TaskAssignments.findAll({
-      where: {task_assignment_id: req.params.task_assignment_id}
+      where: {id: req.params.id}
     }).then(function(data){
       res.json(data);
     });
@@ -172,9 +172,9 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/api/taskassignments/user_id/:user_id",function(req,res){
+  app.get("/api/taskassignments/user_id/:id",function(req,res){
     db.TaskAssignments.findAll({
-      where: {user_id: req.params.user_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -187,9 +187,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/taskpriorties/:task_priority_id",function(req,res){
+  app.get("/api/taskpriorties/:id",function(req,res){
     db.TaskPriorities.findAll({
-      where: {task_priority_id: req.params/task_priority_id},
+      where: {id: req.params.id},
     }).then(function(data){
       res.json(data);
     });
@@ -232,9 +232,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/userroles/:user_role_id",function(req,res){
+  app.get("/api/userroles/:id",function(req,res){
     db.Userroles.findAll({
-      where: {user_role_id: req.params.user_role_id}
+      where: {id: req.params.id}
     }).then(function(data){
       res.json(data);
     });
