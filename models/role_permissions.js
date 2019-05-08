@@ -8,20 +8,23 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
         }
-    },{
-        tableName: "role_permissons"
-    });
+    }, {
+            tableName: "role_permissons"
+        });
 
     RolePermissions.associate = function (models) {
         // Associating Role_permissions with User_roles
-        RolePermissions.belongsTo(models.User_roles, {
-            // onDelete: "cascade"
-        });
-        // Associating Role_permissions with Permission_features
-        RolePermissions.belongsTo(models.PermissionFeature, {
-            // onDelete: "cascade"
-        });
+        RolePermissions.hasMany(models.User_roles);
+
     };
+
+    RolePermissions.associate = function (models) {
+        // Associating Role_permissions with Permission_features
+        RolePermissions.hasMany(models.PermissionFeature);
+
+    };
+
+
 
     return RolePermissions;
 };
