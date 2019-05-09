@@ -40,16 +40,30 @@ module.exports = function(app, passport) {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
+    obj.users = null;
+    obj.projects = null;
+
+
+    function sendResponse() {
+      if (obj.users !== null && obj.projects !== null) {
+        res.render("index", obj);
+      }
+    }
+
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      sendResponse();
+    })
 
     db.Project.findAll({}).then((result) => {
-      obj.projects = result.data
-      res.render("index", obj);
+      obj.projects = result;
+      sendResponse();
     })
 
   })
 
 
-  app.get('/projects', isLoggedIn, (req, res) => {
+  app.get('/projects', /*isLoggedIn,*/ (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
@@ -66,21 +80,30 @@ module.exports = function(app, passport) {
 
   })
 
-  app.get('/project/:id?/:?task', isLoggedIn, (req, res) => {
-    const obj = {};
-    obj.isAdmin = true;
-    obj.user = req.user;
+  app.get('/project/:id?/:task?', /*isLoggedIn,*/ (req, res) => {
 
-    res.render("project", obj);
+    if (req.params.id === undefined) {
+      res.redirect('/projects');
+    } else {
+      const obj = {};
+      obj.isAdmin = true;
+      obj.user = req.user;
 
-    // db.Project.findOne({}).then((result) => {
-    //   obj.projects = result.data
-    //   res.render("projects", obj);
-    // })
-
+      db.Project.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then((result) => {
+        obj.project = result
+        res.render("project-page", obj);
+      })
+    }
+   
   })
 
-  app.get('/tasks', isLoggedIn, (req, res) => {
+ 
+
+  app.get('/tasks', /*isLoggedIn,*/ (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
@@ -88,7 +111,7 @@ module.exports = function(app, passport) {
   })
 
 
-  app.get('/team', isLoggedIn, (req, res) => {
+  app.get('/team', /*isLoggedIn,*/ (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;

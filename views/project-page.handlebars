@@ -1,0 +1,44 @@
+{{> sidebar/sidebar projNav=true }}
+
+<div class="pageContentContainer">
+
+  {{> subnav this}}
+
+  <div class="project">
+    <h1>{{project.project_name}}</h1>
+    <div class="taskContainer">
+      <div class="taskList">
+        <ul>
+          {{#each projectTasks}}
+            {{> project/project-list-item this}}
+          {{/each}}
+        </ul>
+        <button class="button-gray-small-light createTask">
+          <i class="fas fa-thumbtack"></i>
+          Add a Task
+        </button>
+      </div>
+
+      <div class="taskDetailsContainer">
+        <div class="task">
+          <article>
+            <h2>Task 1</h2>
+            <div class="taskDetails">
+              <span>Due Date</span>
+              {{> status-select}}
+            </div>
+
+            <p>{{task_description}}</p>
+          </article>
+
+        </div>
+
+        {{> comment/comments }}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{{> project/create-task users=users }}

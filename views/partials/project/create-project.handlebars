@@ -5,23 +5,25 @@
       <h1>Create a Project</h1>
       <form>
         <label for="projectName">Project Name</label>
-        <input type="text" name="projectName">
+        <input type="text" name="projectName" id="projectName">
 
         <label>Project Owner</label>
-        <select>
-          <option val=""> --select-- </option>
+        <select id="projectOwner">
+          <option value=""> --select-- </option>
           {{#each users}}
-            <option val={{id}}>{{user_first_name}}</option>
+            <option value={{id}}>{{user_first_name}}</option>
           {{/each}}
         </select>
 
         <div class="dates">
           <label>Start Date</label>
+          <input type="date" id="projectStartDate">
           <label>Finish Date</label>
+          <input type="date" id="projectFinishDate">
         </div>
 
         <label>Description</label>
-        <textarea></textarea>
+        <textarea id="projectDescription"></textarea>
         <div class="buttons">
           <button class="button-gray-small-light cancel">Cancel</button>
           <button class="button-blue submitProject">Create Project</button>

@@ -868,6 +868,8 @@ html, body {
       max-width: 300px;
       padding: 12px;
       font-size: 1em; }
+      .createProjectContainer form select option {
+        text-transform: capitalize; }
     .createProjectContainer form textarea {
       font-size: 1em; }
     .createProjectContainer form label {
