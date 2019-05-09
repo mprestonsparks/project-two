@@ -38,6 +38,39 @@ $(".submitProject").on("click", function(e) {
   });
 });
 
+
+$(".submitTask").on("click", function(e) {
+  e.preventDefault();
+  var projectId = $('.createProjectContainer').data('project-id');
+  var taskName = $("#taskName")
+    .val()
+    .trim();
+  var taskOwner = $("#taskAssignee")
+    .find(":selected")
+    .attr("value");
+  var taskStartDate = $("#taskStartDate").val();
+  var taskFinishDate = $("#taskFinishDate").val();
+  var taskDescription = $("#taskDescription")
+    .val()
+    .trim();
+
+  var newTask = {
+    task_name: taskName,
+    UserId: taskOwner,
+    goal_start: taskStartDate,
+    goal_end: taskFinishDate,
+    task_description: taskDescription,
+    ProjectId: projectId
+  };
+
+  //need to create task assignment
+
+  $.post("/api/task", newTask, function(res) {
+    window.location = "/project/" + projectId + "/" + res.id;
+  });
+});
+
+
 $(".modalWindow").on("click", function(e) {
   e.stopPropagation();
 });

@@ -67,20 +67,33 @@ module.exports = function(app, passport) {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
+    obj.users = null;
+    obj.projects = null;
+    //obj.tasks = null;
 
-    db.Project.findAll({}).then((pRes) => {
-      obj.projects = pRes;
-    }).then(() => {
-      db.User.findAll({}).then(uRes => {
-        obj.users = uRes;
-        console.log(obj)
-        res.render("projects", obj);
-      })
+    function sendResponse() {
+      if (obj.users !== null && obj.projects !== null) {
+        res.render("projects", obj)
+      }
+    }
+
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      sendResponse();
     })
+
+    db.Project.findAll({
+      include: [ db.Task ]
+    }).then((result) => {
+      obj.projects = result;
+      sendResponse();
+    })
+
+    //db.Task.
 
   })
 
-  app.get('/project/:id?/:task?', /*isLoggedIn,*/ (req, res) => {
+  app.get('/project/:id/:taskId?', /*isLoggedIn,*/ (req, res) => {
 
     if (req.params.id === undefined) {
       res.redirect('/projects');
@@ -88,15 +101,46 @@ module.exports = function(app, passport) {
       const obj = {};
       obj.isAdmin = true;
       obj.user = req.user;
+      obj.users = null;
+      obj.project = null;
+      obj.activeTask = null;
 
+      function sendResponse() {
+        if (obj.users !== null && obj.project !== null && obj.activeTask !== null) {
+          res.render('project-page', obj)
+        }
+      }
+
+      db.User.findAll({}).then((result) => {
+        obj.users = result;
+        sendResponse();
+      })
+  
       db.Project.findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: [
+          db.Task
+        ]
       }).then((result) => {
         obj.project = result
-        res.render("project-page", obj);
+        sendResponse();
       })
+    
+      if (req.params.taskId !== undefined) {
+        db.Task.findOne({
+          where: {
+            id: req.params.taskId
+          }
+        }).then((result) => {
+          obj.activeTask = result;
+          sendResponse()
+        })
+      } else {
+        obj.activeTask = false;
+      }
+
     }
    
   })

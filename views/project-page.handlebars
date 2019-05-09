@@ -9,8 +9,11 @@
     <div class="taskContainer">
       <div class="taskList">
         <ul>
-          {{#each projectTasks}}
-            {{> project/project-list-item this}}
+          {{#each project.Tasks}}
+            <a href="/project/{{../project.id}}/{{id}}" class="taskLink">
+              <span>{{task_name}}</span>
+               {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
+            </a>
           {{/each}}
         </ul>
         <button class="button-gray-small-light createTask">
@@ -20,20 +23,26 @@
       </div>
 
       <div class="taskDetailsContainer">
-        <div class="task">
-          <article>
-            <h2>Task 1</h2>
-            <div class="taskDetails">
-              <span>Due Date</span>
-              {{> status-select}}
-            </div>
+        {{#if activeTask}}
+          <div class="task">
+            <article>
+              <h2>{{activeTask.task_name}}</h2>
+              <div class="taskDetails">
+                <span>Due Date</span>
+                {{> status-select}}
+              </div>
 
-            <p>{{task_description}}</p>
-          </article>
+              <p>{{activeTask.task_description}}</p>
+            </article>
 
-        </div>
+          </div>
 
-        {{> comment/comments }}
+          {{> comment/comments }}
+        {{else}}
+
+          {{project.project_description}}
+
+        {{/if}}
 
       </div>
     </div>

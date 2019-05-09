@@ -11,7 +11,7 @@
         <select id="projectOwner">
           <option value=""> --select-- </option>
           {{#each users}}
-            <option value={{id}}>{{user_first_name}}</option>
+            <option value={{id}}>{{user_first_name}} {{user_last_name}}</option>
           {{/each}}
         </select>
 

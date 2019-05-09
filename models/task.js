@@ -3,41 +3,35 @@ module.exports = function (sequelize, DataTypes) {
         task_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                is: /^[a-z]+$/i
-            }
         },
         task_description: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                is: /^[a-z]+$/i
-            }
+            allowNull: true,
         },
         goal_start: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isDate: true,
             }
         },
         goal_end: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isDate: true,
             }
         },
         actual_start: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isDate: true,
             }
         },
         actual_end: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isDate: true,
             }
@@ -45,23 +39,19 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Task.associate = function (models) {
-        Task.hasMany(models.Comment, {
+        Task.hasMany(models.Comment);
+    };
+
+    Task.associate = function (models) {
+        Task.hasMany(models.Task_Assignments);
+    };
+
+    Task.associate = function (models) {
+        Task.belongsTo(models.Project, {
             foreignkey: {
                 allowNull: false
             }
         });
-    };
-
-    Task.associate = function (models) {
-        Task.hasMany(models.Task_Assignments, {
-            foreignkey: {
-                allowNull: false
-            }
-        });
-    };
-
-    Task.associate = function (models) {
-        Task.belongsTo(models.Project);
     }
 
     return Task;
