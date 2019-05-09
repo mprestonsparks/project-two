@@ -38,6 +38,7 @@ module.exports = function(app, passport) {
   // page routes
   app.get('/', isLoggedIn, (req, res) => {
     const obj = {};
+    obj.isAdmin = true;
     obj.user = req.user;
 
     db.Project.findAll({}).then((result) => {
@@ -45,12 +46,12 @@ module.exports = function(app, passport) {
       res.render("index", obj);
     })
 
-   // res.render("index")
   })
 
 
   app.get('/projects', isLoggedIn, (req, res) => {
     const obj = {};
+    obj.isAdmin = true;
     obj.user = req.user;
 
     db.Project.findAll({}).then((result) => {
@@ -61,6 +62,7 @@ module.exports = function(app, passport) {
 
   app.get('/project/:id?/:?task', isLoggedIn, (req, res) => {
     const obj = {};
+    obj.isAdmin = true;
     obj.user = req.user;
 
     res.render("project", obj);
@@ -72,8 +74,17 @@ module.exports = function(app, passport) {
 
   })
 
+  app.get('/tasks', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.isAdmin = true;
+    obj.user = req.user;
+    res.render("tasks", obj)
+  })
+
+
   app.get('/team', isLoggedIn, (req, res) => {
     const obj = {};
+    obj.isAdmin = true;
     obj.user = req.user;
     res.render("team", obj)
   })
