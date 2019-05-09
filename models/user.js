@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     user_first_name: {
       type: DataTypes.STRING,
@@ -23,15 +23,19 @@ module.exports = function (sequelize, DataTypes) {
     user_password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    last_login: {
+      type: DataTypes.DATE
+    },
+    status: {
+      type: DataTypes.ENUM("active", "inactive"),
+      defaultValue: "active"
     }
   });
 
-  User.associate = function (models) {
-    User.hasMany(models.Project, {
-      foreignkey: {
-        allowNull: false
-      }
-    });
+  User.associate = (models) => {
+    User.belongsTo(models.UserRole);
+    User.hasMany(models.Project);
   };
 
   return User;

@@ -1,24 +1,29 @@
 <div id="taskModal" class="modalContainer">
 
   <div class="modalWindow">
-    <div class="createProjectContainer">
+    <div class="createProjectContainer" data-project-id={{project.id}}>
       <h1>Add a Task</h1>
       <form>
         <label>Task Name</label>
-        <input type="text">
+        <input type="text" id="taskName">
 
         <label>Assignee</label>
-        <select>
-          <option>-----</option>
+        <select id="taskAssignee">
+          <option value=""> --select-- </option>
+          {{#each users}}
+            <option value={{id}}>{{user_first_name}} {{user_last_name}}</option>
+          {{/each}}
         </select>
 
         <div class="dates">
           <label>Start Date</label>
+          <input type="date" id="taskStartDate">
           <label>Finish Date</label>
+          <input type="date" id="taskFinishDate">
         </div>
 
         <label>Description</label>
-        <textarea></textarea>
+        <textarea id=taskDescription></textarea>
         <div class="buttons">
           <button class="button-gray-small-light cancel">Cancel</button>
           <button class="button-blue submitTask">Create Task</button>

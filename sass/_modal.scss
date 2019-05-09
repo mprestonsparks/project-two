@@ -46,6 +46,11 @@
       max-width: 300px;
       padding: 12px;
       font-size: ms(0);
+
+      option {
+        text-transform: capitalize;
+      }
+
     }
 
     textarea {

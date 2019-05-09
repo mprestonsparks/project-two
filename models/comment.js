@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Comment.associate = function (models) {
+    Comment.associate = (models) => {
         Comment.belongsTo(models.Task);
         Comment.belongsTo(models.User);
     }

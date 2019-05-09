@@ -275,6 +275,13 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/user/adming", function(req, res) {
+    console.log(req.body)
+    // db.User.create(req.body).then(function(data) {
+    //   res.json(data);
+    // });
+  });
+
   app.post("/api/permissionfeature/",function(req,res){
     db.PermissionFeature.create(req.body).then(function(data){
       res.json(data);
