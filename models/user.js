@@ -33,7 +33,8 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  User.associate = function(models) {
+  User.associate = (models) => {
+    User.belongsTo(models.UserRole);
     User.hasMany(models.Project);
   };
 

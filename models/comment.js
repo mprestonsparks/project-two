@@ -8,9 +8,6 @@ module.exports = function (sequelize, DataTypes) {
 
     Comment.associate = (models) => {
         Comment.belongsTo(models.Task);
-    }
-
-    Comment.associate = (models) => {
         Comment.belongsTo(models.User);
     }
 

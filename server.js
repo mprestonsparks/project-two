@@ -38,7 +38,7 @@ require('./config/passport/passport')(passport, db.User);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app, passport);
 
-var syncOptions = { force: true };
+var syncOptions = { alter: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -48,6 +48,24 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
+
+  db.TaskStatus.bulkCreate(
+    [
+      { id: 1, task_status: "Not Started" },
+      { id: 2, task_status: "In Progress" },
+      { id: 3, task_status: "Complete" }
+    ],
+    { ignoreDuplicates: true }
+  );
+
+  db.UserRole.bulkCreate(
+    [
+      { id: 1, "user_role": "admin" },
+      { id: 2, "user_role": "user" },
+    ],
+    { ignoreDuplicates: true }
+  );
+  
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

@@ -6,11 +6,9 @@ module.exports = function(sequelize, DataTypes) {
 
   TaskAssignments.associate = (models) => {
     TaskAssignments.belongsTo(models.User);
-  };
-
-  TaskAssignments.associate = (models) => {
     TaskAssignments.belongsTo(models.Task);
   };
 
+ 
   return TaskAssignments;
 };
