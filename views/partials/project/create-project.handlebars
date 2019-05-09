@@ -4,12 +4,15 @@
     <div class="createProjectContainer">
       <h1>Create a Project</h1>
       <form>
-        <label>Project Name</label>
-        <input type="text">
+        <label for="projectName">Project Name</label>
+        <input type="text" name="projectName">
 
         <label>Project Owner</label>
         <select>
-          <option>-----</option>
+          <option val=""> --select-- </option>
+          {{#each users}}
+            <option val={{id}}>{{user_first_name}}</option>
+          {{/each}}
         </select>
 
         <div class="dates">

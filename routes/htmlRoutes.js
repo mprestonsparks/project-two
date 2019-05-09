@@ -54,10 +54,16 @@ module.exports = function(app, passport) {
     obj.isAdmin = true;
     obj.user = req.user;
 
-    db.Project.findAll({}).then((result) => {
-      obj.projects = result.data
-      res.render("projects", obj);
+    db.Project.findAll({}).then((pRes) => {
+      obj.projects = pRes;
+    }).then(() => {
+      db.User.findAll({}).then(uRes => {
+        obj.users = uRes;
+        console.log(obj)
+        res.render("projects", obj);
+      })
     })
+
   })
 
   app.get('/project/:id?/:?task', isLoggedIn, (req, res) => {
