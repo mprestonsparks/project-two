@@ -41,9 +41,13 @@
            {{!--  {{> comment/comments }} --}}
 
         {{else}}
-
-          {{project.project_description}}
-
+        <div class="task">
+          <article>
+            <h2>Project Desciption</h2>
+            <p>{{project.project_description}}</p>
+            <p>Select or add a task to start working.</p>
+          </article>
+        </div>
         {{/if}}
 
       </div>

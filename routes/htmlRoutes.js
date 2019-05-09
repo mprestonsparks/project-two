@@ -63,7 +63,7 @@ module.exports = function(app, passport) {
   })
 
 
-  app.get('/projects', /*isLoggedIn,*/ (req, res) => {
+  app.get('/projects', isLoggedIn, (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
@@ -90,7 +90,7 @@ module.exports = function(app, passport) {
 
   })
 
-  app.get('/project/:id/:taskId?', /*isLoggedIn,*/ (req, res) => {
+  app.get('/project/:id/:taskId?', isLoggedIn, (req, res) => {
 
     if (req.params.id === undefined) {
       res.redirect('/projects');
@@ -174,7 +174,7 @@ module.exports = function(app, passport) {
   })
 
 
-  app.get('/team', /*isLoggedIn,*/ (req, res) => {
+  app.get('/team', isLoggedIn,(req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
