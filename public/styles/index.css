@@ -577,6 +577,10 @@ html, body {
       display: flex;
       align-items: center;
       justify-content: space-between; }
+      .taskContainer .taskList .taskLink.active {
+        color: #1e2e5e;
+        background-color: rgba(73, 119, 247, 0.1);
+        border-right: solid 6px #4977f7; }
       .taskContainer .taskList .taskLink .notStarted, .taskContainer .taskList .taskLink .inProgress, .taskContainer .taskList .taskLink .complete {
         display: block;
         background: #aeb7cf;

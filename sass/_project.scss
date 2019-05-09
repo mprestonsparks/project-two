@@ -28,6 +28,12 @@
       align-items: center;
       justify-content: space-between;
 
+      &.active {
+        color: $color2;
+        background-color: rgba($color1, 0.1);
+        border-right: solid 6px $color1;
+      }
+
       .notStarted {
         display: block;
         background: $not-started;

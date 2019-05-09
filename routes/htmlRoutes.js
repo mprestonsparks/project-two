@@ -69,7 +69,6 @@ module.exports = function(app, passport) {
     obj.user = req.user;
     obj.users = null;
     obj.projects = null;
-    //obj.tasks = null;
 
     function sendResponse() {
       if (obj.users !== null && obj.projects !== null) {
@@ -88,8 +87,6 @@ module.exports = function(app, passport) {
       obj.projects = result;
       sendResponse();
     })
-
-    //db.Task.
 
   })
 
@@ -147,11 +144,21 @@ module.exports = function(app, passport) {
 
  
 
-  app.get('/tasks', /*isLoggedIn,*/ (req, res) => {
+  app.get('/tasks', isLoggedIn, (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
+
+    // db.Task_Assignments.findAll({
+    //   where: {
+      
+    //   }
+    // })
+    
     res.render("tasks", obj)
+
+
+    
   })
 
 

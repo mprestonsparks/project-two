@@ -1,14 +1,10 @@
-module.exports = function (sequelize, DataTypes) {
-    var TaskStatus = sequelize.define("TaskStatus", {
-        task_status: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    },
-    {
-        tableName: "task_statuses"
-    });
+module.exports = function(sequelize, DataTypes) {
+  var TaskStatus = sequelize.define("TaskStatus", {
+    task_status: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  });
 
-
-    return TaskStatus;
+  return TaskStatus;
 };

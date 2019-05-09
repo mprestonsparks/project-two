@@ -25,8 +25,7 @@ var register = function(Handlebars) {
 
     isActive: function(val1, val2) {
       if (val1 !== undefined) {
-        if (val1 === val2) {
-          console.log(val1, val2)
+        if (parseInt(val1) === parseInt(val2)) {
           return 'active'
         } else {
           return ''
@@ -34,16 +33,21 @@ var register = function(Handlebars) {
       } else {
         return ''
       }
-      
     },
 
-    isLoggedIn: function(){
-      console.log('is logged in')
-      if (localStorage.getItem("userId") === null ) {
-        return true;
-      }
-      return true;
-    }
+    // getActive: function(obj, activeId) {
+    //   activeId = parseInt(activeId);
+
+    //   for (let val of obj) {
+    //     if (val.dataValues.id === activeId) {
+    //      return val.dataValues;
+    //      console.log(val.dataValues)
+    //     } else {
+    //       return null;
+    //     }
+    //   }
+
+    // }
 
   };
 

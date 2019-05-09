@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     user_first_name: {
       type: DataTypes.STRING,
@@ -28,17 +28,13 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE
     },
     status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
+      type: DataTypes.ENUM("active", "inactive"),
+      defaultValue: "active"
     }
   });
 
-  User.associate = function (models) {
-    User.hasMany(models.Project, {
-      foreignkey: {
-        allowNull: false
-      }
-    });
+  User.associate = function(models) {
+    User.hasMany(models.Project);
   };
 
   return User;

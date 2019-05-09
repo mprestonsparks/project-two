@@ -10,7 +10,7 @@
       <div class="taskList">
         <ul>
           {{#each project.Tasks}}
-            <a href="/project/{{../project.id}}/{{id}}" class="taskLink">
+            <a href="/project/{{../project.id}}/{{id}}" class="taskLink {{isActive ../activeTask.id id}}">
               <span>{{task_name}}</span>
                {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
             </a>
@@ -24,20 +24,22 @@
 
       <div class="taskDetailsContainer">
         {{#if activeTask}}
-          <div class="task">
-            <article>
-              <h2>{{activeTask.task_name}}</h2>
-              <div class="taskDetails">
-                <span>Due Date</span>
-                {{> status-select}}
-              </div>
 
-              <p>{{activeTask.task_description}}</p>
-            </article>
+            <div class="task">
+              <article>
+                <h2>{{activeTask.task_name}}</h2>
+                <div class="taskDetails">
+                  <span>Due Date</span>
+                  {{> status-select}}
+                </div>
 
-          </div>
+                <p>{{activeTask.task_description}}</p>
+              </article>
 
-          {{> comment/comments }}
+            </div>
+
+           {{!--  {{> comment/comments }} --}}
+
         {{else}}
 
           {{project.project_description}}
