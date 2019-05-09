@@ -148,16 +148,28 @@ module.exports = function(app, passport) {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
+    obj.users = null;
+    obj.tasks = null;
 
-    // db.Task_Assignments.findAll({
-    //   where: {
-      
-    //   }
-    // })
-    
-    res.render("tasks", obj)
+    function sendResponse() {
+      if (obj.users !== null && obj.tasks !== null) {
+        res.render("tasks", obj)
+      }
+    }
 
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      sendResponse();
+    })
 
+    db.Task.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then((result) => {
+      obj.tasks = result;
+      sendResponse();
+    })
     
   })
 

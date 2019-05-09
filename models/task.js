@@ -40,14 +40,8 @@ module.exports = function(sequelize, DataTypes) {
 
   Task.associate = models => {
     Task.hasMany(models.Comment);
-  };
-
-  Task.associate = models => {
-    Task.hasMany(models.Task_Assignments);
-  };
-
-  Task.associate = function(models) {
     Task.belongsTo(models.Project);
+    Task.belongsTo(models.User);
   };
 
   return Task;
