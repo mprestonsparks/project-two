@@ -3,7 +3,11 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var passport = require('passport');
 var session = require('express-session');
+var Handlebars = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
 //var bodyParser = require('body-parser');
+
+HandlebarsIntl.registerWith(Handlebars);
 
 var db = require("./models");
 
@@ -38,7 +42,7 @@ require('./config/passport/passport')(passport, db.User);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app, passport);
 
-var syncOptions = { alter: true };
+var syncOptions = { alter: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
