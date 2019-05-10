@@ -32,7 +32,7 @@ $(".submitProject").on("click", function(e) {
     UserId: projectOwner,
     project_description: projectDescription,
     goal_start: projectStartDate,
-    goal_end: projectFinishDate,
+    goal_end: projectFinishDate
   };
 
   $.post("/api/project", newProj, function(res) {
@@ -40,10 +40,9 @@ $(".submitProject").on("click", function(e) {
   });
 });
 
-
 $(".submitTask").on("click", function(e) {
   e.preventDefault();
-  var projectId = $('.createProjectContainer').data('project-id');
+  var projectId = $(".createProjectContainer").data("project-id");
   var taskName = $("#taskName")
     .val()
     .trim();
@@ -72,42 +71,53 @@ $(".submitTask").on("click", function(e) {
   });
 });
 
-
 $(".modalWindow").on("click", function(e) {
   e.stopPropagation();
 });
 
+$(".projectStatusSelect").change(function() {
+  var status = $(".projectStatusSelect")
+    .find(":selected")
+    .attr("value");
+  if (parseInt(status) === 1) {
+    $(".projectStatusSelect")
+      .removeClass("complete")
+      .removeClass("inProgress")
+      .addClass("notStarted");
+  }
+  if (parseInt(status) === 2) {
+    $(".projectStatusSelect")
+      .removeClass("notStarted")
+      .removeClass("complete")
+      .addClass("inProgress");
+  }
+  if (parseInt(status) === 3) {
+    $(".projectStatusSelect")
+      .removeClass("notStarted")
+      .removeClass("inProgress")
+      .addClass("complete");
+  }
 
-$('.projectStatusSelect').change(function() {
-  var status = $('.projectStatusSelect').find(':selected').attr('value');
-  if (parseInt(status) === 1 ) {
-    $('.projectStatusSelect')
-      .removeClass('complete')
-      .removeClass('inProgress')
-      .addClass('notStarted')
-  }
-  if (parseInt(status) === 2 ) {
-    $('.projectStatusSelect')
-      .removeClass('notStarted')
-      .removeClass('complete')
-      .addClass('inProgress')
-  }
-  if (parseInt(status) === 3 ) {
-    $('.projectStatusSelect')
-      .removeClass('notStarted')
-      .removeClass('inProgress')
-      .addClass('complete')
-  }
-
-  var taskId = $(this).data('taskid');
+  var taskId = $(this).data("taskid");
   // send off ajax post here...
-  var status = { TaskStatusId: parseInt(status) } 
+  var status = { TaskStatusId: parseInt(status) };
 
   $.ajax({
-    url: '/api/task/update/' + taskId,
-    type: 'PUT',
+    url: "/api/task/update/" + taskId,
+    type: "PUT",
     data: status
   }).then(function() {
-    console.log('updated')
-  })
-})
+    console.log("updated");
+  });
+});
+
+$(".commentSubmit").on("click", function(e) {
+  e.preventDefault();
+  var comment = $("#comment")
+    .val()
+    .trim();
+  var newComment = {
+    comment: comment
+  };
+  $.post("/api/comment", newComment, function(res) {});
+});

@@ -173,7 +173,7 @@ module.exports = function (app, passport) {
       where: {
         UserId: req.user.id
       },
-      include: [ db.Project ]
+      include: [db.Project]
     }).then((result) => {
       obj.tasks = result;
       sendResponse();
