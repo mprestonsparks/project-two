@@ -176,6 +176,8 @@ module.exports = function (app, passport) {
 
   app.get('/team', isLoggedIn, (req, res) => {
     const obj = {};
+    obj.isAdmin = true;
+    obj.user = req.user;
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
