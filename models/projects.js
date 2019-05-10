@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Project = sequelize.define("Project", {
     project_name: {
       type: DataTypes.STRING,
@@ -26,7 +26,10 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   Project.associate = models => {
-    Project.hasMany(models.Task);
+    Project.hasMany(models.Task, {
+      onDelete: 'cascade',
+      hooks: true
+    });
   };
 
   return Project;
