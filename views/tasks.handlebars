@@ -1,15 +1,32 @@
 {{> sidebar/sidebar taskNav=true}}
 
 <div class="pageContentContainer">
-
   {{> subnav this}}
-
   <div class="listContainer">
     <h2>My Tasks</h2>
-    <ul>
+    <ul class="tasks">
       {{#each tasks}}
-        <li class="classLink">{{task_name}}</li>
+      <li class="taskLink">
+        <div class="taskDetails" >
+          <div class="icon"><i class="fas fa-thumbtack"></i></div>
+          <div class="taskText">
+            <h3>{{task_name}}</h3>
+            <p>{{task_description}}</p>
+            <a class="button-blue-light" href="project/{{Project.id}}/{{id}}">
+              View Task
+            </a>
+          </div>
+        </div>
+        <div class="projectLink" href="project/{{Project.id}}">
+          {{Project.project_name}}
+          <a class="button-gray-small" href="project/{{Project.id}}">
+            View Project
+          </a>
+        </div>
+      </li>
       {{/each}}
     </ul>
   </div>
 </div>
+
+{{> project/create-project users=users }}

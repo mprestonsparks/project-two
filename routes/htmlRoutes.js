@@ -142,7 +142,10 @@ module.exports = function (app, passport) {
 
   })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b9da01982707fd7b67002d2dcaa9e1ad044f148
 
   app.get('/tasks', isLoggedIn, (req, res) => {
     const obj = {};
@@ -165,7 +168,8 @@ module.exports = function (app, passport) {
     db.Task.findAll({
       where: {
         UserId: req.user.id
-      }
+      },
+      include: [ db.Project ]
     }).then((result) => {
       obj.tasks = result;
       sendResponse();

@@ -1,0 +1,55 @@
+
+.tasks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px 0;
+
+  .taskLink {
+    margin: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: $border-radius;
+    align-items: stretch;
+    overflow: hidden;
+
+    .taskDetails {
+      flex: 3;
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      text-align: left;
+      align-items: center;
+
+      .icon {
+        flex: 0;
+        font-size: ms(3);
+        padding: 0 20px;
+      }
+
+      .taskText {
+        flex: 4;
+        padding: 0 20px;
+
+        p {
+          padding-bottom: ms(2);
+        }
+      }
+     
+    }
+    
+    .projectLink {
+      flex: 1;
+      padding: 20px;
+      font-size: ms(0);
+      text-align: center;
+      color: white;
+      background: $color2;
+    }
+
+  }
+
+
+}
