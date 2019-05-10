@@ -319,32 +319,32 @@ module.exports = function(app) {
   });
 
   app.delete("/api/task/delete/:task_id", function(req, res) {
-    db.Task.destroy({ where: { task_id: req.params.task_id } }).then(function(data) {
+    db.Task.destroy({ where: { id: req.params.task_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.delete("/api/project/delete/:project_id", function(req, res) {
-    db.Project.destroy({ where: { project_id: req.params.project_id } }).then(function(data) {
+    db.Project.destroy({ where: { id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.delete("/api/user/delete/:user_id", function(req, res) {
-    db.User.destroy({ where: { user_id: req.params.user_id } }).then(function(data) {
+    db.User.destroy({ where: { id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.delete("api/task/comment/delete/:comment_id",function(req,res){
-    db.Comment.destroy({where : { comment_id: req.params.comment_id} }).then(function(data){
+    db.Comment.destroy({where : { id: req.params.comment_id} }).then(function(data){
       res.json(data);
     });
   });
 
   app.delete("/api/permissionfeature/delete/:permission_feature_id", function(req,res){
     db.PermissionFeature.destroy({
-      where: { permission_feature_id: req.params.permission_feature_id}
+      where: { id: req.params.permission_feature_id}
     }).then(function(data){
       res.json(data);
     });
@@ -352,7 +352,7 @@ module.exports = function(app) {
 
   app.delete("/api/rolepermissions/delete/:role_permission_id", function(req,res){
     db.RolePermissions.destroy({
-      where: { role_permission_id: req.params.role_permission_id}
+      where: { id: req.params.role_permission_id}
     }).then(function(data){
       res.json(data);
     });
@@ -360,7 +360,7 @@ module.exports = function(app) {
 
   app.delete("/api/taskassignments/delete/:task_assignment_id", function(req,res){
     db.TaskAssignments.destroy({
-      where: { task_assignment_id: req.params.task_assignment_id}
+      where: { id: req.params.task_assignment_id}
     }).then(function(data){
       res.json(data);
     });
@@ -376,7 +376,7 @@ module.exports = function(app) {
 
   app.delete("/api/taskstatus/delete/:task_status_id", function(req,res){
     db.TaskStatus.destroy({
-      where: { task_status_id: req.params.task_status_id}
+      where: { id: req.params.task_status_id}
     }).then(function(data){
       res.json(data);
     });
@@ -384,39 +384,39 @@ module.exports = function(app) {
 
   app.delete("/api/userroles/delete/:user_role_id", function(req,res){
     db.Userroles.destroy({
-      where: { user_role_id: req.params.user_role_id}
+      where: { id: req.params.user_role_id}
     }).then(function(data){
       res.json(data);
     });
   });
 
   app.put("/api/project/update/:project_id", function(req, res) {
-    db.Project.update({ where: { project_id: req.params.project_id } }).then(function(data) {
+    db.Project.update({ where: { id: req.params.project_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.put("/api/user/update/:user_id", function(req, res) {
-    db.User.update({ where: { user_id: req.params.user_id } }).then(function(data) {
+    db.User.update({ where: { id: req.params.user_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.put("/api/task/update/:task_id", function(req, res) {
-    db.Task.update({ where: { task_id: req.params.task_id } }).then(function(data) {
+    db.Task.update({ where: { id: req.params.task_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.put("/api/comment/update/:comment_id", function(req, res) {
-    db.Task.update({ where: { comment_id: req.params.comment_id } }).then(function(data) {
+    db.Task.update({ where: { id: req.params.comment_id } }).then(function(data) {
       res.json(data);
     });
   });
 
   app.put("/api/permissionfeature/update/:permission_feature_id",function(req,res){
     db.PermissionFeature.update({
-      where: { permission_feature_id: req.params.permission_feature_id}
+      where: { id: req.params.permission_feature_id}
     }).then(function(data){
       res.json(data);
     });
@@ -424,7 +424,7 @@ module.exports = function(app) {
 
   app.put("/api/rolepermissions/update/:role_permission_id", function(req,res){
     db.RolePermissions.update({
-      where: { role_permission_id: req.params.role_permission_id}
+      where: { id: req.params.role_permission_id}
     }).then(function(data){
       res.json(data);
     });
@@ -432,7 +432,7 @@ module.exports = function(app) {
 
   app.put("/api/taskassignments/update/:task_assignment_id", function(req,res){
     db.TaskAssignments.update({
-      where: { task_assignment_id: req.params.task_assignment_id}
+      where: { id: req.params.task_assignment_id}
     }).then(function(data){
       res.json(data);
     });
@@ -440,7 +440,7 @@ module.exports = function(app) {
 
   app.put("/api/taskapriorities/update/:task_priority_id", function(req,res){
     db.TaskPriorities.update({
-      where: { task_priority_id: req.params.task_priority_id}
+      where: { id: req.params.task_priority_id}
     }).then(function(data){
       res.json(data);
     });
@@ -448,7 +448,7 @@ module.exports = function(app) {
 
   app.put("/api/taskstatus/update/:task_status_id", function(req,res){
     db.TaskStatus.update({
-      where: { task_status_id: req.params.task_status_id}
+      where: { id: req.params.task_status_id}
     }).then(function(data){
       res.json(data);
     });
@@ -456,7 +456,7 @@ module.exports = function(app) {
 
   app.put("/api/userroles/update/:user_role_id", function(req,res){
     db.Userroles.update({
-      where: { user_role_id: req.params.user_role_id}
+      where: { id: req.params.user_role_id}
     }).then(function(data){
       res.json(data);
     });
