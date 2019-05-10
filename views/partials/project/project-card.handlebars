@@ -3,9 +3,15 @@
     <h3>{{this.project_name}}</h3>
     <div class="cardDetails">
       <div>
-        <h4>Estimated Completion Date</h4>
+        <h4>Start Date</h4>
+        <h3>{{formatDate  this.goal_start }}</h3>
+        <h4>Due Date</h4>
+        <h3>{{formatDate  this.goal_start }}</h3>
+        <h4>Days till due</h4>
+        <h3>{{formatRelative this.goal_end units="day"}}</h3>
         <div>
           <h4>Assigned To</h4>
+          <h3>{{this.UserId}}</h3>
         </div>
       </div>
     </div>
