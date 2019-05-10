@@ -1,11 +1,11 @@
 var db = require("../models");
 
 
-module.exports = function(app, passport) {
+module.exports = function (app, passport) {
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
-        return next();
+      return next();
 
     res.redirect('/signin');
   }
@@ -82,7 +82,7 @@ module.exports = function(app, passport) {
     })
 
     db.Project.findAll({
-      include: [ db.Task ]
+      include: [db.Task]
     }).then((result) => {
       obj.projects = result;
       sendResponse();
@@ -112,7 +112,7 @@ module.exports = function(app, passport) {
         obj.users = result;
         sendResponse();
       })
-  
+
       db.Project.findOne({
         where: {
           id: req.params.id
@@ -124,7 +124,7 @@ module.exports = function(app, passport) {
         obj.project = result
         sendResponse();
       })
-    
+
       if (req.params.taskId !== undefined) {
         db.Task.findOne({
           where: {
@@ -139,10 +139,10 @@ module.exports = function(app, passport) {
       }
 
     }
-   
+
   })
 
- 
+
 
   app.get('/tasks', isLoggedIn, (req, res) => {
     const obj = {};
@@ -170,27 +170,30 @@ module.exports = function(app, passport) {
       obj.tasks = result;
       sendResponse();
     })
-    
+
   })
 
 
-  app.get('/team', isLoggedIn,(req, res) => {
+  app.get('/team', isLoggedIn, (req, res) => {
     const obj = {};
-    obj.isAdmin = true;
-    obj.user = req.user;
-    res.render("team", obj)
+
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      res.render("team", obj);
+    })
+
   })
 
 
 
-  
+
 
 
 
 
 
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
- 
+
   // app.get('/',
   //   passport.authenticate('local'),
   //   (req, res) => {
@@ -203,7 +206,7 @@ module.exports = function(app, passport) {
 
   //   db.Project.findAll({
   //     where: {
-        
+
   //     }
   //   }).then((result) => {
   //     console.log(result)
@@ -212,50 +215,50 @@ module.exports = function(app, passport) {
 
 
 
-    
-    // const obj = {
-    //   loggedIn: true,
-    //   isAdmin: true,
-    //   user: { 
-    //     id: 8,
-    //     firstName: "Happy",
-    //     lastName: "Gilmore",
-    //     email: "email@email.com"
-    //   },
-    //   projects: [
-    //     {
-    //       projectId: 1,
-    //       projectTitle: "Test project",
-    //       projectOwner: { id: 3, name: "Bill" },
-    //       projectDescription: "Here is a description of the project",
-    //       projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
-    //       projectComplete: false,
-    //       projectTasks: [
-    //         {
-    //           taskId: 8,
-    //           taskTitle: "The first task",
-    //           taskDescription: "Here is a description of the task",
-    //           taskStatus: "Not Started",
-    //           taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
-    //           taskComments: [
-    //             {
-    //               commentId: 4,
-    //               commentDate: "2019-05...",
-    //               commentContent: "This is a great comment",
-    //               commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
-    //             }
-    //           ]
-    //         }
-    //       ]
-    //     }
-    //   ],
-    // }
-    //res.render("index", obj);
-    //res.send('hey')
+
+  // const obj = {
+  //   loggedIn: true,
+  //   isAdmin: true,
+  //   user: { 
+  //     id: 8,
+  //     firstName: "Happy",
+  //     lastName: "Gilmore",
+  //     email: "email@email.com"
+  //   },
+  //   projects: [
+  //     {
+  //       projectId: 1,
+  //       projectTitle: "Test project",
+  //       projectOwner: { id: 3, name: "Bill" },
+  //       projectDescription: "Here is a description of the project",
+  //       projectDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+  //       projectComplete: false,
+  //       projectTasks: [
+  //         {
+  //           taskId: 8,
+  //           taskTitle: "The first task",
+  //           taskDescription: "Here is a description of the task",
+  //           taskStatus: "Not Started",
+  //           taskDates: {start: "mm/dd/yyyy", finish: "mm/dd/yyyy"},
+  //           taskComments: [
+  //             {
+  //               commentId: 4,
+  //               commentDate: "2019-05...",
+  //               commentContent: "This is a great comment",
+  //               commentAuthor: { id: 9, firstName: "Adam", lastName: "Sandler"}
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     }
+  //   ],
+  // }
+  //res.render("index", obj);
+  //res.send('hey')
   // });
 
   // app.get('/signup', (req, res) => {
-  
+
   //   res.render("sign-up");
 
   // })
@@ -314,7 +317,7 @@ module.exports = function(app, passport) {
   //   res.render("project", obj)
   // })
 
-  
+
 
   // // app.get('/project/:id/task')
 
