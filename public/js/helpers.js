@@ -49,6 +49,15 @@ var register = function(Handlebars) {
       perc = (perc > 0) ? perc : 5;
       return perc;
 
+    },
+
+    getStatusSelect: function(taskId, statusId) {
+      console.log(taskId, statusId)
+      if (parseInt(taskId) === parseInt(statusId)) {
+        return 'selected';
+      } else {
+        return null;
+      }
     }
 
   };

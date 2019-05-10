@@ -1,5 +1,5 @@
 <select class="projectStatusSelect complete">
-  <option value="0">Not Started</option>
-  <option value="1">In Progress</option>
-  <option value="2">Complete</option>
+  {{#each this.statuses}}
+    <option value={{id}} {{getStatusSelect ../this.activeTask.TaskStatusId id}}>{{task_status}}</option>
+  {{/each}}
 </select>

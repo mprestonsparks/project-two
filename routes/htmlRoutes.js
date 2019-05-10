@@ -65,7 +65,7 @@ module.exports = function (app, passport) {
   })
 
 
-  app.get('/projects', /*isLoggedIn,*/ (req, res) => {
+  app.get('/projects', isLoggedIn, (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
@@ -84,8 +84,10 @@ module.exports = function (app, passport) {
     })
 
     db.Project.findAll({
-      include: [db.Task],
-      where: {UserId: req.user.id}
+      where: {
+        UserId: req.user.id
+      },
+      include: [ db.Task ]
     }).then((result) => {
       obj.projects = result;
       sendResponse();
@@ -104,15 +106,22 @@ module.exports = function (app, passport) {
       obj.users = null;
       obj.project = null;
       obj.activeTask = null;
+      obj.statuses = null;
 
       function sendResponse() {
-        if (obj.users !== null && obj.project !== null && obj.activeTask !== null) {
+        if (obj.users !== null && obj.project !== null && obj.activeTask !== null && obj.statuses !== null) {
           res.render('project-page', obj)
         }
       }
 
       db.User.findAll({}).then((result) => {
         obj.users = result;
+        sendResponse();
+      })
+
+
+      db.TaskStatus.findAll({}).then((result) => {
+        obj.statuses = result;
         sendResponse();
       })
 

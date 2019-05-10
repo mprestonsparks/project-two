@@ -5,14 +5,18 @@
   {{> subnav this}}
 
   <div class="project">
-    <h1>{{project.project_name}}</h1>
+    <h1>
+      <a class="projectLink" href="/project/{{project.id}}">
+        {{project.project_name}}
+      </a>
+    </h1>
     <div class="taskContainer">
       <div class="taskList">
         <ul>
           {{#each project.Tasks}}
             <a href="/project/{{../project.id}}/{{id}}" class="taskLink {{isActive ../activeTask.id id}}">
               <span>{{task_name}}</span>
-               {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
+              {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
             </a>
           {{/each}}
         </ul>
@@ -25,29 +29,31 @@
       <div class="taskDetailsContainer">
         {{#if activeTask}}
 
-            <div class="task">
-              <article>
-                <h2>{{activeTask.task_name}}</h2>
-                <div class="taskDetails">
-                  <span>Due Date</span>
-                  {{> status-select}}
-                </div>
+          <div class="task">
+            <article>
+              <h2>{{activeTask.task_name}}</h2>
+              <div class="taskDetails">
+                <span>Due Date</span>
+                {{> status-select this}}
+              </div>
+              <p>{{activeTask.task_description}}</p>
+            </article>
 
-                <p>{{activeTask.task_description}}</p>
-              </article>
+          </div>
 
-            </div>
-
-           {{!--  {{> comment/comments }} --}}
+        {{!--  {{> comment/comments }} --}}
 
         {{else}}
-        <div class="task">
-          <article>
-            <h2>Project Desciption</h2>
-            <p>{{project.project_description}}</p>
-            <p>Select or add a task to start working.</p>
-          </article>
-        </div>
+          <div class="task">
+            <article>
+              <h2>Project Desciption</h2>
+              <p>{{project.project_description}}</p>
+              <h3>Project</h3>
+              <p>Select or add a task to start working.</p>
+            </article>
+            <a class="button-blue-light">Edit</a>
+            <a class="button-blue-light">Delete</a>
+          </div>
         {{/if}}
 
       </div>
