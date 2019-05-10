@@ -1,19 +1,19 @@
-$(".createProject").on("click", function(e) {
+$(".createProject").on("click", function (e) {
   e.preventDefault();
   $("#projectModal").addClass("active");
 });
 
-$(".createTask").on("click", function(e) {
+$(".createTask").on("click", function (e) {
   e.preventDefault();
   $("#taskModal").addClass("active");
 });
 
-$(".cancel, .modalContainer").on("click", function(e) {
+$(".cancel, .modalContainer").on("click", function (e) {
   e.preventDefault();
   $(".modalContainer").removeClass("active");
 });
 
-$(".submitProject").on("click", function(e) {
+$(".submitProject").on("click", function (e) {
   e.preventDefault();
   var projectName = $("#projectName")
     .val()
@@ -35,13 +35,13 @@ $(".submitProject").on("click", function(e) {
     goal_end: projectFinishDate,
   };
 
-  $.post("/api/project", newProj, function(res) {
+  $.post("/api/project", newProj, function (res) {
     window.location = "/project/" + res.id;
   });
 });
 
 
-$(".submitTask").on("click", function(e) {
+$(".submitTask").on("click", function (e) {
   e.preventDefault();
   var projectId = $('.createProjectContainer').data('project-id');
   var taskName = $("#taskName")
@@ -67,12 +67,23 @@ $(".submitTask").on("click", function(e) {
 
   //need to create task assignment
 
-  $.post("/api/task", newTask, function(res) {
+  $.post("/api/task", newTask, function (res) {
     window.location = "/project/" + projectId + "/" + res.id;
   });
 });
 
 
-$(".modalWindow").on("click", function(e) {
+$(".modalWindow").on("click", function (e) {
   e.stopPropagation();
 });
+
+$(".commentSubmit").on("click", function (e) {
+  e.preventDefault();
+  var comment = $("#comment").val().trim();
+  var newComment = {
+    comment: comment
+  }
+  $.post("/api/comment", newComment, function (res) {
+
+  })
+})

@@ -1,23 +1,14 @@
-
-
 <div class="comments">
 
   <div class="commentContainer">
-       
+    {{#each project.Comment}}
     <div class="comment">
       <article>
-        <p>Here is a comment!</p>
-        <span class="author">Author<span>
+        <p>{{this.comment}}</p>
+        <span class="author">{{this.UserId}}<span>
       </article>
     </div>
-
-    <div class="comment">
-      <article>
-        <p>and another comment!</p>
-        <span class="author">Author<span>
-      </article>
-    </div>
-
+    {{/each}}
   </div>
 
   <div class="addComment">
@@ -28,6 +19,6 @@
       <button id="commentSubmit" class="button-blue-small">Add Comment</button>
     </form>
   </div>
-  
+
 
 </div>
