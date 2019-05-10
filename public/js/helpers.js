@@ -72,6 +72,14 @@ var register = function(Handlebars) {
       }
     },
 
+    getUserName: function(users, id) {
+      for (let user of users) {
+        if (parseInt(user.dataValues.id) === parseInt(id)) {
+          return user.dataValues.user_first_name + ' ' + user.dataValues.user_last_name;
+        }
+      }
+    }
+
   };
 
   if (Handlebars && typeof Handlebars.registerHelper === "function") {
