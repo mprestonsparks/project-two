@@ -11,13 +11,37 @@
       {{/each}}
     </ul>
   </div>
+
 </div>
 
-<script>
+  <script>
+$.notify.addStyle("bttn",{
+  html: "<div><span data-notify-text/><button>Close</div>",
+  classes: {
+    base: {
+      "white-space": "nowrap",
+      "background-color": "lightblue",
+      "padding": "5px"
+    },
+    superblue: {
+      "color": "white",
+      "background-color": "blue"
+    },
+  }
+})
+  
   $(document).ready(function(){
-    $("#notification").notify("You have tasks open.", {position: "left"})
-  }) 
+  $("#notification").notify("You have tasks open.", {
+      position: "left",
+      autoHide: false,
+      clickToHide: true,
+      style: "bttn"})
+  $.notify("you have stuff",)      
+})
+
 </script>
+
+
 
 {{> project/create-project users=users }}
 
