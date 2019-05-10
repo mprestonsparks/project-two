@@ -527,10 +527,23 @@ html, body {
   .cardContent h3 {
     padding: 1.25em 20px 0.75em 20px;
     border-bottom: solid 1px #d4d9e6; }
-  .cardContent .cardDetails {
+  .cardContent .cardDetails h4 {
+    padding: 0.6em; }
+  .cardContent .cardDetails .dates {
+    display: flex;
+    justify-content: stretch;
     padding: 20px; }
-    .cardContent .cardDetails h4 {
-      padding: 0.6em; }
+    .cardContent .cardDetails .dates .start, .cardContent .cardDetails .dates .finish {
+      flex: 1; }
+      .cardContent .cardDetails .dates .start .date, .cardContent .cardDetails .dates .finish .date {
+        font-weight: bold; }
+  .cardContent .cardDetails .daysLeft {
+    border-top: solid 1px #d4d9e6;
+    padding: 20px 0; }
+  .cardContent .cardDetails .assigned {
+    padding: 20px;
+    border-top: solid 1px #d4d9e6;
+    border-bottom: solid 1px #d4d9e6; }
   .cardContent .cardProgress {
     padding: 20px; }
     .cardContent .cardProgress .progressBar {

@@ -30,11 +30,36 @@
   }
 
   .cardDetails {
-    padding: 20px;
 
     h4 {
       padding: 0.6em;
     }
+
+    .dates {
+      display: flex;
+      justify-content: stretch;
+      padding: 20px;
+
+      .start, .finish {
+        flex: 1;
+
+        .date {
+          font-weight: bold;
+        }
+
+      }
+    }
+    .daysLeft {
+      border-top: $border;
+      padding: 20px 0;
+    }
+
+    .assigned {
+      padding: 20px;
+      border-top: $border;
+      border-bottom: $border;
+    }
+
   }
 
   .cardProgress {

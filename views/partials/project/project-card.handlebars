@@ -2,17 +2,23 @@
   <a class="cardContent" href="/project/{{this.id}}">
     <h3>{{this.project_name}}</h3>
     <div class="cardDetails">
-      <div>
-        <h4>Start Date</h4>
-        <h3>{{formatDate  this.goal_start }}</h3>
-        <h4>Due Date</h4>
-        <h3>{{formatDate  this.goal_start }}</h3>
-        <h4>Days till due</h4>
-        <h3>{{formatRelative this.goal_end units="day"}}</h3>
-        <div>
-          <h4>Assigned To</h4>
-          <h3>{{this.UserId}}</h3>
+      <div class="dates">
+        <div class="start">
+          <h4>Start Date</h4>
+          <span class="date">{{formatDate this.goal_start }}</span>
         </div>
+        <div class="finish">
+          <h4>Due Date</h4>
+          <span class="date">{{formatDate  this.goal_start }}</span>
+        </div>
+      </div>
+      <div class="daysLeft">
+        <h4>Days till due</h4>
+        <span class="date">{{formatRelative this.goal_end units="day"}}</span>
+      </div>
+      <div class="assigned">
+        <h4>Project Owner</h4>
+        <span class="user">{{this.UserId}}</span>
       </div>
     </div>
     <div class="cardProgress">
