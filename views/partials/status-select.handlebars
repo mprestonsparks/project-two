@@ -1,4 +1,4 @@
-<select class="projectStatusSelect complete">
+<select class="projectStatusSelect {{getStatusClass this.activeTask.TaskStatusId}}" data-taskid={{this.activeTask.id}}>
   {{#each this.statuses}}
     <option value={{id}} {{getStatusSelect ../this.activeTask.TaskStatusId id}}>{{task_status}}</option>
   {{/each}}

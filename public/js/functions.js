@@ -76,3 +76,38 @@ $(".submitTask").on("click", function(e) {
 $(".modalWindow").on("click", function(e) {
   e.stopPropagation();
 });
+
+
+$('.projectStatusSelect').change(function() {
+  var status = $('.projectStatusSelect').find(':selected').attr('value');
+  if (parseInt(status) === 1 ) {
+    $('.projectStatusSelect')
+      .removeClass('complete')
+      .removeClass('inProgress')
+      .addClass('notStarted')
+  }
+  if (parseInt(status) === 2 ) {
+    $('.projectStatusSelect')
+      .removeClass('notStarted')
+      .removeClass('complete')
+      .addClass('inProgress')
+  }
+  if (parseInt(status) === 3 ) {
+    $('.projectStatusSelect')
+      .removeClass('notStarted')
+      .removeClass('inProgress')
+      .addClass('complete')
+  }
+
+  var taskId = $(this).data('taskid');
+  // send off ajax post here...
+  var status = { TaskStatusId: parseInt(status) } 
+
+  $.ajax({
+    url: '/api/task/update/' + taskId,
+    type: 'PUT',
+    data: status
+  }).then(function() {
+    console.log('updated')
+  })
+})

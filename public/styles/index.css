@@ -671,6 +671,7 @@ html, body {
   text-align: center;
   border: none;
   font-size: 1.25em;
+  width: 130px;
   padding: .5em .75em;
   box-sizing: border-box;
   -moz-appearance: none;

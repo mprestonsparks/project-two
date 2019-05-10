@@ -95,7 +95,7 @@ module.exports = function (app, passport) {
 
   })
 
-  app.get('/project/:id/:taskId?', isLoggedIn, (req, res) => {
+  app.get('/project/:id/:taskId?', /*isLoggedIn,*/ (req, res) => {
 
     if (req.params.id === undefined) {
       res.redirect('/projects');
@@ -119,7 +119,6 @@ module.exports = function (app, passport) {
         sendResponse();
       })
 
-
       db.TaskStatus.findAll({}).then((result) => {
         obj.statuses = result;
         sendResponse();
@@ -129,9 +128,7 @@ module.exports = function (app, passport) {
         where: {
           id: req.params.id
         },
-        include: [
-          db.Task
-        ]
+        include: [db.Task]
       }).then((result) => {
         obj.project = result
         sendResponse();

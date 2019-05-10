@@ -6,16 +6,15 @@ var register = function(Handlebars) {
         }
     },
 
-    getStatusClass: function(val) {
-      var v = val.toLowerCase();
-      switch(v) {
-        case 'not started':
+    getStatusClass: function(id) {
+      switch(parseInt(id)) {
+        case 1:
           return 'notStarted';
 
-        case 'in progress':
+        case 2:
           return 'inProgress';
 
-        case 'complete':
+        case 3:
           return 'complete';
 
         default:
@@ -52,13 +51,12 @@ var register = function(Handlebars) {
     },
 
     getStatusSelect: function(taskId, statusId) {
-      console.log(taskId, statusId)
       if (parseInt(taskId) === parseInt(statusId)) {
         return 'selected';
       } else {
         return null;
       }
-    }
+    },
 
   };
 
