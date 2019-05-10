@@ -30,7 +30,9 @@ $(".submitProject").on("click", function(e) {
   var newProj = {
     project_name: projectName,
     UserId: projectOwner,
-    project_description: projectDescription
+    project_description: projectDescription,
+    goal_start: projectStartDate,
+    goal_end: projectFinishDate,
   };
 
   $.post("/api/project", newProj, function(res) {
