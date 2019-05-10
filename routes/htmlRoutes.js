@@ -82,7 +82,8 @@ module.exports = function (app, passport) {
     })
 
     db.Project.findAll({
-      include: [db.Task]
+      include: [db.Task],
+      where: {UserId: req.user.id}
     }).then((result) => {
       obj.projects = result;
       sendResponse();
