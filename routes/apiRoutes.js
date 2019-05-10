@@ -300,6 +300,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/comment",function(req,res){
+    db.Comment.create(req.body).then(function(data){
+      res.json(data);
+    });
+  });
+
   app.post("/api/taskpriorities/",function(req,res){
     db.TaskPriorities.create(req.body).then(function(data){
       res.json(data);
