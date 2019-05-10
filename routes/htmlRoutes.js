@@ -1,4 +1,5 @@
 var db = require("../models");
+var notify = require("../public/js/notify.js")
 
 
 module.exports = function (app, passport) {
@@ -55,6 +56,8 @@ module.exports = function (app, passport) {
       sendResponse();
     })
 
+  
+
     db.Project.findAll({}).then((result) => {
       obj.projects = result;
       sendResponse();
@@ -69,15 +72,27 @@ module.exports = function (app, passport) {
     obj.user = req.user;
     obj.users = null;
     obj.projects = null;
+    obj.tasks = null;
 
     function sendResponse() {
-      if (obj.users !== null && obj.projects !== null) {
+      if (obj.users !== null && obj.projects !== null && obj.tasks !==null) {
         res.render("projects", obj)
       }
     }
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
+      sendResponse();
+    })
+
+    db.Task.findAll({
+      where: {
+        UserId: req.user.id
+      },
+      include: [db.Project]
+    }).then((result) => {
+
+      obj.tasks = result;
       sendResponse();
     })
 
