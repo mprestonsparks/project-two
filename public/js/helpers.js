@@ -33,21 +33,7 @@ var register = function(Handlebars) {
       } else {
         return ''
       }
-    },
-
-    // getActive: function(obj, activeId) {
-    //   activeId = parseInt(activeId);
-
-    //   for (let val of obj) {
-    //     if (val.dataValues.id === activeId) {
-    //      return val.dataValues;
-    //      console.log(val.dataValues)
-    //     } else {
-    //       return null;
-    //     }
-    //   }
-
-    // }
+    }
 
   };
 
