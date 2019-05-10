@@ -5,10 +5,14 @@
 
   <div class="listContainer">
     <h2>Team Members</h2>
+    <button class="button-gray-small-light">
+      <i class="fas fa-user"></i>
+      Add a Team Member
+    </button>
     <ul>
-      {{#each members}}
+      {{#each users}}
       <li>
-        {{firstName}} {{lastName}}
+        {{user_first_name}} {{user_last_name}}
       </li>
       {{/each}}
     </ul>
