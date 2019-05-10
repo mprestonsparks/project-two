@@ -1,4 +1,6 @@
-var db = require("../models");
+const db = require("../models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 
 module.exports = function (app, passport) {
@@ -171,7 +173,10 @@ module.exports = function (app, passport) {
 
     db.Task.findAll({
       where: {
-        UserId: req.user.id
+        UserId: req.user.id,
+        TaskStatusId: { 
+          [Op.not]: 3 
+        }
       },
       include: [db.Project]
     }).then((result) => {

@@ -34,6 +34,20 @@ var register = function(Handlebars) {
       }
     },
 
+    getStatus: function(id) {
+      switch(parseInt(id)) {
+        case 1:
+          return 'Not Started'
+        
+        case 2:
+          return 'In Progress'
+
+        case 3:
+          return 'Complete'
+
+      }
+    },
+
     progressBar: function(tasks) {
       var totalTasks = 0;
       var completedTasks = 0;
