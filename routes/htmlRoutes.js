@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
   })
 
   // page routes
-  app.get('/', isLoggedIn, (req, res) => {
+  app.get('/', /*isLoggedIn,*/ (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;
@@ -46,7 +46,7 @@ module.exports = function(app, passport) {
 
     function sendResponse() {
       if (obj.users !== null && obj.projects !== null) {
-        res.render("index", obj);
+        res.render("projects", obj);
       }
     }
 
@@ -55,7 +55,9 @@ module.exports = function(app, passport) {
       sendResponse();
     })
 
-    db.Project.findAll({}).then((result) => {
+    db.Project.findAll({
+      include: [ db.Task ]
+    }).then((result) => {
       obj.projects = result;
       sendResponse();
     })
@@ -63,7 +65,7 @@ module.exports = function(app, passport) {
   })
 
 
-  app.get('/projects', isLoggedIn, (req, res) => {
+  app.get('/projects', /*isLoggedIn,*/ (req, res) => {
     const obj = {};
     obj.isAdmin = true;
     obj.user = req.user;

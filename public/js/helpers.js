@@ -33,6 +33,22 @@ var register = function(Handlebars) {
       } else {
         return ''
       }
+    },
+
+    progressBar: function(tasks) {
+      var totalTasks = 0;
+      var completedTasks = 0;
+      for (let task of tasks) {
+        totalTasks += 1;
+        if (parseInt(task.dataValues.TaskStatusId) === 3) {
+          completedTasks += 1;
+        }
+      }
+
+      var perc = (completedTasks / totalTasks) * 100;
+      perc = (perc > 0) ? perc : 5;
+      return perc;
+
     }
 
   };
