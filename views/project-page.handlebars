@@ -5,14 +5,18 @@
   {{> subnav this}}
 
   <div class="project">
-    <h1>{{project.project_name}}</h1>
+    <h1>
+      <a class="projectLink" href="/project/{{project.id}}">
+        {{project.project_name}}
+      </a>
+    </h1>
     <div class="taskContainer">
       <div class="taskList">
         <ul>
           {{#each project.Tasks}}
           <a href="/project/{{../project.id}}/{{id}}" class="taskLink {{isActive ../activeTask.id id}}">
             <span>{{task_name}}</span>
-            {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
+            <span class={{getStatusClass TaskStatusId}}></span>
           </a>
           {{/each}}
         </ul>
@@ -27,24 +31,59 @@
 
         <div class="task">
           <article>
-            <h2>{{activeTask.task_name}}</h2>
-            <div class="taskDetails">
-              <span>Due Date</span>
-              {{> status-select}}
+            <div class="taskTitle">
+              <h2>{{activeTask.task_name}}</h2>
+              {{> status-select this}}
             </div>
-
+            <div class="taskDetails">
+              <h4>Due Date: {{formatDate activeTask.goal_end}}</h4>
+              {{#if isAdmin}}
+              <div class="projectAdminButtons">
+                {{!-- <button id="taskEdit" data-project-id={{project.id}} data-task-id={{activeTask.id}} class="button-blue-small-light">Edit Task</button> --}}
+                <button id="taskDelete" data-project-id={{project.id}} data-task-id={{activeTask.id}} class="button-gray-small-light">Delete Task</button>
+                </div>
+              {{/if}}
+            </div>
             <p>{{activeTask.task_description}}</p>
           </article>
-
         </div>
+
         {{> comment/comments }}
 
         {{else}}
         <div class="task">
-          <article>
-            <h2>Project Desciption</h2>
-            <p>{{project.project_description}}</p>
-            <p>Select or add a task to start working.</p>
+          <article class="projectArticle">
+            <div class="dates">
+              <div class="startEnd">
+                <div class="calIcon">
+                  <i class="far fa-calendar-alt"></i>
+                </div>
+                <div class="dateContainer">
+                  <div class="dateDetails">
+                    <span class="desc">Start</span>
+                    <span class="date">{{formatDate project.goal_start}}</span>
+                  </div>
+                </div>
+                <div class="dateContainer">
+                  <div class="dateDetails">
+                    <span class="desc">End</span>
+                    <span class="date">{{formatDate project.goal_end}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="daysLeft">
+                <span class="date">Due {{formatRelative project.goal_end units="day"}}.</span>
+              </div>
+            </div>
+            <h3 class="projectOwner">Project Owner: {{getUserName users project.UserId}}</h3>
+            <h4>Project Description:</h4>
+            <div class="projectDescription">{{project.project_description}}</div>
+            {{#if isAdmin}}
+            <div class="projectAdminButtons">
+              {{!-- <button id="projectEdit" class="button-blue-small-light">Edit Project</button> --}}
+              <button id="projectDelete" data-project-id={{project.id}} class="button-gray-small-light">Delete Project</button>
+            </div>
+            {{/if}}
           </article>
         </div>
         {{/if}}
@@ -55,4 +94,6 @@
 
 </div>
 
+
 {{> project/create-task users=users }}
+{{> project/create-project users=users }}

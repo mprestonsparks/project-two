@@ -23,18 +23,28 @@
   box-shadow: 0px 1px 4px rgba(black, 0.1);
   transform: scale(1);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding-top: 2em;
 
-  h3 {
-    padding: 1.25em 20px 0.75em 20px;
-    border-bottom: $border;
+  .projIcon {
+    font-size: ms(4);
+    color: $color2;
+    transform: rotate(-15deg);
+  }
+
+  h2 {
+    padding: 1.5em 10px 0 20px;
+  }
+
+  .assigned {
+    color: $gray;
+    padding-bottom: 10px;
+    font-size: ms(-1);
   }
 
   .cardDetails {
     padding: 20px;
+    
 
-    h4 {
-      padding: 0.6em;
-    }
   }
 
   .cardProgress {
@@ -63,11 +73,68 @@
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0px 4px 8px rgba(black, 0.3);
+    box-shadow: 0px 4px 12px rgba($color2, 0.8);
 
-    h3 {
-      background: rgba($color1, 0.1);
-      color: $color2;
+    h2, .assigned, .projIcon {
+      color: $color1;
     }
+
   }
+}
+
+.dates {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  border: $border;
+  border-radius: $border-radius;
+
+  .startEnd {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .calIcon {
+      font-size: ms(2);
+      text-align: center;
+      flex: 1;
+    }
+
+    .dateContainer {
+      flex: 2;
+      display: flex;
+      align-content: center;
+      
+      .dateDetails {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .desc {
+          font-size: ms(-1);
+          line-height: ms(1);
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        .date {
+          font-weight: bold;
+        }
+      }
+      
+    }
+
+  }
+
+  .daysLeft {
+    background: rgba($color1, 0.1);
+    font-weight: bold;
+    color: $color2;
+    border-top: $border;
+    padding: 10px 0;
+    text-align: center;
+  }
+
 }

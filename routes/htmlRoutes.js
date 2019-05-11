@@ -1,5 +1,6 @@
-var db = require("../models");
-var notify = require("../public/js/notify.js")
+const db = require("../models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 
 module.exports = function (app, passport) {
@@ -39,70 +40,92 @@ module.exports = function (app, passport) {
   // page routes
   app.get('/', isLoggedIn, (req, res) => {
     const obj = {};
-    obj.isAdmin = true;
+    obj.isAdmin = false;
     obj.user = req.user;
     obj.users = null;
     obj.projects = null;
-
 
     function sendResponse() {
       if (obj.users !== null && obj.projects !== null) {
-        res.render("index", obj);
-      }
-    }
-
-    db.User.findAll({}).then((result) => {
-      obj.users = result;
-      sendResponse();
-    })
-
-  
-
-    db.Project.findAll({}).then((result) => {
-      obj.projects = result;
-      sendResponse();
-    })
-
-  })
-
-
-  app.get('/projects', isLoggedIn, (req, res) => {
-    const obj = {};
-    obj.isAdmin = true;
-    obj.user = req.user;
-    obj.users = null;
-    obj.projects = null;
-    obj.tasks = null;
-
-    function sendResponse() {
-      if (obj.users !== null && obj.projects !== null && obj.tasks !==null) {
         res.render("projects", obj)
       }
     }
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
-      sendResponse();
+      const userProf = obj.users.find(u => u.id === req.user.id)
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false
+      findProjects();
     })
 
-    db.Task.findAll({
-      where: {
-        UserId: req.user.id
-      },
-      include: [db.Project]
-    }).then((result) => {
+    const findProjects = () => {
 
-      obj.tasks = result;
-      sendResponse();
+      if (obj.isAdmin) {
+        db.Project.findAll({
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      } else {
+        db.Project.findAll({
+          where: {
+            UserId: req.user.id
+          },
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+
+      }
+
+    }
+
+  })
+
+
+  app.get('/projects', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.isAdmin = false;
+    obj.user = req.user;
+    obj.users = null;
+    obj.projects = null;
+
+    function sendResponse() {
+      if (obj.users !== null && obj.projects !== null) {
+        res.render("projects", obj)
+      }
+    }
+
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
+      findProjects();
     })
 
-    db.Project.findAll({
-      include: [db.Task],
-      where: {UserId: req.user.id}
-    }).then((result) => {
-      obj.projects = result;
-      sendResponse();
-    })
+    const findProjects = () => {
+
+      if (obj.isAdmin) {
+        db.Project.findAll({
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      } else {
+        db.Project.findAll({
+          where: {
+            UserId: req.user.id
+          },
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      }
+    }
 
   })
 
@@ -112,20 +135,28 @@ module.exports = function (app, passport) {
       res.redirect('/projects');
     } else {
       const obj = {};
-      obj.isAdmin = true;
+      obj.isAdmin = false;
       obj.user = req.user;
       obj.users = null;
       obj.project = null;
       obj.activeTask = null;
+      obj.statuses = null;
 
       function sendResponse() {
-        if (obj.users !== null && obj.project !== null && obj.activeTask !== null) {
+        if (obj.users !== null && obj.project !== null && obj.activeTask !== null && obj.statuses !== null) {
           res.render('project-page', obj)
         }
       }
 
       db.User.findAll({}).then((result) => {
         obj.users = result;
+        const userProf = obj.users.find(u => u.id === req.user.id);
+        obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
+        sendResponse();
+      })
+
+      db.TaskStatus.findAll({}).then((result) => {
+        obj.statuses = result;
         sendResponse();
       })
 
@@ -133,9 +164,7 @@ module.exports = function (app, passport) {
         where: {
           id: req.params.id
         },
-        include: [
-          db.Task
-        ]
+        include: [db.Task]
       }).then((result) => {
         obj.project = result
         sendResponse();
@@ -145,7 +174,8 @@ module.exports = function (app, passport) {
         db.Task.findOne({
           where: {
             id: req.params.taskId
-          }
+          },
+          include: [db.Comment]
         }).then((result) => {
           obj.activeTask = result;
           sendResponse()
@@ -160,7 +190,7 @@ module.exports = function (app, passport) {
 
   app.get('/tasks', isLoggedIn, (req, res) => {
     const obj = {};
-    obj.isAdmin = true;
+    obj.isAdmin = false;
     obj.user = req.user;
     obj.users = null;
     obj.tasks = null;
@@ -173,12 +203,17 @@ module.exports = function (app, passport) {
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
       sendResponse();
     })
 
     db.Task.findAll({
       where: {
-        UserId: req.user.id
+        UserId: req.user.id,
+        TaskStatusId: { 
+          [Op.not]: 3 
+        }
       },
       include: [db.Project]
     }).then((result) => {
@@ -196,11 +231,18 @@ module.exports = function (app, passport) {
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
       res.render("team", obj);
     })
 
   })
+  
+  app.get('*', isLoggedIn, (req, res) => {
 
+    res.render("404");
+
+  })
 
 
 

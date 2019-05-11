@@ -42,7 +42,7 @@ require('./config/passport/passport')(passport, db.User);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app, passport);
 
-var syncOptions = { alter: false };
+var syncOptions = { alter: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

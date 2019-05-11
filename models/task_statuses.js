@@ -6,6 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  TaskStatus.associate = models => {
+    TaskStatus.hasMany(models.Task)
+  }
   
   return TaskStatus;
 };

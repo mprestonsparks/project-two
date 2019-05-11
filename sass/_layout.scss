@@ -42,6 +42,22 @@ html, body {
   }
 }
 
+.notFound {
+  text-align: center;
+  background: $color2;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  
+  h1 {
+    padding-bottom: 1em;
+  }
+
+  .button-reallyDark.white {
+    color: white;
+  }
+}
+
 
 @import './subnav';
 @import './projects';

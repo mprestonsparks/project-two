@@ -1,11 +1,11 @@
-<div class="comments">
 
+<div class="comments">
   <div class="commentContainer">
-    {{#each project.Comment}}
+    {{#each this.activeTask.Comments}}
     <div class="comment">
       <article>
-        <p>{{this.comment}}</p>
-        <span class="author">{{this.UserId}}<span>
+        <p>{{comment}}</p>
+        <span class="author"> - {{getUserName ../users UserId}}<span>
       </article>
     </div>
     {{/each}}
@@ -16,7 +16,13 @@
       <div class="textAreaContainer">
         <textarea id="comment"></textarea>
       </div>
-      <button id="commentSubmit" class="button-blue-small">Add Comment</button>
+      <button
+        id="commentSubmit"
+        data-user-id={{this.user.id}}
+        data-task-id={{this.activeTask.id}}
+        class="button-blue-small">
+        Add Comment
+      </button>
     </form>
   </div>
 

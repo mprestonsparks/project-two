@@ -69,7 +69,7 @@ body {
   line-height: 1.6em;
   color: #181a1d; }
 
-.smallFont, .taskDetailsContainer article .taskDetails {
+.smallFont {
   font-size: 0.8em;
   color: #525963; }
 
@@ -445,6 +445,126 @@ a:visited {
   .button-dark-small-light:focus {
     outline: none; }
 
+.button-reallyDark {
+  background-color: #121b37;
+  color: white;
+  font-size: 1em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark i {
+    margin-right: .75em; }
+  .button-reallyDark:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark:focus {
+    outline: none; }
+
+.button-reallyDark-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 1em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-light i {
+    margin-right: .75em; }
+  .button-reallyDark-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-light:focus {
+    outline: none; }
+
+.button-reallyDark-large {
+  background-color: #121b37;
+  color: white;
+  font-size: 1.25em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-large i {
+    margin-right: .75em; }
+  .button-reallyDark-large:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark-large:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark-large:focus {
+    outline: none; }
+
+.button-reallyDark-large-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 1.25em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-large-light i {
+    margin-right: .75em; }
+  .button-reallyDark-large-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-large-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-large-light:focus {
+    outline: none; }
+
+.button-reallyDark-small {
+  background-color: #121b37;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-small i {
+    margin-right: .75em; }
+  .button-reallyDark-small:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark-small:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark-small:focus {
+    outline: none; }
+
+.button-reallyDark-small-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 0.8em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-small-light i {
+    margin-right: .75em; }
+  .button-reallyDark-small-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-small-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-small-light:focus {
+    outline: none; }
+
 html, body {
   width: 100%;
   height: 100%; }
@@ -480,6 +600,17 @@ html, body {
   .listContainer h2 {
     padding: 20px; }
 
+.notFound {
+  text-align: center;
+  background: #1e2e5e;
+  color: white;
+  justify-content: center;
+  align-items: center; }
+  .notFound h1 {
+    padding-bottom: 1em; }
+  .notFound .button-reallyDark.white {
+    color: white; }
+
 .subnav {
   height: 80px;
   display: flex;
@@ -502,6 +633,8 @@ html, body {
     .subnav a:active {
       background-color: #1e2e5e;
       color: white; }
+  .subnav.leftAlign {
+    justify-content: flex-end; }
 
 .projects {
   display: flex;
@@ -523,14 +656,20 @@ html, body {
   width: 100%;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
   transform: scale(1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease; }
-  .cardContent h3 {
-    padding: 1.25em 20px 0.75em 20px;
-    border-bottom: solid 1px #d4d9e6; }
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding-top: 2em; }
+  .cardContent .projIcon {
+    font-size: 2.44141em;
+    color: #1e2e5e;
+    transform: rotate(-15deg); }
+  .cardContent h2 {
+    padding: 1.5em 10px 0 20px; }
+  .cardContent .assigned {
+    color: #565758;
+    padding-bottom: 10px;
+    font-size: 0.8em; }
   .cardContent .cardDetails {
     padding: 20px; }
-    .cardContent .cardDetails h4 {
-      padding: 0.6em; }
   .cardContent .cardProgress {
     padding: 20px; }
     .cardContent .cardProgress .progressBar {
@@ -549,10 +688,48 @@ html, body {
         box-shadow: 0px 0px 8px #565758; }
   .cardContent:hover {
     transform: scale(1.02);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); }
-    .cardContent:hover h3 {
-      background: rgba(73, 119, 247, 0.1);
-      color: #1e2e5e; }
+    box-shadow: 0px 4px 12px rgba(30, 46, 94, 0.8); }
+    .cardContent:hover h2, .cardContent:hover .assigned, .cardContent:hover .projIcon {
+      color: #4977f7; }
+
+.dates {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  border: solid 1px #d4d9e6;
+  border-radius: 4px; }
+  .dates .startEnd {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    align-items: center; }
+    .dates .startEnd .calIcon {
+      font-size: 1.5625em;
+      text-align: center;
+      flex: 1; }
+    .dates .startEnd .dateContainer {
+      flex: 2;
+      display: flex;
+      align-content: center; }
+      .dates .startEnd .dateContainer .dateDetails {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        padding: 10px; }
+        .dates .startEnd .dateContainer .dateDetails .desc {
+          font-size: 0.8em;
+          line-height: 1.25em;
+          margin: 0;
+          text-transform: uppercase; }
+        .dates .startEnd .dateContainer .dateDetails .date {
+          font-weight: bold; }
+  .dates .daysLeft {
+    background: rgba(73, 119, 247, 0.1);
+    font-weight: bold;
+    color: #1e2e5e;
+    border-top: solid 1px #d4d9e6;
+    padding: 10px 0;
+    text-align: center; }
 
 .project {
   flex: 1;
@@ -560,7 +737,14 @@ html, body {
   flex-direction: column; }
   .project h1 {
     padding: 20px 20px 10px 20px;
-    border-bottom: solid 1px #d4d9e6; }
+    border-bottom: solid 1px #d4d9e6;
+    position: relative; }
+    .project h1 i {
+      color: #565758;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%); }
 
 .taskContainer {
   flex: 1;
@@ -578,6 +762,7 @@ html, body {
       align-items: center;
       justify-content: space-between; }
       .taskContainer .taskList .taskLink.active {
+        padding: 20px 14px 20px 20px;
         color: #1e2e5e;
         background-color: rgba(73, 119, 247, 0.1);
         border-right: solid 6px #4977f7; }
@@ -600,57 +785,111 @@ html, body {
 
 .taskDetailsContainer {
   flex: 2;
-  padding: 40px; }
+  display: flex;
+  flex-direction: column; }
+  .taskDetailsContainer .taskTitle {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #d4d9e6; }
   .taskDetailsContainer article h2 {
     margin-bottom: 10px; }
   .taskDetailsContainer article .taskDetails {
-    margin-bottom: 20px;
+    padding: 20px;
+    align-items: center;
+    border-bottom: solid 1px #d4d9e6;
     display: flex;
-    justify-content: space-between;
-    align-items: center; }
+    justify-content: space-between; }
+  .taskDetailsContainer article p {
+    padding: 20px; }
+  .taskDetailsContainer .projectOwner {
+    padding: 40px 0 20px 0; }
+  .taskDetailsContainer .projectDescription {
+    padding: .5em 0 3em 0;
+    color: #565758; }
+  .taskDetailsContainer .projectAdminButtons {
+    display: flex;
+    justify-content: flex-start; }
+    .taskDetailsContainer .projectAdminButtons button {
+      margin-right: 30px; }
+
+.projectArticle {
+  padding: 40px; }
 
 .tasks {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: 20px 0; }
-  .tasks .taskLink {
-    margin: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border-radius: 4px;
-    align-items: stretch;
-    overflow: hidden; }
-    .tasks .taskLink .taskDetails {
-      flex: 3;
-      display: flex;
-      justify-content: flex-start;
-      padding: 20px;
-      text-align: left;
-      align-items: center; }
-      .tasks .taskLink .taskDetails .icon {
-        flex: 0;
-        font-size: 1.95312em;
-        padding: 0 20px; }
-      .tasks .taskLink .taskDetails .taskText {
-        flex: 4;
-        padding: 0 20px; }
-        .tasks .taskLink .taskDetails .taskText p {
-          padding-bottom: 1.5625em; }
-    .tasks .taskLink .projectLink {
+  .tasks .taskLinkContainer {
+    margin: 0 20px 20px 20px;
+    max-width: 960px; }
+    .tasks .taskLinkContainer .taskLink {
       flex: 1;
-      padding: 20px;
-      font-size: 1em;
-      text-align: center;
-      color: white;
-      background: #1e2e5e; }
+      display: flex;
+      align-items: stretch;
+      padding: 20px 20px 20px 0;
+      background-color: white;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease; }
+      .tasks .taskLinkContainer .taskLink .icon {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        min-width: 100px;
+        max-width: 220px;
+        text-align: center;
+        border-right: solid 1px #d4d9e6;
+        text-transform: uppercase;
+        letter-spacing: 1px; }
+        .tasks .taskLinkContainer .taskLink .icon i {
+          font-size: 1.95312em;
+          margin-bottom: .5em; }
+          .tasks .taskLinkContainer .taskLink .icon i.notStarted, .tasks .taskLinkContainer .taskContainer .taskList .taskLink .icon i.inProgress, .taskContainer .taskList .tasks .taskLinkContainer .taskLink .icon i.inProgress, .tasks .taskLinkContainer .taskContainer .taskList .taskLink .icon i.complete, .taskContainer .taskList .tasks .taskLinkContainer .taskLink .icon i.complete {
+            color: #aeb7cf; }
+          .tasks .taskLinkContainer .taskLink .icon i.inProgress {
+            color: #f1cc51; }
+          .tasks .taskLinkContainer .taskLink .icon i.complete {
+            color: #35dd89; }
+        .tasks .taskLinkContainer .taskLink .icon span {
+          font-size: 0.64em; }
+      .tasks .taskLinkContainer .taskLink .taskDetails {
+        flex: 8;
+        padding-left: 40px;
+        display: flex;
+        flex-direction: column; }
+        .tasks .taskLinkContainer .taskLink .taskDetails h3 {
+          margin-top: 1em;
+          margin-bottom: .5em; }
+        .tasks .taskLinkContainer .taskLink .taskDetails p {
+          color: #565758; }
+        .tasks .taskLinkContainer .taskLink .taskDetails .dueDate, .tasks .taskLinkContainer .taskLink .taskDetails .taskProject {
+          align-self: flex-end;
+          display: block;
+          font-size: 0.8em;
+          padding: .5em 1.5em;
+          background: rgba(73, 119, 247, 0.2);
+          border-radius: 4px; }
+          .tasks .taskLinkContainer .taskLink .taskDetails .dueDate i, .tasks .taskLinkContainer .taskLink .taskDetails .taskProject i {
+            margin-right: 1em; }
+        .tasks .taskLinkContainer .taskLink .taskDetails .taskProject {
+          background: rgba(30, 46, 94, 0.2);
+          color: #1e2e5e; }
+      .tasks .taskLinkContainer .taskLink:hover {
+        transform: scale(1.02);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); }
 
 .projectStatusSelect {
   text-align: center;
   border: none;
   font-size: 1.25em;
+  width: 180px;
   padding: .5em .75em;
   box-sizing: border-box;
   -moz-appearance: none;
@@ -675,57 +914,61 @@ html, body {
     border: solid 1px #35dd89; }
 
 .comments {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: solid 1px #d4d9e6; }
+  padding: 40px;
+  border-top: solid 1px #d4d9e6;
+  background-color: #f4f6f9;
+  flex: 1; }
 
-.commentContainer {
-  width: 100%; }
-  .commentContainer .comment {
-    width: 100%;
-    display: flex;
-    margin-bottom: 20px;
-    text-align: left;
-    min-width: 40%;
-    justify-content: flex-start; }
-    .commentContainer .comment article {
-      min-width: 80%;
-      display: inline-block;
-      background: rgba(73, 119, 247, 0.2);
-      padding: 12px;
-      border-radius: 0 4px 4px 4px;
-      box-shadow: 0px 2px 5px rgba(174, 183, 207, 0.8); }
-      .commentContainer .comment article .author {
-        display: block;
-        font-weight: bold;
-        font-size: 0.8em;
-        margin-top: 10px; }
-    .commentContainer .comment:nth-of-type(2n) {
-      text-align: right;
-      justify-content: flex-end; }
-      .commentContainer .comment:nth-of-type(2n) article {
-        text-align: right;
-        background: #eef0f5;
-        border-radius: 4px 0 4px 4px; }
-
-.addComment #addComment {
-  margin-top: 40px;
-  text-align: right; }
-  .addComment #addComment .textAreaContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-    .addComment #addComment .textAreaContainer #comment {
+.commentContainer .comment {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  text-align: left;
+  min-width: 40%;
+  justify-content: flex-start; }
+  .commentContainer .comment article {
+    min-width: 80%;
+    display: inline-block;
+    background: rgba(73, 119, 247, 0.2);
+    padding: 12px;
+    border-radius: 0 4px 4px 4px;
+    box-shadow: 0px 2px 5px rgba(174, 183, 207, 0.8); }
+    .commentContainer .comment article p {
+      padding: 0; }
+    .commentContainer .comment article .author {
       display: block;
-      flex: 5;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      border: solid 1px #d4d9e6;
-      padding: 18px; }
-      .addComment #addComment .textAreaContainer #comment:focus {
-        outline: none; }
-  .addComment #addComment #commentSubmit {
-    margin-top: 10px; }
+      font-style: italic;
+      font-size: 0.8em;
+      margin-top: 1.2em; }
+  .commentContainer .comment:nth-of-type(2n) {
+    text-align: right;
+    justify-content: flex-end; }
+    .commentContainer .comment:nth-of-type(2n) article {
+      text-align: right;
+      background: #eef0f5;
+      border-radius: 4px 0 4px 4px; }
+
+.addComment {
+  font-size: 1.25em; }
+  .addComment #addComment {
+    margin-top: 40px;
+    text-align: right; }
+    .addComment #addComment .textAreaContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .addComment #addComment .textAreaContainer #comment {
+        font-size: 1em;
+        display: block;
+        flex: 5;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        border: solid 1px #d4d9e6;
+        padding: 18px; }
+        .addComment #addComment .textAreaContainer #comment:focus {
+          outline: none; }
+    .addComment #addComment #commentSubmit {
+      margin-top: 10px; }
 
 #sidebarNav {
   width: 20vw;
@@ -836,6 +1079,32 @@ html, body {
       border: none;
       color: #3c4873; }
 
+.team {
+  display: block; }
+  .team a {
+    margin-left: 20px;
+    flex: none; }
+  .team ul {
+    display: flex;
+    flex-wrap: wrap; }
+    .team ul li {
+      min-width: 300px;
+      padding: 20px;
+      display: flex;
+      background: white;
+      border-radius: 4px;
+      margin: 20px;
+      align-items: center; }
+      .team ul li i {
+        color: #4977f7;
+        font-size: 1.5625em; }
+      .team ul li .userContent {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column; }
+        .team ul li .userContent .email {
+          color: #565758; }
+
 .loginContainer {
   display: flex;
   width: 100vw;
@@ -894,6 +1163,8 @@ html, body {
     background: white;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
     padding: 40px; }
+  .modalContainer .dates {
+    border: none; }
 
 .createProjectContainer {
   justify-content: flex-start; }

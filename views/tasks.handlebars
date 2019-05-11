@@ -6,24 +6,24 @@
     <h2>My Tasks</h2>
     <ul class="tasks">
       {{#each tasks}}
-      <li class="taskLink">
-        <div class="taskDetails" >
-          <div class="icon"><i class="fas fa-thumbtack"></i></div>
-          <div class="taskText">
-            <h3>{{task_name}}</h3>
-            <p>{{task_description}}</p>
-            <a class="button-blue-light" href="project/{{Project.id}}/{{id}}">
-              View Task
-            </a>
-          </div>
-        </div>
-        <div class="projectLink" href="project/{{Project.id}}">
-          {{Project.project_name}}
-          <a class="button-gray-small" href="project/{{Project.id}}">
-            View Project
+        <li class="taskLinkContainer">
+          <a class="taskLink" href="project/{{Project.id}}/{{id}}">
+            <div class="icon">
+              <i class="fas fa-thumbtack {{getStatusClass TaskStatusId}}"></i>
+              <span>{{getStatus TaskStatusId}}</span>
+            </div>
+            <div class="taskDetails">
+                <span class="dueDate">
+                  <i class="far fa-calendar-alt"></i> Due Date: <span>{{formatDate goal_start}}</span>
+                </span>
+                <h3>{{task_name}}</h3>
+                <p>{{task_description}}</p>
+                <span class="taskProject">
+                  <i class="fas fa-clipboard"></i> {{Project.project_name}}
+                </span>
+            </div>
           </a>
-        </div>
-      </li>
+        </li>
       {{/each}}
     </ul>
   </div>

@@ -6,16 +6,15 @@ var register = function(Handlebars) {
         }
     },
 
-    getStatusClass: function(val) {
-      var v = val.toLowerCase();
-      switch(v) {
-        case 'not started':
+    getStatusClass: function(id) {
+      switch(parseInt(id)) {
+        case 1:
           return 'notStarted';
 
-        case 'in progress':
+        case 2:
           return 'inProgress';
 
-        case 'complete':
+        case 3:
           return 'complete';
 
         default:
@@ -33,6 +32,56 @@ var register = function(Handlebars) {
       } else {
         return ''
       }
+    },
+
+    getStatus: function(id) {
+      switch(parseInt(id)) {
+        case 1:
+          return 'Not Started'
+        
+        case 2:
+          return 'In Progress'
+
+        case 3:
+          return 'Complete'
+
+      }
+    },
+
+    progressBar: function(tasks) {
+      var totalTasks = 0;
+      var completedTasks = 0;
+      for (let task of tasks) {
+        totalTasks += 1;
+        if (parseInt(task.dataValues.TaskStatusId) === 3) {
+          completedTasks += 1;
+        }
+      }
+
+      var perc = (completedTasks / totalTasks) * 100;
+      perc = (perc > 0) ? perc : 5;
+      return perc;
+
+    },
+
+    getStatusSelect: function(taskId, statusId) {
+      if (parseInt(taskId) === parseInt(statusId)) {
+        return 'selected';
+      } else {
+        return null;
+      }
+    },
+
+    getUserName: function(users, id) {
+      for (let user of users) {
+        if (parseInt(user.dataValues.id) === parseInt(id)) {
+          return user.dataValues.user_first_name + ' ' + user.dataValues.user_last_name;
+        }
+      }
+    },
+
+    formatEmail: function(email) {
+      return email;
     }
 
   };

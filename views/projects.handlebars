@@ -2,44 +2,56 @@
 
 <div class="pageContentContainer">
   {{> subnav this}}
-
   <div class="cardsContainer">
     <h2>Projects</h2>
     <ul class="projects">
       {{#each projects}}
-        {{> project/project-card this}}
+      <li class="projectCardContainer">
+        <a class="cardContent" href="/project/{{id}}">
+          <div class="projIcon"><i class="fas fa-clipboard"></i></div>
+          <h2>{{project_name}}</h2>
+          <div class="cardDetails">
+            <div class="assigned">
+              <h4>Project Owner: {{getUserName ../users UserId}}</h4>
+            </div>
+            <div class="dates">
+              <div class="startEnd">
+                <div class="calIcon">
+                  <i class="far fa-calendar-alt"></i>
+                </div>
+                <div class="dateContainer">
+                  <div class="dateDetails">
+                    <span class="desc">Start</span>
+                    <span class="date">{{formatDate goal_start}}</span>
+                  </div>
+                </div>
+                <div class="dateContainer">
+                  <div class="dateDetails">
+                    <span class="desc">End</span>
+                    <span class="date">{{formatDate goal_start}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="daysLeft">
+                <span class="date">Due {{formatRelative goal_end units="day"}}.</span>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="cardProgress">
+            <div class="progressBar">
+              <span class="progress" style="width: {{progressBar Tasks}}%"></span>
+            </div>
+          </div>
+        </a>
+      </li>
+
       {{/each}}
     </ul>
   </div>
 
 </div>
-
-  <script>
-$.notify.addStyle("bttn",{
-  html: "<div><span data-notify-text/><button>Close</div>",
-  classes: {
-    base: {
-      "white-space": "nowrap",
-      "background-color": "lightblue",
-      "padding": "5px"
-    },
-    superblue: {
-      "color": "white",
-      "background-color": "blue"
-    },
-  }
-})
-  
-  $(document).ready(function(){
-  $("#notification").notify("You have tasks open.", {
-      position: "left",
-      autoHide: false,
-      clickToHide: true,
-      style: "bttn"})
-  $.notify("you have stuff",)      
-})
-
-</script>
 
 
 
