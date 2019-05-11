@@ -1,6 +1,6 @@
 
 
-<div class="subnav">
+<div class="subnav {{#unless this.isAdmin}}leftAlign{{/unless}}">
   {{#if this.isAdmin}}
     <button class="button-gray-light createProject"><i class="fas fa-plus-circle"></i>Create Project</button>
   {{/if}}

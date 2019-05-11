@@ -38,38 +38,9 @@ module.exports = function (app, passport) {
   })
 
   // page routes
-  app.get('/', /*isLoggedIn,*/ (req, res) => {
+  app.get('/', isLoggedIn, (req, res) => {
     const obj = {};
-    obj.isAdmin = true;
-    obj.user = req.user;
-    obj.users = null;
-    obj.projects = null;
-
-
-    function sendResponse() {
-      if (obj.users !== null && obj.projects !== null) {
-        res.render("projects", obj);
-      }
-    }
-
-    db.User.findAll({}).then((result) => {
-      obj.users = result;
-      sendResponse();
-    })
-
-    db.Project.findAll({
-      include: [ db.Task ]
-    }).then((result) => {
-      obj.projects = result;
-      sendResponse();
-    })
-
-  })
-
-
-  app.get('/projects', isLoggedIn, (req, res) => {
-    const obj = {};
-    obj.isAdmin = true;
+    obj.isAdmin = false;
     obj.user = req.user;
     obj.users = null;
     obj.projects = null;
@@ -82,28 +53,89 @@ module.exports = function (app, passport) {
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
-      sendResponse();
+      const userProf = obj.users.find(u => u.id === req.user.id)
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false
+      findProjects();
     })
 
-    db.Project.findAll({
-      where: {
-        UserId: req.user.id
-      },
-      include: [ db.Task ]
-    }).then((result) => {
-      obj.projects = result;
-      sendResponse();
-    })
+    const findProjects = () => {
+
+      if (obj.isAdmin) {
+        db.Project.findAll({
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      } else {
+        db.Project.findAll({
+          where: {
+            UserId: req.user.id
+          },
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+
+      }
+
+    }
 
   })
 
-  app.get('/project/:id/:taskId?', /*isLoggedIn,*/ (req, res) => {
+
+  app.get('/projects', isLoggedIn, (req, res) => {
+    const obj = {};
+    obj.isAdmin = false;
+    obj.user = req.user;
+    obj.users = null;
+    obj.projects = null;
+
+    function sendResponse() {
+      if (obj.users !== null && obj.projects !== null) {
+        res.render("projects", obj)
+      }
+    }
+
+    db.User.findAll({}).then((result) => {
+      obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
+      findProjects();
+    })
+
+    const findProjects = () => {
+
+      if (obj.isAdmin) {
+        db.Project.findAll({
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      } else {
+        db.Project.findAll({
+          where: {
+            UserId: req.user.id
+          },
+          include: [ db.Task ]
+        }).then((result) => {
+          obj.projects = result;
+          sendResponse();
+        })
+      }
+    }
+
+  })
+
+  app.get('/project/:id/:taskId?', isLoggedIn, (req, res) => {
 
     if (req.params.id === undefined) {
       res.redirect('/projects');
     } else {
       const obj = {};
-      obj.isAdmin = true;
+      obj.isAdmin = false;
       obj.user = req.user;
       obj.users = null;
       obj.project = null;
@@ -118,6 +150,8 @@ module.exports = function (app, passport) {
 
       db.User.findAll({}).then((result) => {
         obj.users = result;
+        const userProf = obj.users.find(u => u.id === req.user.id);
+        obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
         sendResponse();
       })
 
@@ -140,7 +174,8 @@ module.exports = function (app, passport) {
         db.Task.findOne({
           where: {
             id: req.params.taskId
-          }
+          },
+          include: [db.Comment]
         }).then((result) => {
           obj.activeTask = result;
           sendResponse()
@@ -155,7 +190,7 @@ module.exports = function (app, passport) {
 
   app.get('/tasks', isLoggedIn, (req, res) => {
     const obj = {};
-    obj.isAdmin = true;
+    obj.isAdmin = false;
     obj.user = req.user;
     obj.users = null;
     obj.tasks = null;
@@ -168,6 +203,8 @@ module.exports = function (app, passport) {
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
       sendResponse();
     })
 
@@ -194,11 +231,18 @@ module.exports = function (app, passport) {
 
     db.User.findAll({}).then((result) => {
       obj.users = result;
+      const userProf = obj.users.find(u => u.id === req.user.id);
+      obj.isAdmin = (userProf.dataValues.UserRoleId === 1) ? true : false;
       res.render("team", obj);
     })
 
   })
+  
+  app.get('*', isLoggedIn, (req, res) => {
 
+    res.render("404");
+
+  })
 
 
 

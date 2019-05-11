@@ -43,64 +43,6 @@
 
   .cardDetails {
     padding: 20px;
-
-    .dates {
-      display: flex;
-      justify-content: stretch;
-      flex-direction: column;
-      border: $border;
-      border-radius: $border-radius;
-
-      .startEnd {
-        text-align: left;
-        flex: 1;
-        display: flex;
-        align-items: center;
-
-        .calIcon {
-          font-size: ms(2);
-          text-align: center;
-          flex: 1;
-        }
-  
-        .dateContainer {
-          flex: 2;
-          display: flex;
-          align-content: center;
-          
-          .dateDetails {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-
-            .desc {
-              font-size: ms(-1);
-              line-height: ms(1);
-              margin: 0;
-              text-transform: uppercase;
-            }
-  
-            .date {
-              font-weight: bold;
-            }
-          }
-          
-        }
-
-      }
-
-      .daysLeft {
-        background: rgba($color1, 0.1);
-        font-weight: bold;
-        color: $color2;
-        border-top: $border;
-        padding: 10px 0;
-      }
-
-    }
-   
-
     
 
   }
@@ -138,4 +80,61 @@
     }
 
   }
+}
+
+.dates {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  border: $border;
+  border-radius: $border-radius;
+
+  .startEnd {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .calIcon {
+      font-size: ms(2);
+      text-align: center;
+      flex: 1;
+    }
+
+    .dateContainer {
+      flex: 2;
+      display: flex;
+      align-content: center;
+      
+      .dateDetails {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .desc {
+          font-size: ms(-1);
+          line-height: ms(1);
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        .date {
+          font-weight: bold;
+        }
+      }
+      
+    }
+
+  }
+
+  .daysLeft {
+    background: rgba($color1, 0.1);
+    font-weight: bold;
+    color: $color2;
+    border-top: $border;
+    padding: 10px 0;
+    text-align: center;
+  }
+
 }

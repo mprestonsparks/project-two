@@ -1,7 +1,8 @@
 $colors: (
   blue: $color1,
   gray: darken($light-bg, 50),
-  dark: $color2
+  dark: $color2,
+  reallyDark: darken($color2, 10)
 );
 
 @mixin button-styles($bg, $txt, $fs, $light) {

@@ -111,13 +111,20 @@ $(".projectStatusSelect").change(function() {
   });
 });
 
-$(".commentSubmit").on("click", function(e) {
+$("#commentSubmit").on("click", function(e) {
   e.preventDefault();
   var comment = $("#comment")
     .val()
     .trim();
+  var userId = $(this).data("user-id");
+  var taskId = $(this).data("task-id");
   var newComment = {
-    comment: comment
+    comment: comment,
+    TaskId: taskId,
+    UserId: userId
   };
-  $.post("/api/comment", newComment, function(res) {});
+  console.log(newComment);
+  $.post("/api/comment", newComment, function(res) {
+    location.reload();
+  });
 });

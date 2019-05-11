@@ -445,6 +445,126 @@ a:visited {
   .button-dark-small-light:focus {
     outline: none; }
 
+.button-reallyDark {
+  background-color: #121b37;
+  color: white;
+  font-size: 1em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark i {
+    margin-right: .75em; }
+  .button-reallyDark:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark:focus {
+    outline: none; }
+
+.button-reallyDark-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 1em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-light i {
+    margin-right: .75em; }
+  .button-reallyDark-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-light:focus {
+    outline: none; }
+
+.button-reallyDark-large {
+  background-color: #121b37;
+  color: white;
+  font-size: 1.25em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-large i {
+    margin-right: .75em; }
+  .button-reallyDark-large:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark-large:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark-large:focus {
+    outline: none; }
+
+.button-reallyDark-large-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 1.25em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-large-light i {
+    margin-right: .75em; }
+  .button-reallyDark-large-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-large-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-large-light:focus {
+    outline: none; }
+
+.button-reallyDark-small {
+  background-color: #121b37;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-small i {
+    margin-right: .75em; }
+  .button-reallyDark-small:hover {
+    background-color: #0b1224;
+    color: white; }
+  .button-reallyDark-small:active {
+    background-color: #050811;
+    color: white; }
+  .button-reallyDark-small:focus {
+    outline: none; }
+
+.button-reallyDark-small-light {
+  background-color: rgba(18, 27, 55, 0.2);
+  color: #121b37;
+  font-size: 0.8em;
+  border-radius: 4px;
+  padding: .7em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease; }
+  .button-reallyDark-small-light i {
+    margin-right: .75em; }
+  .button-reallyDark-small-light:hover {
+    background-color: rgba(18, 27, 55, 0.5);
+    color: #050811; }
+  .button-reallyDark-small-light:active {
+    background-color: rgba(18, 27, 55, 0.8);
+    color: #050811; }
+  .button-reallyDark-small-light:focus {
+    outline: none; }
+
 html, body {
   width: 100%;
   height: 100%; }
@@ -480,6 +600,17 @@ html, body {
   .listContainer h2 {
     padding: 20px; }
 
+.notFound {
+  text-align: center;
+  background: #1e2e5e;
+  color: white;
+  justify-content: center;
+  align-items: center; }
+  .notFound h1 {
+    padding-bottom: 1em; }
+  .notFound .button-reallyDark.white {
+    color: white; }
+
 .subnav {
   height: 80px;
   display: flex;
@@ -502,6 +633,8 @@ html, body {
     .subnav a:active {
       background-color: #1e2e5e;
       color: white; }
+  .subnav.leftAlign {
+    justify-content: flex-end; }
 
 .projects {
   display: flex;
@@ -537,43 +670,6 @@ html, body {
     font-size: 0.8em; }
   .cardContent .cardDetails {
     padding: 20px; }
-    .cardContent .cardDetails .dates {
-      display: flex;
-      justify-content: stretch;
-      flex-direction: column;
-      border: solid 1px #d4d9e6;
-      border-radius: 4px; }
-      .cardContent .cardDetails .dates .startEnd {
-        text-align: left;
-        flex: 1;
-        display: flex;
-        align-items: center; }
-        .cardContent .cardDetails .dates .startEnd .calIcon {
-          font-size: 1.5625em;
-          text-align: center;
-          flex: 1; }
-        .cardContent .cardDetails .dates .startEnd .dateContainer {
-          flex: 2;
-          display: flex;
-          align-content: center; }
-          .cardContent .cardDetails .dates .startEnd .dateContainer .dateDetails {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-            padding: 10px; }
-            .cardContent .cardDetails .dates .startEnd .dateContainer .dateDetails .desc {
-              font-size: 0.8em;
-              line-height: 1.25em;
-              margin: 0;
-              text-transform: uppercase; }
-            .cardContent .cardDetails .dates .startEnd .dateContainer .dateDetails .date {
-              font-weight: bold; }
-      .cardContent .cardDetails .dates .daysLeft {
-        background: rgba(73, 119, 247, 0.1);
-        font-weight: bold;
-        color: #1e2e5e;
-        border-top: solid 1px #d4d9e6;
-        padding: 10px 0; }
   .cardContent .cardProgress {
     padding: 20px; }
     .cardContent .cardProgress .progressBar {
@@ -595,6 +691,45 @@ html, body {
     box-shadow: 0px 4px 12px rgba(30, 46, 94, 0.8); }
     .cardContent:hover h2, .cardContent:hover .assigned, .cardContent:hover .projIcon {
       color: #4977f7; }
+
+.dates {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  border: solid 1px #d4d9e6;
+  border-radius: 4px; }
+  .dates .startEnd {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    align-items: center; }
+    .dates .startEnd .calIcon {
+      font-size: 1.5625em;
+      text-align: center;
+      flex: 1; }
+    .dates .startEnd .dateContainer {
+      flex: 2;
+      display: flex;
+      align-content: center; }
+      .dates .startEnd .dateContainer .dateDetails {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        padding: 10px; }
+        .dates .startEnd .dateContainer .dateDetails .desc {
+          font-size: 0.8em;
+          line-height: 1.25em;
+          margin: 0;
+          text-transform: uppercase; }
+        .dates .startEnd .dateContainer .dateDetails .date {
+          font-weight: bold; }
+  .dates .daysLeft {
+    background: rgba(73, 119, 247, 0.1);
+    font-weight: bold;
+    color: #1e2e5e;
+    border-top: solid 1px #d4d9e6;
+    padding: 10px 0;
+    text-align: center; }
 
 .project {
   flex: 1;
@@ -657,6 +792,14 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+  .taskDetailsContainer .projectOwner {
+    padding: 40px 0 20px 0; }
+  .taskDetailsContainer .projectDescription {
+    padding: .5em 0 3em 0;
+    color: #565758; }
+  .taskDetailsContainer .projectAdminButtons {
+    display: flex;
+    justify-content: space-between; }
 
 .tasks {
   display: flex;
