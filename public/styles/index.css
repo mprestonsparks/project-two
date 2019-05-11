@@ -889,7 +889,7 @@ html, body {
   text-align: center;
   border: none;
   font-size: 1.25em;
-  width: 130px;
+  width: 180px;
   padding: .5em .75em;
   box-sizing: border-box;
   -moz-appearance: none;
@@ -948,24 +948,27 @@ html, body {
       background: #eef0f5;
       border-radius: 4px 0 4px 4px; }
 
-.addComment #addComment {
-  margin-top: 40px;
-  text-align: right; }
-  .addComment #addComment .textAreaContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-    .addComment #addComment .textAreaContainer #comment {
-      display: block;
-      flex: 5;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      border: solid 1px #d4d9e6;
-      padding: 18px; }
-      .addComment #addComment .textAreaContainer #comment:focus {
-        outline: none; }
-  .addComment #addComment #commentSubmit {
-    margin-top: 10px; }
+.addComment {
+  font-size: 1.25em; }
+  .addComment #addComment {
+    margin-top: 40px;
+    text-align: right; }
+    .addComment #addComment .textAreaContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .addComment #addComment .textAreaContainer #comment {
+        font-size: 1em;
+        display: block;
+        flex: 5;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        border: solid 1px #d4d9e6;
+        padding: 18px; }
+        .addComment #addComment .textAreaContainer #comment:focus {
+          outline: none; }
+    .addComment #addComment #commentSubmit {
+      margin-top: 10px; }
 
 #sidebarNav {
   width: 20vw;
