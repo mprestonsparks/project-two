@@ -19,6 +19,15 @@
     background: white;
     border-radius: $border-radius;
 
+    .logo {
+      color: $color1;
+      font-size: ms(4);
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: $border;
+      margin-bottom: 20px;
+    }
+
     form {
       margin: 1em 0;
       display: flex;
