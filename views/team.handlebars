@@ -3,19 +3,23 @@
 <div class="pageContentContainer">
   {{> subnav this}}
 
-  <div class="listContainer">
+  <div class="listContainer team">
     <h2>Team Members</h2>
-    <button class="button-gray-small-light">
-      <i class="fas fa-user"></i>
-      Add a Team Member
-    </button>
+    <a class="button-gray-small-light" href="/signup">Add a Team Member</a>
     <ul>
       {{#each users}}
       <li>
-        {{user_first_name}} {{user_last_name}}
+        <i class="fas fa-user"></i>
+        <div class="userContent">
+          <h3 class="name">{{user_first_name}} {{user_last_name}}</h3>
+          <div class="email">{{formatEmail user_email}}</div>
+        </div>
       </li>
       {{/each}}
     </ul>
+    
+
   </div>
+
 
 </div>

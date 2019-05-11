@@ -1,12 +1,12 @@
 .comments {
-  margin-top: 20px;
-  padding-top: 20px;
+  padding: 40px;
   border-top: $border;
+  background-color: lighten($light-bg, 2);
+  flex: 1;
 }
 
 
 .commentContainer {
-  width: 100%;
 
   .comment {
     width: 100%;
@@ -24,11 +24,15 @@
       border-radius: 0 $border-radius $border-radius $border-radius;
       box-shadow: 0px 2px 5px rgba(darken($light-bg, 20), 0.8);
 
+      p {
+        padding: 0;
+      }
+
       .author {
         display: block;
-        font-weight: bold;
+        font-style: italic;
         font-size: ms(-1);
-        margin-top: 10px;
+        margin-top: 1.2em;
       }
 
     }

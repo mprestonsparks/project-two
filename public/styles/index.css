@@ -69,7 +69,7 @@ body {
   line-height: 1.6em;
   color: #181a1d; }
 
-.smallFont, .taskDetailsContainer article .taskDetails {
+.smallFont {
   font-size: 0.8em;
   color: #525963; }
 
@@ -762,6 +762,7 @@ html, body {
       align-items: center;
       justify-content: space-between; }
       .taskContainer .taskList .taskLink.active {
+        padding: 20px 14px 20px 20px;
         color: #1e2e5e;
         background-color: rgba(73, 119, 247, 0.1);
         border-right: solid 6px #4977f7; }
@@ -784,14 +785,24 @@ html, body {
 
 .taskDetailsContainer {
   flex: 2;
-  padding: 40px; }
+  display: flex;
+  flex-direction: column; }
+  .taskDetailsContainer .taskTitle {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #d4d9e6; }
   .taskDetailsContainer article h2 {
     margin-bottom: 10px; }
   .taskDetailsContainer article .taskDetails {
-    margin-bottom: 20px;
+    padding: 20px;
+    align-items: center;
+    border-bottom: solid 1px #d4d9e6;
     display: flex;
-    justify-content: space-between;
-    align-items: center; }
+    justify-content: space-between; }
+  .taskDetailsContainer article p {
+    padding: 20px; }
   .taskDetailsContainer .projectOwner {
     padding: 40px 0 20px 0; }
   .taskDetailsContainer .projectDescription {
@@ -799,7 +810,12 @@ html, body {
     color: #565758; }
   .taskDetailsContainer .projectAdminButtons {
     display: flex;
-    justify-content: space-between; }
+    justify-content: flex-start; }
+    .taskDetailsContainer .projectAdminButtons button {
+      margin-right: 30px; }
+
+.projectArticle {
+  padding: 40px; }
 
 .tasks {
   display: flex;
@@ -898,38 +914,39 @@ html, body {
     border: solid 1px #35dd89; }
 
 .comments {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: solid 1px #d4d9e6; }
+  padding: 40px;
+  border-top: solid 1px #d4d9e6;
+  background-color: #f4f6f9;
+  flex: 1; }
 
-.commentContainer {
-  width: 100%; }
-  .commentContainer .comment {
-    width: 100%;
-    display: flex;
-    margin-bottom: 20px;
-    text-align: left;
-    min-width: 40%;
-    justify-content: flex-start; }
-    .commentContainer .comment article {
-      min-width: 80%;
-      display: inline-block;
-      background: rgba(73, 119, 247, 0.2);
-      padding: 12px;
-      border-radius: 0 4px 4px 4px;
-      box-shadow: 0px 2px 5px rgba(174, 183, 207, 0.8); }
-      .commentContainer .comment article .author {
-        display: block;
-        font-weight: bold;
-        font-size: 0.8em;
-        margin-top: 10px; }
-    .commentContainer .comment:nth-of-type(2n) {
+.commentContainer .comment {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  text-align: left;
+  min-width: 40%;
+  justify-content: flex-start; }
+  .commentContainer .comment article {
+    min-width: 80%;
+    display: inline-block;
+    background: rgba(73, 119, 247, 0.2);
+    padding: 12px;
+    border-radius: 0 4px 4px 4px;
+    box-shadow: 0px 2px 5px rgba(174, 183, 207, 0.8); }
+    .commentContainer .comment article p {
+      padding: 0; }
+    .commentContainer .comment article .author {
+      display: block;
+      font-style: italic;
+      font-size: 0.8em;
+      margin-top: 1.2em; }
+  .commentContainer .comment:nth-of-type(2n) {
+    text-align: right;
+    justify-content: flex-end; }
+    .commentContainer .comment:nth-of-type(2n) article {
       text-align: right;
-      justify-content: flex-end; }
-      .commentContainer .comment:nth-of-type(2n) article {
-        text-align: right;
-        background: #eef0f5;
-        border-radius: 4px 0 4px 4px; }
+      background: #eef0f5;
+      border-radius: 4px 0 4px 4px; }
 
 .addComment #addComment {
   margin-top: 40px;
@@ -1059,6 +1076,32 @@ html, body {
       border: none;
       color: #3c4873; }
 
+.team {
+  display: block; }
+  .team a {
+    margin-left: 20px;
+    flex: none; }
+  .team ul {
+    display: flex;
+    flex-wrap: wrap; }
+    .team ul li {
+      min-width: 300px;
+      padding: 20px;
+      display: flex;
+      background: white;
+      border-radius: 4px;
+      margin: 20px;
+      align-items: center; }
+      .team ul li i {
+        color: #4977f7;
+        font-size: 1.5625em; }
+      .team ul li .userContent {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column; }
+        .team ul li .userContent .email {
+          color: #565758; }
+
 .loginContainer {
   display: flex;
   width: 100vw;
@@ -1117,6 +1160,8 @@ html, body {
     background: white;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
     padding: 40px; }
+  .modalContainer .dates {
+    border: none; }
 
 .createProjectContainer {
   justify-content: flex-start; }

@@ -16,7 +16,7 @@
           {{#each project.Tasks}}
           <a href="/project/{{../project.id}}/{{id}}" class="taskLink {{isActive ../activeTask.id id}}">
             <span>{{task_name}}</span>
-            {{!--<span class={{getStatusClass this.taskStatus}}></span> --}}
+            <span class={{getStatusClass TaskStatusId}}></span>
           </a>
           {{/each}}
         </ul>
@@ -31,21 +31,28 @@
 
         <div class="task">
           <article>
-            <h2>{{activeTask.task_name}}</h2>
-            <div class="taskDetails">
-              <span>Due Date</span>
+            <div class="taskTitle">
+              <h2>{{activeTask.task_name}}</h2>
               {{> status-select this}}
+            </div>
+            <div class="taskDetails">
+              <h4>Due Date: {{formatDate activeTask.goal_end}}</h4>
+              {{#if isAdmin}}
+              <div class="projectAdminButtons">
+                {{!-- <button id="taskEdit" data-project-id={{project.id}} data-task-id={{activeTask.id}} class="button-blue-small-light">Edit Task</button> --}}
+                <button id="taskDelete" data-project-id={{project.id}} data-task-id={{activeTask.id}} class="button-gray-small-light">Delete Task</button>
+                </div>
+              {{/if}}
             </div>
             <p>{{activeTask.task_description}}</p>
           </article>
-
         </div>
 
         {{> comment/comments }}
 
         {{else}}
         <div class="task">
-          <article>
+          <article class="projectArticle">
             <div class="dates">
               <div class="startEnd">
                 <div class="calIcon">
@@ -60,7 +67,7 @@
                 <div class="dateContainer">
                   <div class="dateDetails">
                     <span class="desc">End</span>
-                    <span class="date">{{formatDate project.goal_start}}</span>
+                    <span class="date">{{formatDate project.goal_end}}</span>
                   </div>
                 </div>
               </div>
@@ -71,13 +78,13 @@
             <h3 class="projectOwner">Project Owner: {{getUserName users project.UserId}}</h3>
             <h4>Project Description:</h4>
             <div class="projectDescription">{{project.project_description}}</div>
+            {{#if isAdmin}}
+            <div class="projectAdminButtons">
+              {{!-- <button id="projectEdit" class="button-blue-small-light">Edit Project</button> --}}
+              <button id="projectDelete" data-project-id={{project.id}} class="button-gray-small-light">Delete Project</button>
+            </div>
+            {{/if}}
           </article>
-          {{#if isAdmin}}
-          <div class="projectAdminButtons">
-            <a class="button-blue-light">Edit</a>
-            <a class="button-gray-light">Delete</a>
-          </div>
-          {{/if}}
         </div>
         {{/if}}
 
@@ -87,4 +94,6 @@
 
 </div>
 
+
 {{> project/create-task users=users }}
+{{> project/create-project users=users }}

@@ -1,0 +1,41 @@
+
+.team {
+  display: block;
+
+  a {
+    margin-left: 20px;
+    flex: none;
+  }
+ 
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      min-width: 300px;
+      padding: 20px;
+      display: flex;
+      background: white;
+      border-radius: $border-radius;
+      margin: 20px;
+      align-items: center;
+
+      i {
+        color: $color1;
+        font-size: ms(2);
+      }
+
+      .userContent {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .email {
+          color: $gray;
+        }
+      }
+      
+
+    }
+  }
+}

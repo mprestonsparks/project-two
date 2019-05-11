@@ -280,9 +280,9 @@ module.exports = function(app) {
   });
 
   app.delete("/api/project/delete/:project_id", function(req, res) {
-    db.Project.destroy({ where: { id: req.params.project_id } }).then(function(
-      data
-    ) {
+    db.Project.destroy({ where: 
+      { id: req.params.project_id } 
+    }).then(function(data) {
       res.json(data);
     });
   });
@@ -292,6 +292,7 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
 
   app.delete("api/task/comment/delete/:comment_id", function(req, res) {
     db.Comment.destroy({ where: { id: req.params.comment_id } }).then(function(

@@ -78,6 +78,10 @@ var register = function(Handlebars) {
           return user.dataValues.user_first_name + ' ' + user.dataValues.user_last_name;
         }
       }
+    },
+
+    formatEmail: function(email) {
+      return email;
     }
 
   };

@@ -61,10 +61,9 @@ $(".submitTask").on("click", function(e) {
     goal_start: taskStartDate,
     goal_end: taskFinishDate,
     task_description: taskDescription,
+    TaskStatusId: 1,
     ProjectId: projectId
   };
-
-  //need to create task assignment
 
   $.post("/api/task", newTask, function(res) {
     window.location = "/project/" + projectId + "/" + res.id;
@@ -99,7 +98,6 @@ $(".projectStatusSelect").change(function() {
   }
 
   var taskId = $(this).data("taskid");
-  // send off ajax post here...
   var status = { TaskStatusId: parseInt(status) };
 
   $.ajax({
@@ -107,7 +105,7 @@ $(".projectStatusSelect").change(function() {
     type: "PUT",
     data: status
   }).then(function() {
-    console.log("updated");
+    location.reload();
   });
 });
 
@@ -123,8 +121,37 @@ $("#commentSubmit").on("click", function(e) {
     TaskId: taskId,
     UserId: userId
   };
-  console.log(newComment);
   $.post("/api/comment", newComment, function(res) {
     location.reload();
   });
 });
+
+
+$('#projectEdit').on("click", function(e) {
+  e.preventDefault();
+  $("#editProjectModal").addClass("active");
+})
+
+$("#projectDelete").on("click", function(e) {
+  var projId = $(this).data('project-id');
+  $.ajax({
+    url: "/api/project/delete/" + parseInt(projId),
+    type: "DELETE"
+  }).then(function() {
+    window.location = "/projects";
+  })
+
+})
+
+$("#taskDelete").on("click", function() {
+  var taskId = $(this).data('task-id');
+  var projId = $(this).data('project-id');
+  console.log(taskId, projId)
+  $.ajax({
+    url: "/api/task/delete/" + parseInt(taskId),
+    type: "DELETE"
+  }).then(function() {
+    window.location = "/project/" + projId;
+  })
+
+})
