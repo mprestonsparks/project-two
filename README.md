@@ -54,7 +54,7 @@ DB_PASSWORD=""
 DB_DATABASE="project_two"
 ```
 - Update the `DB_USER=""` to `DB_USER="root"` or whatever username your MySQL session is running on
-- Update the `DB_PASSWORD=""` to `DB_USER= "<your password>" `
+- Update the `DB_PASSWORD=""` to `DB_PASSWORD= "<your password>" `
 - Save the file
 
 6. Run the following code from your command line
